@@ -7,6 +7,8 @@ export default async function DashboardPage() {
   const { userId } = await auth();
   if (!userId) redirect('/sign-in');
 
+  const supabase = getSupabase();
+
   const { data: audits } = await supabase
     .from('audits')
     .select('id, business_name, website_url, city, industry, status, signal_score, created_at')

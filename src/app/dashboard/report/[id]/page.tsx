@@ -8,6 +8,7 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
   if (!userId) redirect('/sign-in');
 
   const { id } = await params;
+  const supabase = getSupabase();
 
   const { data: audit } = await supabase
     .from('audits')

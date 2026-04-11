@@ -20,6 +20,8 @@ export async function POST(request: Request) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
+  const supabase = getSupabase();
+
   // Rate limit: max 3 audits per user
   const { count } = await supabase
     .from('audits')
@@ -127,6 +129,8 @@ export async function GET() {
   if (!userId) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
+
+  const supabase = getSupabase();
 
   const { data: audits } = await supabase
     .from('audits')

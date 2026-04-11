@@ -11,6 +11,7 @@ export async function GET(
   }
 
   const { id } = await params;
+  const supabase = getSupabase();
 
   const { data: audit } = await supabase
     .from('audits')
