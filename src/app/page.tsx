@@ -18,6 +18,40 @@ import {
 } from 'lucide-react';
 
 export default function Home() {
+  useEffect(() => {
+    (function (C, A, L) {
+      let p = function (a: any, ar: any) { a.q.push(ar); };
+      let d = C.document;
+      // @ts-ignore
+      C.Cal = C.Cal || function () {
+        // @ts-ignore
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          // @ts-ignore
+          if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+      // @ts-ignore
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    // @ts-ignore
+    Cal("init", "30min", { origin: "https://app.cal.com" });
+    // @ts-ignore
+    Cal.ns["30min"]("ui", { "cssVarsPerTheme": { "light": { "cal-brand": "#E3A23A" }, "dark": { "cal-brand": "#0F2A24" } }, "hideEventTypeDetails": false, "layout": "week_view" });
+  }, []);
+
   const [scroll, setScroll] = useState(0);
   const towns = ["Sparwood", "Fernie", "Elkford", "Cranbrook", "Jaffray"];
 
@@ -63,8 +97,11 @@ export default function Home() {
         <div className="nav-links">
           <Link href="tel:+12505550123" className="nav-link mobile-hide" style={{ fontWeight: 700 }}>(250) 555-0123</Link>
           <Link 
-            href="#contact" 
+            href="javascript:void(0)" 
             className="btn btn-outline" 
+            data-cal-link="kootenay-signal/30min"
+            data-cal-namespace="30min"
+            data-cal-config='{"layout":"week_view","useSlotsViewOnSmallScreen":"true"}'
             style={{ 
               padding: '0.5rem 1.5rem',
               fontSize: 'min(0.8rem, 3.5vw)'
@@ -113,9 +150,16 @@ export default function Home() {
                 flexWrap: 'wrap',
                 justifyContent: 'inherit'
               }}>
-                <Link href="#contact" className="btn btn-primary" id="btn-cta-hero" style={{ padding: '1.2rem 2.5rem', fontSize: '1.2rem' }}>
+                <button 
+                  className="btn btn-primary" 
+                  id="btn-cta-hero"
+                  data-cal-link="kootenay-signal/30min"
+                  data-cal-namespace="30min"
+                  data-cal-config='{"layout":"week_view","useSlotsViewOnSmallScreen":"true"}'
+                  style={{ padding: '1.2rem 2.5rem', fontSize: '1.2rem' }}
+                >
                   GET MY SIGNAL CHECKED
-                </Link>
+                </button>
                 <Link href="#locals" className="btn btn-secondary mobile-hide" style={{ padding: '1.25rem 2.5rem' }}>
                   SEE LOCAL RESULTS »
                 </Link>
@@ -374,9 +418,15 @@ export default function Home() {
                  <div style={{ background: '#000', padding: '2rem', border: '2px solid var(--primary)' }}>
                    <h3 style={{ marginBottom: '0.5rem', fontSize: '1.25rem' }}>Ready to Be Seen?</h3>
                    <p style={{ marginBottom: '1.5rem', opacity: 0.7, fontSize: '0.8rem' }}>One business per category. No exceptions.</p>
-                   <Link href="#contact" className="btn btn-primary" style={{ width: '100%', fontSize: '0.9rem' }}>
-                     START MY BROADCAST
-                   </Link>
+                   <button 
+                      className="btn btn-primary" 
+                      style={{ width: '100%', fontSize: '0.9rem' }}
+                      data-cal-link="kootenay-signal/30min"
+                      data-cal-namespace="30min"
+                      data-cal-config='{"layout":"week_view","useSlotsViewOnSmallScreen":"true"}'
+                    >
+                      START MY BROADCAST
+                    </button>
                  </div>
                </div>
              </div>
@@ -498,9 +548,15 @@ export default function Home() {
           </p>
           
           <div className="mobile-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
-            <Link href="tel:+12505550123" className="btn btn-primary" style={{ padding: '1.8rem 4rem', fontSize: '1.5rem', fontWeight: 800 }}>
+            <button 
+              className="btn btn-primary" 
+              style={{ padding: '1.8rem 4rem', fontSize: '1.5rem', fontWeight: 800 }}
+              data-cal-link="kootenay-signal/30min"
+              data-cal-namespace="30min"
+              data-cal-config='{"layout":"week_view","useSlotsViewOnSmallScreen":"true"}'
+            >
               GET MY SIGNAL CHECKED
-            </Link>
+            </button>
             
             <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>
               Or text us at <a href="sms:+12505550123" style={{ color: 'var(--primary)' }}>(250) 555-0123</a>
