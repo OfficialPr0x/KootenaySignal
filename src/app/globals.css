@@ -120,7 +120,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 120px 0 60px;
+  padding: 120px 0 40px;
 }
 
 .hero .container {
@@ -135,10 +135,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero h1 {
-  font-size: clamp(3rem, 7vw, 5rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
-  line-height: 0.95;
-  margin-bottom: 1.5rem;
+  line-height: 0.85;
+  margin-bottom: 1rem;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -0.04em;

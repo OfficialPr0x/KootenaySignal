@@ -113,24 +113,27 @@ export default function Home() {
                 <Link href="#contact" className="btn btn-primary" id="btn-cta-hero" style={{ padding: '1.2rem 2.5rem', fontSize: '1.2rem' }}>
                   GET MY SIGNAL CHECKED
                 </Link>
-                <Link href="#locals" className="btn btn-outline" style={{ padding: '1.2rem 2.5rem', fontSize: '1.2rem' }}>
+                <Link href="#locals" className="btn btn-secondary" style={{ padding: '1.25rem 2.5rem' }}>
                   SEE LOCAL RESULTS »
                 </Link>
               </div>
               
-              <div style={{ marginTop: '2.5rem', display: 'flex', gap: '1rem', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
+              <div style={{ marginTop: '1.25rem' }}>
                 <div className="badge animate-subtle-glow" style={{ 
-                  background: 'rgba(230, 126, 34, 0.15)', 
-                  borderColor: 'var(--primary)', 
-                  color: 'var(--primary)',
-                  display: 'flex',
+                  background: 'rgba(230, 126, 34, 0.05)', 
+                  borderColor: 'rgba(230, 126, 34, 0.2)', 
+                  color: 'rgba(230, 126, 34, 0.8)',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.5rem',
-                  padding: '0.6rem 1.2rem',
-                  fontSize: '0.8rem',
-                  fontWeight: 700
+                  gap: '0.4rem',
+                  padding: '0.3rem 0.6rem',
+                  fontSize: '0.6rem',
+                  fontWeight: 800,
+                  borderRadius: '2px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
                 }}>
-                  <AlertTriangle size={14} />
+                  <AlertTriangle size={10} />
                   SCARCITY: We only work with 3–5 businesses per trade, per area.
                 </div>
               </div>
@@ -138,42 +141,39 @@ export default function Home() {
           </div>
         </div>
 
-      {/* Operational Territory Bar */}
-      <div style={{ 
-        position: 'absolute', 
-        bottom: 0, 
-        left: 0, 
-        width: '100%',
-        background: 'rgba(0,0,0,0.5)',
-        backdropFilter: 'blur(10px)',
-        borderTop: '1px solid rgba(255,255,255,0.05)',
-        padding: '1.25rem 0',
-        zIndex: 5,
-      }}>
-        <div className="container" style={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          alignItems: 'center',
-          gap: '2.5rem',
-          flexWrap: 'wrap',
-          opacity: 0.8,
-          fontSize: '0.75rem', 
-          fontWeight: 800, 
-          textTransform: 'uppercase', 
-          letterSpacing: '0.25em',
-          color: 'var(--foreground)'
+        {/* Operational Territory Strip (Bottom Frame) */}
+        <div style={{ 
+          position: 'absolute', 
+          bottom: '2.5rem', 
+          left: 0, 
+          width: '100%',
+          zIndex: 10,
+          pointerEvents: 'none',
+          padding: '0 5vw'
         }}>
-          <span style={{ color: 'var(--primary)', opacity: 1 }}>📡 PRIMARY SIGNAL:</span>
-          <span>Fernie</span>
-          <span>Sparwood</span>
-          <span>Elkford</span>
-          <span>Cranbrook</span>
-          <span>Nelson</span>
-          <span>Castlegar</span>
-          <span>Trail</span>
-          <span>Kimberley</span>
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center',
+            width: '100%',
+            opacity: 0.5,
+            fontSize: 'max(0.9vw, 0.75rem)', 
+            fontWeight: 900, 
+            textTransform: 'uppercase', 
+            letterSpacing: '0.5em',
+            color: '#fff',
+            fontFamily: 'var(--font-pjs)'
+          }}>
+            <span>Fernie</span>
+            <span>Sparwood</span>
+            <span>Elkford</span>
+            <span>Cranbrook</span>
+            <span>Nelson</span>
+            <span>Castlegar</span>
+            <span>Trail</span>
+            <span>Kimberley</span>
+          </div>
         </div>
-      </div>
       </section>
 
       {/* Call-Out Section (Urgency) */}
@@ -246,10 +246,26 @@ export default function Home() {
             <span className="badge" style={{ borderColor: 'var(--primary)', color: 'var(--primary)', opacity: 1 }}>
               Attention Layer: ACTIVE
             </span>
-            <h2 style={{ fontSize: 'max(5vw, 4rem)', lineHeight: 0.9, marginBottom: '1.5rem', fontFamily: 'var(--font-syne)' }}>
+            <h2 style={{ 
+              fontSize: 'clamp(3rem, 7vw, 5rem)',
+              lineHeight: 0.85,
+              margin: '1.5rem 0',
+              letterSpacing: '-0.03em',
+              textTransform: 'uppercase',
+              fontFamily: 'var(--font-syne)',
+              fontWeight: 800
+            }}>
               Kootenay Broadcast™
             </h2>
-            <p style={{ fontSize: '1.5rem', opacity: 0.8, fontFamily: 'var(--font-pjs)' }}>
+            <p style={{ 
+              fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+              lineHeight: 1.4,
+              marginBottom: '2rem',
+              maxWidth: '600px',
+              margin: '0 auto',
+              opacity: 0.9,
+              fontFamily: 'var(--font-pjs)'
+            }}>
               Your business — seen where locals actually look.
             </p>
           </div>
