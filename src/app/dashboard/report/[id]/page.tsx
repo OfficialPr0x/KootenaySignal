@@ -1,6 +1,6 @@
 import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
-import { supabase } from '@/lib/db';
+import { getSupabase } from '@/lib/db';
 import ReportContent from './ReportContent';
 
 export default async function ReportPage({ params }: { params: Promise<{ id: string }> }) {

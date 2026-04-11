@@ -1,5 +1,5 @@
 import { auth } from '@clerk/nextjs/server';
-import { supabase } from '@/lib/db';
+import { getSupabase } from '@/lib/db';
 import { crawlWebsite } from '@/lib/services/crawler';
 import { runSerpEnrichment } from '@/lib/services/serp';
 import { runPageSpeedInsights } from '@/lib/services/pagespeed';

@@ -1,6 +1,6 @@
 import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
-import { supabase } from '@/lib/db';
+import { getSupabase } from '@/lib/db';
 import Link from 'next/link';
 
 export default async function DashboardPage() {
