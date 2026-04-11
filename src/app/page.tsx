@@ -66,18 +66,11 @@ export default function Home() {
         backgroundImage: `linear-gradient(to bottom, rgba(13, 17, 9, 0.4), rgba(13, 17, 9, 0.95)), url('https://res.cloudinary.com/doajstql7/image/upload/v1775879081/Elk_Valley_sunset_workshop_scene_gvwak0.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center bottom',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        position: 'relative',
-        paddingTop: '220px'
       }}>
         <div className="container">
           <div className="hero-content">
-             <h1 style={{ 
-              fontSize: 'max(5.5vw, 4rem)',
+            <h1 style={{ 
               lineHeight: 0.95,
-              marginBottom: '2rem',
               maxWidth: '1000px',
               color: '#fff',
               textShadow: '0 4px 20px rgba(0,0,0,0.5)'
@@ -176,26 +169,33 @@ export default function Home() {
             <h2 style={{ fontSize: '4rem' }}>We Build Signal — Not Just Sites</h2>
           </div>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem' }}>
-            <div className="service-card" style={{ padding: '4rem 3rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+            <div className="service-card" style={{ padding: '4rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
               <span style={{ fontSize: '4rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>01</span>
-              <h3 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Signal Sites™</h3>
+              <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>SignalForge™</h3>
               <p style={{ opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.6 }}>
-                Websites that actually make your phone ring. We don't build digital brochures; we build high-conversion lead engines that capture every local lead.
+                Build your signal foundation. High-conversion lead engines that capture every local lead.
               </p>
             </div>
-            <div className="service-card" style={{ padding: '4rem 3rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <div className="service-card" style={{ padding: '4rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
               <span style={{ fontSize: '4rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>02</span>
-              <h3 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Local Dominance Systems</h3>
+              <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>SearchLock™</h3>
               <p style={{ opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.6 }}>
-                Google, Maps, and Local Search — locked in. When a local searches for your trade, you are the only logical answer they see.
+                Own local search permanently. Google, Maps, and Local Search — locked in.
               </p>
             </div>
-            <div className="service-card" style={{ padding: '4rem 3rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <div className="service-card" style={{ padding: '4rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
               <span style={{ fontSize: '4rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>03</span>
-              <h3 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Silent AI Operators</h3>
+              <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>GhostOps AI™</h3>
               <p style={{ opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.6 }}>
-                Follow-ups, bookings, and missed calls handled automatically. Stop letting thousands slip away because you were on the tools when they called.
+                Never miss money again. Automated follow-ups, bookings, and missed call handling.
+              </p>
+            </div>
+            <div className="service-card" style={{ padding: '4rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <span style={{ fontSize: '4rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>04</span>
+              <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>Kootenay Broadcast™</h3>
+              <p style={{ opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.6 }}>
+                Be seen everywhere that matters. High-impact local awareness and signal boosting.
               </p>
             </div>
           </div>
