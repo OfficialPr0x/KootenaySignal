@@ -3,6 +3,19 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { 
+  Milestone, 
+  Monitor, 
+  Smartphone, 
+  RefreshCw, 
+  CheckCircle2, 
+  AlertTriangle,
+  ArrowRight,
+  ShieldCheck,
+  Zap,
+  Target,
+  Radio
+} from 'lucide-react';
 
 export default function Home() {
   const [scroll, setScroll] = useState(0);
@@ -105,17 +118,21 @@ export default function Home() {
                 </Link>
               </div>
               
-              <div style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '0.75rem', 
-                color: 'var(--primary)', 
-                fontWeight: 700,
-                fontSize: '0.9rem',
-                letterSpacing: '0.05em'
-              }}>
-                <span style={{ backgroundColor: 'var(--primary)', color: '#000', padding: '2px 6px', borderRadius: '2px' }}>⚠️ SCARCITY</span>
-                We only work with 3–5 businesses per trade, per area.
+              <div style={{ marginTop: '2.5rem', display: 'flex', gap: '1rem', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
+                <div className="badge animate-subtle-glow" style={{ 
+                  background: 'rgba(230, 126, 34, 0.15)', 
+                  borderColor: 'var(--primary)', 
+                  color: 'var(--primary)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.6rem 1.2rem',
+                  fontSize: '0.8rem',
+                  fontWeight: 700
+                }}>
+                  <AlertTriangle size={14} />
+                  SCARCITY: We only work with 3–5 businesses per trade, per area.
+                </div>
               </div>
             </div>
           </div>
@@ -299,19 +316,27 @@ export default function Home() {
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
               <div>
-                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>🚧 Highway Presence</h4>
+                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <Milestone size={20} /> Highway Presence
+                </h4>
                 <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>On the drive into town — before they even think to search.</p>
               </div>
               <div>
-                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>🏙️ In-Town Screens</h4>
+                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <Monitor size={20} /> In-Town Screens
+                </h4>
                 <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>Where locals stop, wait, and look around.</p>
               </div>
               <div>
-                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>📱 Digital Reinforcement</h4>
+                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <Smartphone size={20} /> Digital Reinforcement
+                </h4>
                 <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>They saw you earlier — now you show up again on their phone.</p>
               </div>
               <div>
-                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>🔁 Repeat Exposure</h4>
+                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <RefreshCw size={20} /> Repeat Exposure
+                </h4>
                 <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>Not once. Not twice. Enough that they remember you.</p>
               </div>
             </div>
@@ -321,11 +346,23 @@ export default function Home() {
              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem', alignItems: 'center' }}>
                <div>
                  <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>The Impact of Total Local Presence</h2>
-                 <ul style={{ listStyle: 'none', padding: 0, fontSize: '1.2rem', lineHeight: 1.8 }}>
-                   <li style={{ marginBottom: '1rem' }}>✅ People recognize your name before calling</li>
-                   <li style={{ marginBottom: '1rem' }}>✅ You feel “bigger” than competitors instantly</li>
-                   <li style={{ marginBottom: '1rem' }}>✅ You stop explaining who you are</li>
-                   <li>✅ You start getting chosen</li>
+                 <ul style={{ listStyle: 'none', padding: 0, fontSize: '1.2rem', lineHeight: 2.2 }}>
+                   <li style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                     <CheckCircle2 size={24} style={{ color: 'var(--primary)' }} />
+                     People recognize your name before calling
+                   </li>
+                   <li style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                     <CheckCircle2 size={24} style={{ color: 'var(--primary)' }} />
+                     You feel “bigger” than competitors instantly
+                   </li>
+                   <li style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                     <CheckCircle2 size={24} style={{ color: 'var(--primary)' }} />
+                     You stop explaining who you are
+                   </li>
+                   <li style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                     <CheckCircle2 size={24} style={{ color: 'var(--primary)' }} />
+                     You start getting chosen
+                   </li>
                  </ul>
                </div>
                <div style={{ textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.05)', paddingLeft: '4rem' }}>
