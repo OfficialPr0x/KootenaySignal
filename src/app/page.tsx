@@ -36,6 +36,7 @@ export default function Home() {
         if (ar[0] === L) {
           const api = function () { p(api, arguments); };
           const namespace = ar[1];
+          // @ts-ignore
           api.q = api.q || [];
           // @ts-ignore
           if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar);
@@ -49,7 +50,7 @@ export default function Home() {
     // @ts-ignore
     Cal("init", "30min", { origin: "https://app.cal.com" });
     // @ts-ignore
-    Cal.ns["30min"]("ui", { "cssVarsPerTheme": { "light": { "cal-brand": "#E3A23A" }, "dark": { "cal-brand": "#0F2A24" } }, "hideEventTypeDetails": false, "layout": "week_view" });
+    Cal.ns["30min"]("ui", { "cssVarsPerTheme": { "light": { "cal-brand": "#E3A23A" }, "dark": { "cal-brand": "#0F2A24" } }, "hideEventTypeDetails": false, "layout": "month_view" });
   }, []);
 
   const [scroll, setScroll] = useState(0);
@@ -96,19 +97,20 @@ export default function Home() {
         </div>
         <div className="nav-links">
           <Link href="tel:+12505550123" className="nav-link mobile-hide" style={{ fontWeight: 700 }}>(250) 555-0123</Link>
-          <Link 
-            href="javascript:void(0)" 
+          <button 
             className="btn btn-outline" 
             data-cal-link="kootenay-signal/30min"
             data-cal-namespace="30min"
-            data-cal-config='{"layout":"week_view","useSlotsViewOnSmallScreen":"true"}'
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
             style={{ 
               padding: '0.5rem 1.5rem',
-              fontSize: 'min(0.8rem, 3.5vw)'
+              fontSize: 'min(0.8rem, 3.5vw)',
+              background: 'transparent',
+              cursor: 'pointer'
             }}
           >
             Start My Signal Boost
-          </Link>
+          </button>
         </div>
       </nav>
 
@@ -121,22 +123,21 @@ export default function Home() {
         <div className="container">
           <div className="hero-content mobile-center">
             <h1 className="mobile-center" style={{ 
-              lineHeight: 0.95,
-              maxWidth: '1000px',
+              lineHeight: 0.9,
+              maxWidth: '850px',
               color: '#fff',
               textShadow: '0 4px 20px rgba(0,0,0,0.5)',
-              fontSize: 'var(--h1-size)'
             }}>
               If Locals Don’t Know You… <br className="mobile-hide"/>
               <span style={{ color: 'var(--primary)' }}>You Don’t Exist.</span>
             </h1>
 
             <p className="mobile-font-lg" style={{ 
-              fontSize: 'var(--p-large-size)', 
-              maxWidth: '650px', 
-              marginBottom: '3rem',
+              fontSize: 'min(0.95rem, 2.5vh)', 
+              maxWidth: '600px', 
+              marginBottom: '3vh',
               color: '#fff',
-              lineHeight: 1.4,
+              lineHeight: 1.3,
               fontWeight: 400
             }}>
               We put Kootenay businesses on the map—and keep them there. 
@@ -155,7 +156,7 @@ export default function Home() {
                   id="btn-cta-hero"
                   data-cal-link="kootenay-signal/30min"
                   data-cal-namespace="30min"
-                  data-cal-config='{"layout":"week_view","useSlotsViewOnSmallScreen":"true"}'
+                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
                   style={{ padding: '1.2rem 2.5rem', fontSize: '1.2rem' }}
                 >
                   GET MY SIGNAL CHECKED
@@ -165,7 +166,7 @@ export default function Home() {
                 </Link>
               </div>
               
-              <div style={{ marginTop: '2rem' }}>
+              <div style={{ marginTop: '2vh' }}>
                 <div className="badge animate-subtle-glow mobile-font-sm" style={{ 
                   background: 'rgba(230, 126, 34, 0.1)', 
                   borderColor: 'rgba(230, 126, 34, 0.3)', 
@@ -173,12 +174,12 @@ export default function Home() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.75rem',
-                  padding: '0.8rem 1.5rem',
+                  padding: '0.6rem 1.2rem',
                   fontWeight: 900,
                   borderRadius: '3px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
-                  lineHeight: 1.2
+                  lineHeight: 1
                 }}>
                   <AlertTriangle size={18} className="mobile-hide" />
                   SCARCITY: We only work with 3–5 per trade, per area.
@@ -191,12 +192,12 @@ export default function Home() {
         {/* Operational Territory Strip (Bottom Frame) */}
         <div className="mobile-hide" style={{ 
           position: 'absolute', 
-          bottom: '2.5rem', 
+          bottom: '2rem',
           left: 0, 
           width: '100%',
           zIndex: 10,
           pointerEvents: 'none',
-          padding: '0 5vw'
+          padding: '0 8vw'
         }}>
           <div style={{ 
             display: 'flex', 
@@ -423,7 +424,7 @@ export default function Home() {
                       style={{ width: '100%', fontSize: '0.9rem' }}
                       data-cal-link="kootenay-signal/30min"
                       data-cal-namespace="30min"
-                      data-cal-config='{"layout":"week_view","useSlotsViewOnSmallScreen":"true"}'
+                      data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
                     >
                       START MY BROADCAST
                     </button>
@@ -553,7 +554,7 @@ export default function Home() {
               style={{ padding: '1.8rem 4rem', fontSize: '1.5rem', fontWeight: 800 }}
               data-cal-link="kootenay-signal/30min"
               data-cal-namespace="30min"
-              data-cal-config='{"layout":"week_view","useSlotsViewOnSmallScreen":"true"}'
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
             >
               GET MY SIGNAL CHECKED
             </button>
