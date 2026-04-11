@@ -129,7 +129,18 @@ function Card({ title, children, accent }: { title: string; children: React.Reac
 }
 
 export default function ReportContent({ audit }: { audit: AuditData }) {
-  const report: Report | null = audit.report_data ?? null;
+  const rawReport: Report | null = audit.report_data ?? null;
+
+  // Normalize arrays — API may return undefined for any of these
+  const report = rawReport ? {
+    ...rawReport,
+    strengths: rawReport.strengths ?? [],
+    weaknesses: rawReport.weaknesses ?? [],
+    quick_wins: rawReport.quick_wins ?? [],
+    seo_issues: rawReport.seo_issues ?? [],
+    keyword_insights: rawReport.keyword_insights ?? [],
+    recommended_services: rawReport.recommended_services ?? [],
+  } : null;
 
   // Load Cal.com embed on mount so the booking button works
   useEffect(() => {
