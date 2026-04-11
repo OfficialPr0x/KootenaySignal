@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 
 interface AuditData {
@@ -129,6 +130,43 @@ function Card({ title, children, accent }: { title: string; children: React.Reac
 
 export default function ReportContent({ audit }: { audit: AuditData }) {
   const report: Report | null = audit.report_data ?? null;
+
+  // Load Cal.com embed on mount so the booking button works
+  useEffect(() => {
+    (function (C: any, A: string, L: string) {
+      const p = function (a: any, ar: any) { a.q.push(ar); };
+      const d = C.document;
+      C.Cal = C.Cal || function () {
+        const cal = C.Cal;
+        const ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    (window as any).Cal("init", "30min", { origin: "https://app.cal.com" });
+    (window as any).Cal.ns["30min"]("ui", {
+      cssVarsPerTheme: { light: { "cal-brand": "#E3A23A" }, dark: { "cal-brand": "#0F2A24" } },
+      hideEventTypeDetails: false,
+      layout: "month_view",
+    });
+  }, []);
+
+  function handleSaveReport() {
+    window.print();
+  }
 
   if (!report) {
     return (
@@ -332,28 +370,65 @@ export default function ReportContent({ audit }: { audit: AuditData }) {
             data-cal-link="kootenay-signal/30min"
             data-cal-namespace="30min"
             data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-            style={{ padding: '1rem 2.5rem', fontSize: '1rem', fontWeight: 800 }}
+            style={{ padding: '1rem 2.5rem', fontSize: '1rem', fontWeight: 800, cursor: 'pointer' }}
           >
             Book a Signal Strategy Call
           </button>
           <Link
             href="/dashboard/new"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              padding: '1rem 2.5rem',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: '4px',
-              color: '#f4ece1',
-              fontWeight: 700,
-              fontSize: '0.85rem',
-              textDecoration: 'none',
-              textTransform: 'uppercase',
-            }}
+            className="dash-new-btn"
+            style={{ padding: '1rem 2.5rem', fontSize: '0.85rem' }}
           >
-            Run Another Check
+            <span>Run Another Check</span>
           </Link>
         </div>
+      </div>
+
+      {/* Save / Download Bar */}
+      <div className="report-save-bar" style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '1rem',
+        padding: '1.5rem 2rem',
+        marginBottom: '2rem',
+        background: 'rgba(255,255,255,0.015)',
+        border: '1px solid rgba(255,255,255,0.04)',
+        borderRadius: '4px',
+      }}>
+        <span style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.15em', opacity: 0.35, fontWeight: 700 }}>
+          Save this report
+        </span>
+        <button
+          onClick={handleSaveReport}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.6rem 1.5rem',
+            background: 'transparent',
+            border: '1px solid rgba(255,255,255,0.1)',
+            borderRadius: '3px',
+            color: '#f4ece1',
+            fontWeight: 700,
+            fontSize: '0.75rem',
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            fontFamily: 'var(--font-sans)',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = 'var(--primary)';
+            e.currentTarget.style.color = 'var(--primary)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+            e.currentTarget.style.color = '#f4ece1';
+          }}
+        >
+          📄 Save as PDF
+        </button>
       </div>
 
       {/* Footer meta */}

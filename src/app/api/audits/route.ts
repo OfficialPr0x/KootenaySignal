@@ -22,13 +22,16 @@ export async function POST(request: Request) {
 
   const supabase = getSupabase();
 
-  // Rate limit: max 3 audits per user
+  // Rate limit: max 1 audit per user per day
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
   const { count } = await supabase
     .from('audits')
     .select('*', { count: 'exact', head: true })
-    .eq('clerk_user_id', userId);
-  if ((count ?? 0) >= 3) {
-    return Response.json({ error: 'Audit limit reached. Contact Kootenay Signal for unlimited audits.' }, { status: 429 });
+    .eq('clerk_user_id', userId)
+    .gte('created_at', todayStart.toISOString());
+  if ((count ?? 0) >= 1) {
+    return Response.json({ error: 'You've already run a Signal Check today. Come back tomorrow — your signal isn't going anywhere.' }, { status: 429 });
   }
 
   let body: unknown;
