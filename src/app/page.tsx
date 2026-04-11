@@ -169,32 +169,38 @@ export default function Home() {
             <h2 style={{ fontSize: '4rem' }}>We Build Signal — Not Just Sites</h2>
           </div>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
-            <div className="service-card" style={{ padding: '4rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <span style={{ fontSize: '4rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>01</span>
-              <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>SignalForge™</h3>
-              <p style={{ opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.6 }}>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(4, 1fr)', 
+            gap: '1.5rem',
+            overflowX: 'auto',
+            paddingBottom: '2rem'
+          }}>
+            <div className="service-card" style={{ minWidth: '220px', padding: '3rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <span style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>01</span>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>SignalForge™</h3>
+              <p style={{ opacity: 0.8, fontSize: '1rem', lineHeight: 1.6 }}>
                 Build your signal foundation. High-conversion lead engines that capture every local lead.
               </p>
             </div>
-            <div className="service-card" style={{ padding: '4rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <span style={{ fontSize: '4rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>02</span>
-              <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>SearchLock™</h3>
-              <p style={{ opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.6 }}>
+            <div className="service-card" style={{ minWidth: '220px', padding: '3rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <span style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>02</span>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>SearchLock™</h3>
+              <p style={{ opacity: 0.8, fontSize: '1rem', lineHeight: 1.6 }}>
                 Own local search permanently. Google, Maps, and Local Search — locked in.
               </p>
             </div>
-            <div className="service-card" style={{ padding: '4rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <span style={{ fontSize: '4rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>03</span>
-              <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>GhostOps AI™</h3>
-              <p style={{ opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.6 }}>
+            <div className="service-card" style={{ minWidth: '220px', padding: '3rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <span style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>03</span>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>GhostOps AI™</h3>
+              <p style={{ opacity: 0.8, fontSize: '1rem', lineHeight: 1.6 }}>
                 Never miss money again. Automated follow-ups, bookings, and missed call handling.
               </p>
             </div>
-            <div className="service-card" style={{ padding: '4rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <span style={{ fontSize: '4rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>04</span>
-              <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>Kootenay Broadcast™</h3>
-              <p style={{ opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.6 }}>
+            <div className="service-card" style={{ minWidth: '220px', padding: '3rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <span style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>04</span>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Kootenay Broadcast™</h3>
+              <p style={{ opacity: 0.8, fontSize: '1rem', lineHeight: 1.6 }}>
                 Be seen everywhere that matters. High-impact local awareness and signal boosting.
               </p>
             </div>
@@ -254,6 +260,38 @@ export default function Home() {
                   <span style={{ color: 'var(--primary)' }}>✅</span> <b>Results Or We Don't Work</b>
                 </li>
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Field Reports */}
+      <section id="locals" style={{ padding: '10rem 0', background: '#0a0d07', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div className="container">
+          <div className="section-header" style={{ marginBottom: '6rem' }}>
+            <span className="badge">Field Reports</span>
+            <h2 style={{ fontSize: '4rem' }}>Captured Signals & Local Wins</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '3rem' }}>
+            <div style={{ padding: '4rem 3rem', background: 'rgba(255,255,255,0.02)', position: 'relative', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <span style={{ position: 'absolute', top: '2rem', left: '2rem', fontSize: '6rem', color: 'var(--primary)', opacity: 0.1, fontFamily: 'var(--font-serif)' }}>"</span>
+              <p style={{ fontSize: '1.4rem', marginBottom: '2.5rem', lineHeight: 1.5, position: 'relative', zIndex: 1, fontFamily: 'var(--font-pjs)' }}>
+                "Since implementing **SearchLock™**, we've seen a 40% increase in calls from Elk Valley residents. They actually understand our market. We're booked out for months."
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ width: '40px', height: '1px', background: 'var(--primary)' }}></div>
+                <div style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.9rem' }}>Fernie Custom Cabinets</div>
+              </div>
+            </div>
+            <div style={{ padding: '4rem 3rem', background: 'rgba(255,255,255,0.02)', position: 'relative', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <span style={{ position: 'absolute', top: '2rem', left: '2rem', fontSize: '6rem', color: 'var(--primary)', opacity: 0.1, fontFamily: 'var(--font-serif)' }}>"</span>
+              <p style={{ fontSize: '1.4rem', marginBottom: '2.5rem', lineHeight: 1.5, position: 'relative', zIndex: 1, fontFamily: 'var(--font-pjs)' }}>
+                "Our previous agency was generic. Kootenay Signal is built different. The **GhostOps AI™** follow-ups have saved us thousands in missed jobs already."
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ width: '40px', height: '1px', background: 'var(--primary)' }}></div>
+                <div style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.9rem' }}>Elkford Mechanical</div>
+              </div>
             </div>
           </div>
         </div>
