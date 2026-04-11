@@ -38,6 +38,9 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# prisma
+src/generated/
 next-env.d.ts
 
 # clerk configuration (can include secrets)
