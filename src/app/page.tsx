@@ -111,16 +111,14 @@ export default function Home() {
                 flexWrap: 'wrap',
                 justifyContent: 'inherit'
               }}>
-                <button 
+                <Link 
+                  href="/dashboard/new"
                   className="btn btn-primary" 
                   id="btn-cta-hero"
-                  data-cal-link="kootenay-signal/30min"
-                  data-cal-namespace="30min"
-                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-                  style={{ padding: '1.2rem 2.5rem', fontSize: '1.2rem' }}
+                  style={{ padding: '1.2rem 2.5rem', fontSize: '1.2rem', textDecoration: 'none' }}
                 >
                   GET MY SIGNAL CHECKED
-                </button>
+                </Link>
                 <Link href="#locals" className="btn btn-secondary mobile-hide" style={{ padding: '1.25rem 2.5rem' }}>
                   SEE LOCAL RESULTS »
                 </Link>

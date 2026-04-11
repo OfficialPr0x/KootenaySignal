@@ -78,6 +78,20 @@ export default function Navbar() {
         </Show>
         
         <Show when="signed-in">
+          <a 
+            href="/dashboard" 
+            style={{ 
+              color: '#e67e22', 
+              fontWeight: 700, 
+              fontSize: '0.75rem', 
+              textTransform: 'uppercase', 
+              letterSpacing: '0.1em', 
+              textDecoration: 'none',
+              marginRight: '0.5rem',
+            }}
+          >
+            SIGNAL CHECK
+          </a>
           <div style={{ marginRight: '1rem', display: 'flex', alignItems: 'center' }}>
             <UserButton appearance={{ 
               variables: {

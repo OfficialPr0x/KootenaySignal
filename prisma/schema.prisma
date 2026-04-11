@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Audit {
+  id            String   @id @default(cuid())
+  clerkUserId   String
+  businessName  String
+  websiteUrl    String
+  city          String?
+  industry      String?
+  goals         String?
+
+  status        String   @default("queued") // queued | crawling | enriching | analyzing | complete | failed
+  errorMessage  String?
+
+  // Crawl results
+  crawlData     String?  // JSON blob
+  // SERP results
+  serpData      String?  // JSON blob
+  // PageSpeed results
+  psiData       String?  // JSON blob
+
+  // AI Report
+  signalScore       Int?
+  visibilityScore   Int?
+  trustScore        Int?
+  conversionScore   Int?
+  localPresenceScore Int?
+  offerClarityScore Int?
+  paidReadinessScore Int?
+  seoScore          Int?
+  reportData        String?  // Full JSON report from DeepSeek
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([clerkUserId])
+}
