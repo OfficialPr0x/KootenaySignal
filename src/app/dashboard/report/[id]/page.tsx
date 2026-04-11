@@ -1,6 +1,6 @@
 import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
-import { prisma } from '@/lib/db';
+import { supabase } from '@/lib/db';
 import ReportContent from './ReportContent';
 
 export default async function ReportPage({ params }: { params: Promise<{ id: string }> }) {
@@ -9,11 +9,14 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
 
   const { id } = await params;
 
-  const audit = await prisma.audit.findFirst({
-    where: { id, clerkUserId: userId },
-  });
+  const { data: audit } = await supabase
+    .from('audits')
+    .select('*')
+    .eq('id', id)
+    .eq('clerk_user_id', userId)
+    .single();
 
   if (!audit) redirect('/dashboard');
 
-  return <ReportContent audit={JSON.parse(JSON.stringify(audit))} />;
+  return <ReportContent audit={audit} />;
 }

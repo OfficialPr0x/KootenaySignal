@@ -1,5 +1,5 @@
 import { auth } from '@clerk/nextjs/server';
-import { prisma } from '@/lib/db';
+import { supabase } from '@/lib/db';
 import { crawlWebsite } from '@/lib/services/crawler';
 import { runSerpEnrichment } from '@/lib/services/serp';
 import { runPageSpeedInsights } from '@/lib/services/pagespeed';
@@ -21,8 +21,11 @@ export async function POST(request: Request) {
   }
 
   // Rate limit: max 3 audits per user
-  const auditCount = await prisma.audit.count({ where: { clerkUserId: userId } });
-  if (auditCount >= 3) {
+  const { count } = await supabase
+    .from('audits')
+    .select('*', { count: 'exact', head: true })
+    .eq('clerk_user_id', userId);
+  if ((count ?? 0) >= 3) {
     return Response.json({ error: 'Audit limit reached. Contact Kootenay Signal for unlimited audits.' }, { status: 429 });
   }
 
@@ -41,26 +44,33 @@ export async function POST(request: Request) {
   const { businessName, websiteUrl, city, industry, goals } = parsed.data;
 
   // Create audit record
-  const audit = await prisma.audit.create({
-    data: {
-      clerkUserId: userId,
-      businessName,
-      websiteUrl,
+  const { data: audit, error: insertError } = await supabase
+    .from('audits')
+    .insert({
+      clerk_user_id: userId,
+      business_name: businessName,
+      website_url: websiteUrl,
       city,
       industry,
       goals,
       status: 'crawling',
-    },
-  });
+    })
+    .select()
+    .single();
 
-  // Run the audit pipeline (sync for MVP — can move to background jobs later)
+  if (insertError || !audit) {
+    console.error('Insert error:', insertError);
+    return Response.json({ error: 'Failed to create audit' }, { status: 500 });
+  }
+
+  // Run the audit pipeline
   try {
     // Step 1: Crawl
     const crawlData = await crawlWebsite(websiteUrl);
-    await prisma.audit.update({
-      where: { id: audit.id },
-      data: { crawlData: JSON.stringify(crawlData), status: 'enriching' },
-    });
+    await supabase
+      .from('audits')
+      .update({ crawl_data: crawlData, status: 'enriching' })
+      .eq('id', audit.id);
 
     // Step 2: SERP + PageSpeed in parallel
     const [serpData, psiData] = await Promise.all([
@@ -68,14 +78,10 @@ export async function POST(request: Request) {
       runPageSpeedInsights(websiteUrl),
     ]);
 
-    await prisma.audit.update({
-      where: { id: audit.id },
-      data: {
-        serpData: JSON.stringify(serpData),
-        psiData: JSON.stringify(psiData),
-        status: 'analyzing',
-      },
-    });
+    await supabase
+      .from('audits')
+      .update({ serp_data: serpData, psi_data: psiData, status: 'analyzing' })
+      .eq('id', audit.id);
 
     // Step 3: DeepSeek analysis
     const report = await analyzeWithDeepSeek(
@@ -84,32 +90,34 @@ export async function POST(request: Request) {
     );
 
     // Step 4: Save report
-    const updatedAudit = await prisma.audit.update({
-      where: { id: audit.id },
-      data: {
+    const { data: updatedAudit } = await supabase
+      .from('audits')
+      .update({
         status: 'complete',
-        signalScore: report.signal_score,
-        visibilityScore: report.visibility_score,
-        trustScore: report.trust_score,
-        conversionScore: report.conversion_score,
-        localPresenceScore: report.local_presence_score,
-        offerClarityScore: report.offer_clarity_score,
-        paidReadinessScore: report.paid_readiness_score,
-        seoScore: report.seo_score,
-        reportData: JSON.stringify(report),
-      },
-    });
+        signal_score: report.signal_score,
+        visibility_score: report.visibility_score,
+        trust_score: report.trust_score,
+        conversion_score: report.conversion_score,
+        local_presence_score: report.local_presence_score,
+        offer_clarity_score: report.offer_clarity_score,
+        paid_readiness_score: report.paid_readiness_score,
+        seo_score: report.seo_score,
+        report_data: report,
+      })
+      .eq('id', audit.id)
+      .select()
+      .single();
 
     return Response.json({ audit: updatedAudit });
   } catch (err) {
     console.error('Audit pipeline error:', err);
-    await prisma.audit.update({
-      where: { id: audit.id },
-      data: {
+    await supabase
+      .from('audits')
+      .update({
         status: 'failed',
-        errorMessage: err instanceof Error ? err.message : 'Unknown error',
-      },
-    });
+        error_message: err instanceof Error ? err.message : 'Unknown error',
+      })
+      .eq('id', audit.id);
     return Response.json({ error: 'Audit failed. Please try again.' }, { status: 500 });
   }
 }
@@ -120,20 +128,11 @@ export async function GET() {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const audits = await prisma.audit.findMany({
-    where: { clerkUserId: userId },
-    orderBy: { createdAt: 'desc' },
-    select: {
-      id: true,
-      businessName: true,
-      websiteUrl: true,
-      city: true,
-      industry: true,
-      status: true,
-      signalScore: true,
-      createdAt: true,
-    },
-  });
+  const { data: audits } = await supabase
+    .from('audits')
+    .select('id, business_name, website_url, city, industry, status, signal_score, created_at')
+    .eq('clerk_user_id', userId)
+    .order('created_at', { ascending: false });
 
-  return Response.json({ audits });
+  return Response.json({ audits: audits ?? [] });
 }

@@ -1,5 +1,5 @@
 import { auth } from '@clerk/nextjs/server';
-import { prisma } from '@/lib/db';
+import { supabase } from '@/lib/db';
 
 export async function GET(
   _request: Request,
@@ -12,12 +12,12 @@ export async function GET(
 
   const { id } = await params;
 
-  const audit = await prisma.audit.findFirst({
-    where: {
-      id,
-      clerkUserId: userId,
-    },
-  });
+  const { data: audit } = await supabase
+    .from('audits')
+    .select('*')
+    .eq('id', id)
+    .eq('clerk_user_id', userId)
+    .single();
 
   if (!audit) {
     return Response.json({ error: 'Audit not found' }, { status: 404 });

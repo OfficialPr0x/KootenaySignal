@@ -1,26 +1,19 @@
 import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
-import { prisma } from '@/lib/db';
+import { supabase } from '@/lib/db';
 import Link from 'next/link';
 
 export default async function DashboardPage() {
   const { userId } = await auth();
   if (!userId) redirect('/sign-in');
 
-  const audits = await prisma.audit.findMany({
-    where: { clerkUserId: userId },
-    orderBy: { createdAt: 'desc' },
-    select: {
-      id: true,
-      businessName: true,
-      websiteUrl: true,
-      city: true,
-      industry: true,
-      status: true,
-      signalScore: true,
-      createdAt: true,
-    },
-  });
+  const { data: audits } = await supabase
+    .from('audits')
+    .select('id, business_name, website_url, city, industry, status, signal_score, created_at')
+    .eq('clerk_user_id', userId)
+    .order('created_at', { ascending: false });
+
+  const auditList = audits ?? [];
 
   function getScoreColor(score: number | null) {
     if (score === null) return 'rgba(255,255,255,0.3)';
@@ -43,7 +36,7 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      {audits.length === 0 ? (
+      {auditList.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '6rem 2rem' }}>
           <div style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>📡</div>
           <h2 style={{ fontSize: '1.75rem', marginBottom: '1rem', fontFamily: 'var(--font-syne)' }}>
@@ -71,7 +64,7 @@ export default async function DashboardPage() {
         </div>
       ) : (
         <div style={{ display: 'grid', gap: '1rem' }}>
-          {audits.map((audit) => (
+          {auditList.map((audit) => (
             <Link 
               key={audit.id} 
               href={audit.status === 'complete' ? `/dashboard/report/${audit.id}` : '#'}
@@ -97,31 +90,31 @@ export default async function DashboardPage() {
               >
                 <div>
                   <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.25rem' }}>
-                    {audit.businessName}
+                    {audit.business_name}
                   </h3>
                   <p style={{ fontSize: '0.8rem', opacity: 0.5 }}>
-                    {audit.websiteUrl} {audit.city && `• ${audit.city}`} {audit.industry && `• ${audit.industry}`}
+                    {audit.website_url} {audit.city && `• ${audit.city}`} {audit.industry && `• ${audit.industry}`}
                   </p>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
                   <span style={{ fontSize: '0.75rem', opacity: 0.5 }}>
                     {getStatusLabel(audit.status)}
                   </span>
-                  {audit.signalScore !== null && (
+                  {audit.signal_score !== null && (
                     <div style={{
                       width: '50px',
                       height: '50px',
                       borderRadius: '50%',
-                      border: `3px solid ${getScoreColor(audit.signalScore)}`,
+                      border: `3px solid ${getScoreColor(audit.signal_score)}`,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       fontWeight: 900,
                       fontSize: '1rem',
                       fontFamily: 'var(--font-syne)',
-                      color: getScoreColor(audit.signalScore),
+                      color: getScoreColor(audit.signal_score),
                     }}>
-                      {audit.signalScore}
+                      {audit.signal_score}
                     </div>
                   )}
                 </div>

@@ -4,21 +4,21 @@ import Link from 'next/link';
 
 interface AuditData {
   id: string;
-  businessName: string;
-  websiteUrl: string;
+  business_name: string;
+  website_url: string;
   city: string | null;
   industry: string | null;
   status: string;
-  signalScore: number | null;
-  visibilityScore: number | null;
-  trustScore: number | null;
-  conversionScore: number | null;
-  localPresenceScore: number | null;
-  offerClarityScore: number | null;
-  paidReadinessScore: number | null;
-  seoScore: number | null;
-  reportData: string | null;
-  createdAt: string;
+  signal_score: number | null;
+  visibility_score: number | null;
+  trust_score: number | null;
+  conversion_score: number | null;
+  local_presence_score: number | null;
+  offer_clarity_score: number | null;
+  paid_readiness_score: number | null;
+  seo_score: number | null;
+  report_data: Report | null;
+  created_at: string;
 }
 
 interface Report {
@@ -128,7 +128,7 @@ function Card({ title, children, accent }: { title: string; children: React.Reac
 }
 
 export default function ReportContent({ audit }: { audit: AuditData }) {
-  const report: Report | null = audit.reportData ? JSON.parse(audit.reportData) : null;
+  const report: Report | null = audit.report_data ?? null;
 
   if (!report) {
     return (
@@ -165,10 +165,10 @@ export default function ReportContent({ audit }: { audit: AuditData }) {
           </span>
         </div>
         <h2 style={{ fontSize: '2rem', fontFamily: 'var(--font-syne)', marginBottom: '0.5rem', fontWeight: 800 }}>
-          {audit.businessName}
+          {audit.business_name}
         </h2>
         <p style={{ opacity: 0.4, fontSize: '0.85rem', marginBottom: '2rem' }}>
-          {audit.websiteUrl} {audit.city && `• ${audit.city}`} {audit.industry && `• ${audit.industry}`}
+          {audit.website_url} {audit.city && `• ${audit.city}`} {audit.industry && `• ${audit.industry}`}
         </p>
 
         <ScoreDial score={report.signal_score} size={160} label="Signal Score" />
@@ -358,7 +358,7 @@ export default function ReportContent({ audit }: { audit: AuditData }) {
 
       {/* Footer meta */}
       <div style={{ textAlign: 'center', padding: '2rem 0', opacity: 0.3, fontSize: '0.7rem' }}>
-        Report generated on {new Date(audit.createdAt).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}
+        Report generated on {new Date(audit.created_at).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}
         <br />Powered by Kootenay Signal Check AI
       </div>
     </div>
