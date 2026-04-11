@@ -121,28 +121,42 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Town Strip */}
-        <div style={{
-          position: 'absolute',
-          bottom: '2rem',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          gap: '3rem',
-          opacity: 0.5,
-          fontSize: '0.8rem',
-          textTransform: 'uppercase',
-          letterSpacing: '0.3em',
-          fontWeight: 700,
-          whiteSpace: 'nowrap',
-          width: '100%',
-          justifyContent: 'center',
-          overflow: 'hidden'
+      {/* Operational Territory Bar */}
+      <div style={{ 
+        position: 'absolute', 
+        bottom: 0, 
+        left: 0, 
+        width: '100%',
+        background: 'rgba(0,0,0,0.5)',
+        backdropFilter: 'blur(10px)',
+        borderTop: '1px solid rgba(255,255,255,0.05)',
+        padding: '1.25rem 0',
+        zIndex: 5,
+      }}>
+        <div className="container" style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center',
+          gap: '2.5rem',
+          flexWrap: 'wrap',
+          opacity: 0.8,
+          fontSize: '0.75rem', 
+          fontWeight: 800, 
+          textTransform: 'uppercase', 
+          letterSpacing: '0.25em',
+          color: 'var(--foreground)'
         }}>
-          {towns.concat(towns).map((town, i) => (
-            <span key={i}>{town}</span>
-          ))}
+          <span style={{ color: 'var(--primary)', opacity: 1 }}>📡 PRIMARY SIGNAL:</span>
+          <span>Fernie</span>
+          <span>Sparwood</span>
+          <span>Elkford</span>
+          <span>Cranbrook</span>
+          <span>Nelson</span>
+          <span>Castlegar</span>
+          <span>Trail</span>
+          <span>Kimberley</span>
         </div>
+      </div>
       </section>
 
       {/* Call-Out Section (Urgency) */}
@@ -204,6 +218,129 @@ export default function Home() {
                 Be seen everywhere that matters. High-impact local awareness and signal boosting.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* KOOTENAY BROADCAST™ SECTION */}
+      <section id="broadcast" style={{ padding: '10rem 0', backgroundColor: '#0d1109', position: 'relative', overflow: 'hidden' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '8rem' }}>
+            <span className="badge" style={{ borderColor: 'var(--primary)', color: 'var(--primary)', opacity: 1 }}>
+              Attention Layer: ACTIVE
+            </span>
+            <h2 style={{ fontSize: 'max(5vw, 4rem)', lineHeight: 0.9, marginBottom: '1.5rem', fontFamily: 'var(--font-syne)' }}>
+              Kootenay Broadcast™
+            </h2>
+            <p style={{ fontSize: '1.5rem', opacity: 0.8, fontFamily: 'var(--font-pjs)' }}>
+              Your business — seen where locals actually look.
+            </p>
+          </div>
+
+          <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
+            <h3 style={{ fontSize: '2.5rem', maxWidth: '800px', margin: '0 auto', lineHeight: 1.2 }}>
+              If they’re driving, scrolling, or waiting — <br/>
+              <span style={{ color: 'var(--primary)' }}>they’re seeing you.</span>
+            </h3>
+          </div>
+
+          {/* Map Visual */}
+          <div style={{ 
+            position: 'relative', 
+            width: '100%', 
+            aspectRatio: '16/9',
+            borderRadius: '4px',
+            overflow: 'hidden',
+            marginBottom: '10rem',
+            border: '1px solid rgba(255,255,255,0.1)',
+            boxShadow: '0 30px 60px rgba(0,0,0,0.8)',
+            backgroundColor: '#000'
+          }}>
+            <div style={{ 
+              position: 'absolute', 
+              inset: 0, 
+              backgroundImage: `url('https://res.cloudinary.com/doajstql7/image/upload/v1775884538/ChatGPT_Image_Apr_11_2026_01_13_00_AM_hx4ibt.png')`,
+              backgroundSize: 'contain',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }} />
+            
+            {/* Aesthetic Glow Overlays */}
+            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, transparent 20%, rgba(13, 17, 9, 1) 95%)', pointerEvents: 'none' }} />
+            
+            <div style={{ position: 'absolute', top: '15%', right: '15%', background: 'rgba(0,0,0,0.8)', padding: '0.6rem 1.2rem', borderRadius: '2px', border: '1px solid var(--primary)', fontSize: '0.8rem', letterSpacing: '0.2em', fontWeight: 800, textTransform: 'uppercase', zIndex: 10 }}>
+              Live Broadcast Coverage
+            </div>
+
+            {/* Overlay Tags - Recalibrated for 16:9 center */}
+            <div className="signal-pulse" style={{ position: 'absolute', top: '40%', left: '55%' }}>
+              <div style={{ background: 'var(--primary)', color: '#000', padding: '0.4rem 1rem', borderRadius: '2px', fontSize: '0.75rem', fontWeight: 800, transform: 'translate(25px, -15px)', whiteSpace: 'nowrap' }}>HIGH TRAFFIC ZONE</div>
+            </div>
+            
+            <div className="signal-pulse" style={{ position: 'absolute', top: '55%', left: '58%' }}>
+              <div style={{ background: 'rgba(0,0,0,0.9)', color: '#fff', padding: '0.4rem 1rem', borderRadius: '2px', fontSize: '0.75rem', border: '1px solid var(--primary)', transform: 'translate(25px, -15px)', whiteSpace: 'nowrap' }}>REPEAT VISIBILITY AREA</div>
+            </div>
+
+            <div className="signal-pulse" style={{ position: 'absolute', top: '65%', left: '35%' }}>
+              <div style={{ background: 'rgba(0,0,0,0.9)', color: '#fff', padding: '0.4rem 1rem', borderRadius: '2px', fontSize: '0.75rem', border: '1px solid var(--primary)', transform: 'translate(25px, -15px)', whiteSpace: 'nowrap' }}>DAILY EXPOSURE ROUTE</div>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '6rem', marginBottom: '10rem' }}>
+            <div>
+              <p style={{ fontSize: '1.4rem', lineHeight: 1.6, fontFamily: 'var(--font-pjs)', marginBottom: '3rem' }}>
+                We don’t run ads. <br/>
+                <b>We place your business into the real-world flow of the Kootenays.</b>
+              </p>
+              <div style={{ opacity: 0.7, fontSize: '1.1rem', fontStyle: 'italic', borderLeft: '2px solid var(--primary)', paddingLeft: '1.5rem' }}>
+                The same roads. The same stops. The same places everyone passes through every day.
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
+              <div>
+                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>🚧 Highway Presence</h4>
+                <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>On the drive into town — before they even think to search.</p>
+              </div>
+              <div>
+                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>🏙️ In-Town Screens</h4>
+                <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>Where locals stop, wait, and look around.</p>
+              </div>
+              <div>
+                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>📱 Digital Reinforcement</h4>
+                <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>They saw you earlier — now you show up again on their phone.</p>
+              </div>
+              <div>
+                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>🔁 Repeat Exposure</h4>
+                <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>Not once. Not twice. Enough that they remember you.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ background: '#111', padding: '6rem 4rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+               <div>
+                 <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>The Impact of Total Local Presence</h2>
+                 <ul style={{ listStyle: 'none', padding: 0, fontSize: '1.2rem', lineHeight: 1.8 }}>
+                   <li style={{ marginBottom: '1rem' }}>✅ People recognize your name before calling</li>
+                   <li style={{ marginBottom: '1rem' }}>✅ You feel “bigger” than competitors instantly</li>
+                   <li style={{ marginBottom: '1rem' }}>✅ You stop explaining who you are</li>
+                   <li>✅ You start getting chosen</li>
+                 </ul>
+               </div>
+               <div style={{ textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.05)', paddingLeft: '4rem' }}>
+                 <p style={{ fontSize: '1.3rem', marginBottom: '2.5rem', opacity: 0.8 }}>
+                   "Businesses inside the Broadcast don’t compete the same way anymore."
+                 </p>
+                 <div style={{ background: '#000', padding: '3rem', border: '2px solid var(--primary)' }}>
+                   <h3 style={{ marginBottom: '1rem' }}>Ready to Be Seen Everywhere?</h3>
+                   <p style={{ marginBottom: '2rem', opacity: 0.7, fontSize: '0.9rem' }}>One business per category, per area. No exceptions.</p>
+                   <Link href="#contact" className="btn btn-primary" style={{ width: '100%' }}>
+                     START MY BROADCAST
+                   </Link>
+                 </div>
+               </div>
+             </div>
           </div>
         </div>
       </section>
