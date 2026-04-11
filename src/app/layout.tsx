@@ -1,6 +1,8 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Syne, Plus_Jakarta_Sans, Vollkorn } from 'next/font/google';
 import './globals.css';
+import Navbar from "@/components/Navbar";
 
 const syne = Syne({ 
   subsets: ['latin'],
@@ -44,7 +46,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${syne.variable} ${plusJakarta.variable} ${vollkorn.variable} antialiased`}>
       <body style={{ margin: 0 }}>
-        {children}
+        <ClerkProvider>
+          <Navbar />
+          {children}
+        </ClerkProvider>
       </body>
     </html>
   );

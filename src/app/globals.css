@@ -389,3 +389,27 @@ h1, h2, h3, h4, h5, h6 {
   padding: 10rem 0;
 }
 
+
+/* Authentication Layout Utilities */
+@media (max-width: 1024px) {
+  .mobile-hide { display: none !important; }
+}
+@media (min-width: 1025px) {
+  .lg-hide-only { display: none !important; }
+}
+
+/* NUCLEAR CLERK BRANDING STRIP - 100% White Label Enforced */
+.cl-footer, .cl-header { display: none !important; }
+.cl-card { border: 0 !important; background: transparent !important; box-shadow: none !important; width: 100% !important; }
+.cl-rootBox, .cl-main { width: 100% !important; display: flex !important; visibility: visible !important; opacity: 1 !important; }
+
+/* Target ONLY the branding link and logos specifically */
+a[href*="clerk.com"], 
+img[src*="clerk"], 
+.cl-internal-1dauv87, 
+.cl-internal-b3fm6y, 
+.cl-internal-tnbe079,
+.cl-internal-18be079 { 
+  display: none !important; 
+}
+

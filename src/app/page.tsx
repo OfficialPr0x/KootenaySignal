@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -14,10 +14,27 @@ import {
   ShieldCheck,
   Zap,
   Target,
-  Radio
+  Radio,
+  Lock,
+  Unlock,
+  Calculator,
+  TrendingDown,
+  TrendingUp,
+  MapPin,
+  XCircle,
+  Clock
 } from 'lucide-react';
+import { useState } from 'react';
+
+  // Atmosphere Component for depth
+  const Atmosphere = () => (
+    <div style={{ position: 'absolute', inset: 0, opacity: 0.1, pointerEvents: 'none', backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)', backgroundSize: '40px 40px', zIndex: 0 }} />
+  );
 
 export default function Home() {
+  const [jobValue, setJobValue] = useState(500);
+  const [missedCalls, setMissedCalls] = useState(5);
+
   useEffect(() => {
     (function (C, A, L) {
       let p = function (a: any, ar: any) { a.q.push(ar); };
@@ -53,66 +70,9 @@ export default function Home() {
     Cal.ns["30min"]("ui", { "cssVarsPerTheme": { "light": { "cal-brand": "#E3A23A" }, "dark": { "cal-brand": "#0F2A24" } }, "hideEventTypeDetails": false, "layout": "month_view" });
   }, []);
 
-  const [scroll, setScroll] = useState(0);
-  const towns = ["Sparwood", "Fernie", "Elkford", "Cranbrook", "Jaffray"];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const currentScroll = window.scrollY;
-      setScroll((currentScroll / totalScroll) * 100);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <main>
-      {/* Navigation */}
-      <nav className="navbar" id="main-nav">
-        <div className="scroll-progress" style={{ width: `${scroll}%` }}></div>
-        <div className="nav-logo">
-          <Image 
-            src="https://res.cloudinary.com/doajstql7/image/upload/v1775879112/ChatGPT_Image_Apr_10__2026__11_27_53_PM-removebg-preview_vjtdqa.png" 
-            alt="Kootenay Signal Logo" 
-            width={120}
-            height={120}
-            className="nav-logo-img"
-          />
-          <div className="mobile-hide" style={{ marginLeft: '2rem', borderLeft: '1px solid rgba(255,255,255,0.2)', paddingLeft: '2rem' }}>
-            <span style={{ 
-              fontSize: '1rem', 
-              fontWeight: 400, 
-              fontStyle: 'italic',
-              color: 'var(--foreground)', 
-              opacity: 0.7,
-              whiteSpace: 'nowrap',
-              fontFamily: 'var(--font-serif)',
-              display: 'block'
-            }}>
-              The Kootenay's Go-To For More Business
-            </span>
-          </div>
-        </div>
-        <div className="nav-links">
-          <Link href="tel:+12505550123" className="nav-link mobile-hide" style={{ fontWeight: 700 }}>(250) 555-0123</Link>
-          <button 
-            className="btn btn-outline" 
-            data-cal-link="kootenay-signal/30min"
-            data-cal-namespace="30min"
-            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-            style={{ 
-              padding: '0.5rem 1.5rem',
-              fontSize: 'min(0.8rem, 3.5vw)',
-              background: 'transparent',
-              cursor: 'pointer'
-            }}
-          >
-            Start My Signal Boost
-          </button>
-        </div>
-      </nav>
+    <main style={{ position: 'relative' }}>
+      {/* Hero Section */}
 
       {/* Hero Section */}
       <section className="hero" style={{
@@ -128,8 +88,8 @@ export default function Home() {
               color: '#fff',
               textShadow: '0 4px 20px rgba(0,0,0,0.5)',
             }}>
-              If Locals Don’t Know You… <br className="mobile-hide"/>
-              <span style={{ color: 'var(--primary)' }}>You Don’t Exist.</span>
+              If You’re Not Seen — <br className="mobile-hide"/>
+              <span style={{ color: 'var(--primary)' }}>You’re Skipped.</span>
             </h1>
 
             <p className="mobile-font-lg" style={{ 
@@ -224,19 +184,328 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-padding" style={{ backgroundColor: 'var(--primary)', color: '#000' }}>
-        <div className="container">
-          <div style={{ maxWidth: '900px' }}>
-            <h2 className="mobile-center" style={{ fontSize: 'var(--h2-size)', color: '#000', marginBottom: '2.5rem', lineHeight: 1, fontFamily: 'var(--font-syne)', fontWeight: 800 }}>
-              You’re Losing Jobs. <br className="mobile-hide" />You Just Don’t See It.
+      {/* 1. COMPETITOR THREAT SECTION */}
+      <section style={{ padding: '8rem 0', background: '#0a0d07', position: 'relative', overflow: 'hidden' }}>
+        <Atmosphere />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <div className="badge" style={{ marginBottom: '2rem' }}>Territory Exclusivity Protocol</div>
+            <h2 style={{ fontSize: 'var(--h2-size)', color: '#fff', marginBottom: '1.5rem', lineHeight: 1 }}>
+              Regional <span style={{ color: 'var(--primary)' }}>Dominance List</span>
             </h2>
-            <div className="mobile-center" style={{ fontSize: 'var(--p-large-size)', lineHeight: 1.4, fontWeight: 500, fontFamily: 'var(--font-pjs)' }}>
-              <p style={{ marginBottom: '1.5rem' }}>Someone searched your service yesterday. They didn’t find you.</p>
-              <p style={{ marginBottom: '1.5rem' }}>They found someone worse.</p>
-              <p style={{ opacity: 0.8 }}>That job is gone.</p>
+            <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.4)', maxWidth: '650px', margin: '0 auto', lineHeight: 1.5 }}>
+              We deploy the Kootenay Broadcast™ for only <b>one business per niche</b> in each territory. Once a spot is filled, we literally cannot help your competition.
+            </p>
+          </div>
+
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '1rem',
+            maxWidth: '1200px',
+            margin: '0 auto'
+          }}>
+            {[
+              { trade: "Electricians", area: "Fernie", status: "LOCKED", icon: <Zap size={24} /> },
+              { trade: "Plumbers", area: "Sparwood", status: "AVAILABLE", icon: <RefreshCw size={24} /> },
+              { trade: "Roofing/Siding", area: "Cranbrook", status: "AVAILABLE", icon: <ShieldCheck size={24} /> },
+              { trade: "HVAC Experts", area: "Elkford", status: "LOCKED", icon: <Target size={24} /> },
+              { trade: "Excavation / Septic", area: "Nelson", status: "AVAILABLE", icon: <MapPin size={24} /> },
+              { trade: "Landscaping / Snow", area: "Rossland", status: "LOCKED", icon: <Milestone size={24} /> },
+            ].map((item, i) => (
+              <div key={i} style={{
+                background: item.status === 'LOCKED' ? 'rgba(255,255,255,0.01)' : 'rgba(230, 126, 34, 0.03)',
+                border: `1px solid ${item.status === 'LOCKED' ? 'rgba(255,255,255,0.05)' : 'rgba(230, 126, 34, 0.15)'}`,
+                padding: '2rem',
+                borderRadius: '8px',
+                position: 'relative',
+                transition: 'all 0.3s ease',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                minHeight: '200px'
+              }}>
+                <div>
+                   <div style={{ 
+                      width: '48px', 
+                      height: '48px', 
+                      background: item.status === 'LOCKED' ? 'rgba(255,255,255,0.05)' : 'rgba(230, 126, 34, 0.1)', 
+                      borderRadius: '4px', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center',
+                      marginBottom: '1.5rem',
+                      color: item.status === 'LOCKED' ? 'rgba(255,255,255,0.2)' : 'var(--primary)'
+                   }}>
+                      {item.icon}
+                   </div>
+                   <h3 style={{ fontSize: '1.25rem', marginBottom: '0.25rem', fontWeight: 800 }}>{item.trade}</h3>
+                   <p style={{ opacity: 0.4, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 700 }}>{item.area}</p>
+                </div>
+                
+                <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ 
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.6rem',
+                    color: item.status === 'LOCKED' ? '#ff4d4d' : '#00ff88',
+                    fontSize: '0.75rem',
+                    fontWeight: 900,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.15em'
+                  }}>
+                    {item.status === 'LOCKED' ? <Lock size={14} /> : <Unlock size={14} />}
+                    {item.status}
+                  </div>
+                  {item.status === 'LOCKED' ? (
+                    <button 
+                      data-cal-link="kootenay-signal/waitlist"
+                      style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', cursor: 'pointer', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+                    >
+                      Join Waitlist
+                    </button>
+                  ) : (
+                    <div style={{ 
+                      width: '8px', 
+                      height: '8px', 
+                      borderRadius: '50%', 
+                      background: '#00ff88', 
+                      boxShadow: '0 0 15px #00ff88' 
+                    }} />
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '5rem' }}>
+             <button 
+                className="btn btn-primary" 
+                data-cal-link="kootenay-signal/30min"
+                style={{ padding: '1.25rem 3.5rem', borderRadius: '2px' }}
+              >
+               CHECK MY TRADE AVAILABILITY
+             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. MISSED MONEY CALCULATOR */}
+      <section id="calculator" style={{ padding: '10rem 0', background: 'var(--background)', position: 'relative', overflow: 'hidden' }}>
+        <Atmosphere />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+            <div>
+              <div className="badge" style={{ background: 'rgba(192, 57, 43, 0.1)', color: '#c0392b', borderColor: 'rgba(192, 57, 43, 0.2)' }}>The Cost of Invisibility</div>
+              <h2 style={{ fontSize: 'var(--h2-size)', marginBottom: '1.5rem', lineHeight: 1.1 }}>
+                Stop Guessing. <br />
+                <span className="text-gradient">Measure Your Loss.</span>
+              </h2>
+              <p style={{ fontSize: '1.1rem', opacity: 0.6, marginBottom: '2rem' }}>
+                Every time your phone doesn't ring because a competitor was "seen first," that's money leaving your bank account. Turn abstract ideas into real loss.
+              </p>
+              
+              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '2.5rem', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                <div style={{ marginBottom: '2rem' }}>
+                  <label style={{ display: 'block', marginBottom: '0.75rem', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.6 }}>
+                    Avg. Job Revenue ($)
+                  </label>
+                  <input 
+                    type="range" 
+                    min="100" 
+                    max="10000" 
+                    step="100" 
+                    value={jobValue}
+                    onChange={(e) => setJobValue(parseInt(e.target.value))}
+                    style={{ width: '100%', accentColor: 'var(--primary)' }} 
+                  />
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem', fontWeight: 800, fontFamily: 'var(--font-syne)' }}>
+                    <span>$100</span>
+                    <span style={{ color: 'var(--primary)', fontSize: '1.5rem' }}>${jobValue.toLocaleString()}</span>
+                    <span>$10,000</span>
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: '1rem' }}>
+                  <label style={{ display: 'block', marginBottom: '0.75rem', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.6 }}>
+                    Missed Calls Per Week (Inbound Intent)
+                  </label>
+                  <input 
+                    type="range" 
+                    min="1" 
+                    max="50" 
+                    step="1" 
+                    value={missedCalls}
+                    onChange={(e) => setMissedCalls(parseInt(e.target.value))}
+                    style={{ width: '100%', accentColor: 'var(--primary)' }} 
+                  />
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem', fontWeight: 800, fontFamily: 'var(--font-syne)' }}>
+                    <span>1</span>
+                    <span style={{ color: 'var(--primary)', fontSize: '1.5rem' }}>{missedCalls}</span>
+                    <span>50</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ 
+              background: 'linear-gradient(135deg, #11140e 0%, #0d1109 100%)', 
+              padding: '4rem', 
+              borderRadius: '4px', 
+              border: '1px solid var(--primary)',
+              textAlign: 'center',
+              boxShadow: '0 20px 80px rgba(0,0,0,0.6)',
+              transform: 'rotate(1deg)'
+            }}>
+              <TrendingDown size={48} color="#c0392b" style={{ marginBottom: '1.5rem' }} />
+              <p style={{ textTransform: 'uppercase', letterSpacing: '0.2em', fontSize: '0.8rem', opacity: 0.5, marginBottom: '0.5rem' }}>
+                Estimated Monthly Revenue Loss
+              </p>
+              <h2 style={{ fontSize: 'min(4.5rem, 15vw)', fontFamily: 'var(--font-syne)', color: 'white', margin: 0 }}>
+                ${(jobValue * missedCalls * 0.3 * 4).toLocaleString()}
+              </h2>
+              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.9rem', marginTop: '1rem' }}>
+                *Based on a conservative 30% closing rate
+              </p>
+              
+              <button 
+                className="btn btn-primary" 
+                data-cal-link="kootenay-signal/30min"
+                style={{ width: '100%', marginTop: '3.5rem', padding: '1.5rem', fontWeight: 900 }}
+              >
+                FIX MY SIGNAL
+              </button>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* 3. DAY IN THE LIFE SPLIT */}
+      <section style={{ background: '#0a0d07', borderTop: '1px solid rgba(255,255,255,0.05)', overflow: 'hidden', position: 'relative' }}>
+        <Atmosphere />
+        <div style={{ display: 'flex', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
+          <div style={{ flex: '1 1 500px', padding: '8rem 4rem', borderRight: '1px solid rgba(255,255,255,0.05)' }}>
+             <XCircle size={40} color="#c0392b" style={{ marginBottom: '2rem' }} />
+             <h2 style={{ fontSize: 'var(--h3-size)', marginBottom: '2.5rem' }}>Without Signal</h2>
+             <ul style={{ listStyle: 'none', padding: 0 }}>
+               {[
+                 "Relying on 'Neighborly' referrals that dry up every winter.",
+                 "Checking the phone at 2 PM to see 0 new notifications.",
+                 "Competing on price because they've never heard of your quality.",
+                 "Total silence during the 'Slow Season'.",
+                 "Being the best kept secret in the Elk Valley."
+               ].map((item, i) => (
+                 <li key={i} style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', opacity: 0.5, fontSize: '1.1rem' }}>
+                   <span style={{ color: '#c0392b', fontWeight: 900 }}>—</span> {item}
+                 </li>
+               ))}
+             </ul>
+          </div>
+          <div style={{ flex: '1 1 500px', padding: '8rem 4rem', background: 'rgba(230, 126, 34, 0.02)' }}>
+             <TrendingUp size={40} color="#27ae60" style={{ marginBottom: '2rem' }} />
+             <h2 style={{ fontSize: 'var(--h3-size)', marginBottom: '2.5rem' }}>With Signal</h2>
+             <ul style={{ listStyle: 'none', padding: 0 }}>
+               {[
+                 "Inbound flows that scale when you're ready for more.",
+                 "The 'I see you everywhere' moment on every first call.",
+                 "Booked out weeks in advance—regardless of the weather.",
+                 "Dominating local search results for your primary trade.",
+                 "Owning the digital territory before the competition wakes up."
+               ].map((item, i) => (
+                 <li key={i} style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', fontSize: '1.1rem' }}>
+                   <CheckCircle2 size={24} color="#27ae60" /> {item}
+                 </li>
+               ))}
+             </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. YOU'VE SEEN THIS BEFORE MOMENT + PROOF */}
+      <section style={{ padding: '8rem 0', background: 'var(--background)' }}>
+         <div className="container">
+           <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
+             <h2 style={{ fontSize: 'var(--h2-size)', marginBottom: '1.5rem' }}>You’ve Seen These Businesses Everywhere</h2>
+             <p style={{ fontSize: '2rem', fontFamily: 'var(--font-syne)', fontStyle: 'italic', color: 'var(--primary)', fontWeight: 800 }}>
+               That wasn't luck.
+             </p>
+             <p style={{ maxWidth: '650px', margin: '2rem auto 0', opacity: 0.6, fontSize: '1.2rem', lineHeight: 1.6 }}>
+               The businesses that "everyone knows" in the Kootenays didn't get there by accident. They are running intentional Signal engines. We are the technicians behind those engines.
+             </p>
+           </div>
+
+           <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+              gap: '4rem',
+              alignItems: 'center'
+           }}>
+             <div>
+               <div style={{ background: '#0a0d07', padding: '3rem', border: '1px solid var(--primary)', borderRadius: '4px', position: 'relative' }}>
+                 <div style={{ position: 'absolute', top: '-20px', left: '20px', background: 'var(--primary)', padding: '0.25rem 1rem', fontSize: '0.75rem', fontWeight: 900, textTransform: 'uppercase', color: 'black' }}>
+                   Case: SEARCHLOCK™
+                 </div>
+                 <p style={{ fontSize: '1.5rem', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.5rem' }}>
+                   "We started seeing calls from people who said ‘I see you everywhere’"
+                 </p>
+                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                   <div style={{ width: '40px', height: '40px', background: '#e67e22', borderRadius: '50%' }} />
+                   <div>
+                     <p style={{ margin: 0, fontWeight: 700 }}>Local Trade Founder</p>
+                     <p style={{ margin: 0, fontSize: '0.8rem', opacity: 0.5 }}>Sparwood, BC</p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             
+             <div>
+               <h3 style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>Real-World Signal Penetration</h3>
+               <p style={{ opacity: 0.6, marginBottom: '2rem', lineHeight: 1.6 }}>
+                 We don't trust "clicks." We trust volume. Our systems map placements and call routing to ensure that when a local needs help, your name is the only one they remember.
+               </p>
+               <div style={{ display: 'flex', gap: '2rem' }}>
+                 <div>
+                   <p style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--primary)', margin: 0 }}>4.2x</p>
+                   <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5 }}>Search Volume Map Expansion</p>
+                 </div>
+                 <div>
+                   <p style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--primary)', margin: 0 }}>280%</p>
+                   <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5 }}>Avg Call Intent Increase</p>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           {/* Re-contextualized Broadcast Map */}
+           <div style={{ 
+              marginTop: '8rem',
+              position: 'relative', 
+              width: '100%', 
+              aspectRatio: '16/8',
+              borderRadius: '4px',
+              overflow: 'hidden',
+              border: '1px solid rgba(255,255,255,0.1)',
+              boxShadow: '0 30px 60px rgba(0,0,0,0.8)',
+              backgroundColor: '#000'
+            }}>
+              <div style={{ 
+                position: 'absolute', 
+                inset: 0, 
+                backgroundImage: `url('https://res.cloudinary.com/doajstql7/image/upload/v1775884538/ChatGPT_Image_Apr_11_2026_01_13_00_AM_hx4ibt.png')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                opacity: 0.6
+              }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, transparent 20%, rgba(13, 17, 9, 1) 95%)' }} />
+              <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', width: '100%', padding: '0 2rem' }}>
+                <p style={{ color: 'var(--primary)', fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.5em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                  SIGNAL COVERAGE MAP
+                </p>
+                <h2 style={{ fontSize: 'min(3rem, 8vw)', fontFamily: 'var(--font-syne)', fontWeight: 900, textTransform: 'uppercase' }}>
+                  Total Regional Overlook
+                </h2>
+              </div>
+           </div>
+         </div>
       </section>
 
       <section id="services" className="section-padding" style={{ backgroundColor: '#0a0d07' }}>
@@ -320,34 +589,6 @@ export default function Home() {
               If they’re driving, scrolling, or waiting — <br className="mobile-hide"/>
               <span style={{ color: 'var(--primary)' }}>they’re seeing you.</span>
             </h3>
-          </div>
-
-          {/* Map Visual */}
-          <div style={{ 
-            position: 'relative', 
-            width: '100%', 
-            aspectRatio: '16/9',
-            borderRadius: '4px',
-            overflow: 'hidden',
-            marginBottom: '6rem',
-            border: '1px solid rgba(255,255,255,0.1)',
-            boxShadow: '0 30px 60px rgba(0,0,0,0.8)',
-            backgroundColor: '#000'
-          }}>
-            <div style={{ 
-              position: 'absolute', 
-              inset: 0, 
-              backgroundImage: `url('https://res.cloudinary.com/doajstql7/image/upload/v1775884538/ChatGPT_Image_Apr_11_2026_01_13_00_AM_hx4ibt.png')`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }} />
-            
-            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, transparent 20%, rgba(13, 17, 9, 1) 95%)', pointerEvents: 'none' }} />
-            
-            <div className="mobile-hide" style={{ position: 'absolute', top: '15%', right: '15%', background: 'rgba(0,0,0,0.8)', padding: '0.6rem 1.2rem', borderRadius: '2px', border: '1px solid var(--primary)', fontSize: '0.8rem', letterSpacing: '0.2em', fontWeight: 800, textTransform: 'uppercase', zIndex: 10 }}>
-              Live Broadcast Coverage
-            </div>
           </div>
 
           <div className="mobile-stack" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', marginBottom: '6rem' }}>
