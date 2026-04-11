@@ -25,7 +25,14 @@ export const metadata: Metadata = {
   title: 'Kootenay Signal | Digital Growth for Local Kootenay Business',
   description: 'The Kootenay\'s Go-To agency for high-conversion web development, AI infrastructure, and local-first marketing.',
   icons: {
-    icon: 'https://res.cloudinary.com/doajstql7/image/upload/q_auto/f_auto/v1775879112/ChatGPT_Image_Apr_10__2026__11_27_53_PM-removebg-preview_vjtdqa.png',
+    icon: '/favicon.png',
+  },
+  openGraph: {
+    images: ['https://res.cloudinary.com/doajstql7/image/upload/q_auto/f_auto/v1775887668/ChatGPT_Image_Apr_11_2026_02_07_33_AM_y2qtos.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://res.cloudinary.com/doajstql7/image/upload/q_auto/f_auto/v1775887668/ChatGPT_Image_Apr_11_2026_02_07_33_AM_y2qtos.png'],
   }
 };
 

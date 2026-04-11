@@ -118,22 +118,22 @@ export default function Home() {
                 </Link>
               </div>
               
-              <div style={{ marginTop: '1.25rem' }}>
+              <div style={{ marginTop: '2rem' }}>
                 <div className="badge animate-subtle-glow" style={{ 
-                  background: 'rgba(230, 126, 34, 0.05)', 
-                  borderColor: 'rgba(230, 126, 34, 0.2)', 
-                  color: 'rgba(230, 126, 34, 0.8)',
+                  background: 'rgba(230, 126, 34, 0.1)', 
+                  borderColor: 'rgba(230, 126, 34, 0.3)', 
+                  color: 'rgba(230, 126, 34, 0.9)',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.4rem',
-                  padding: '0.3rem 0.6rem',
-                  fontSize: '0.6rem',
-                  fontWeight: 800,
-                  borderRadius: '2px',
+                  gap: '0.75rem',
+                  padding: '0.8rem 1.5rem',
+                  fontSize: '0.9rem',
+                  fontWeight: 900,
+                  borderRadius: '3px',
                   textTransform: 'uppercase',
-                  letterSpacing: '0.05em'
+                  letterSpacing: '0.1em'
                 }}>
-                  <AlertTriangle size={10} />
+                  <AlertTriangle size={18} />
                   SCARCITY: We only work with 3–5 businesses per trade, per area.
                 </div>
               </div>
