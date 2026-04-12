@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     .eq('clerk_user_id', userId)
     .gte('created_at', todayStart.toISOString());
   if ((count ?? 0) >= 1) {
-    return Response.json({ error: 'You've already run a Signal Check today. Come back tomorrow — your signal isn't going anywhere.' }, { status: 429 });
+    return Response.json({ error: "You've already run a Signal Check today. Come back tomorrow — your signal isn't going anywhere." }, { status: 429 });
   }
 
   let body: unknown;
