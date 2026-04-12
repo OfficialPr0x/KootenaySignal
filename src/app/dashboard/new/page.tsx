@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function NewAuditPage() {
   const router = useRouter();
@@ -76,6 +77,20 @@ export default function NewAuditPage() {
 
   return (
     <div className="dash-form-wrap">
+      <Link
+        href="/dashboard"
+        style={{
+          color: 'rgba(255,255,255,0.5)',
+          fontSize: '0.8rem',
+          textDecoration: 'none',
+          display: 'inline-block',
+          marginBottom: '1.5rem',
+          fontWeight: 600,
+          transition: 'color 0.3s ease',
+        }}
+      >
+        ← Back to Dashboard
+      </Link>
       <div className="dash-form-header">
         <h2>New Signal Check</h2>
         <p>

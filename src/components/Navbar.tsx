@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
 import { usePathname } from 'next/navigation';
 
@@ -28,7 +29,7 @@ export default function Navbar() {
   return (
     <nav className="navbar" id="main-nav">
       <div className="scroll-progress" style={{ width: `${scroll}%` }}></div>
-      <div className="nav-logo">
+      <Link href="/" className="nav-logo" style={{ textDecoration: 'none' }}>
         <Image 
           src="https://res.cloudinary.com/doajstql7/image/upload/v1775879112/ChatGPT_Image_Apr_10__2026__11_27_53_PM-removebg-preview_vjtdqa.png" 
           alt="Kootenay Signal Logo" 
@@ -50,7 +51,7 @@ export default function Navbar() {
             The Kootenay's Go-To For More Business
           </span>
         </div>
-      </div>
+      </Link>
       <div className="nav-links">
         <Show when="signed-out">
           <SignInButton>
@@ -78,7 +79,7 @@ export default function Navbar() {
         </Show>
         
         <Show when="signed-in">
-          <a 
+          <Link 
             href="/dashboard" 
             style={{ 
               color: '#e67e22', 
@@ -91,7 +92,7 @@ export default function Navbar() {
             }}
           >
             SIGNAL CHECK
-          </a>
+          </Link>
           <div style={{ marginRight: '1rem', display: 'flex', alignItems: 'center' }}>
             <UserButton appearance={{ 
               variables: {

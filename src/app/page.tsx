@@ -788,14 +788,22 @@ export default function Home() {
           </p>
           
           <div className="mobile-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
-            <button 
+            <Link 
+              href="/dashboard/new"
               className="btn btn-primary" 
-              style={{ padding: '1.8rem 4rem', fontSize: '1.5rem', fontWeight: 800 }}
+              style={{ padding: '1.8rem 4rem', fontSize: '1.5rem', fontWeight: 800, textDecoration: 'none' }}
+            >
+              GET MY SIGNAL CHECKED
+            </Link>
+            
+            <button 
+              className="btn btn-secondary" 
+              style={{ padding: '1rem 2.5rem', fontSize: '1rem' }}
               data-cal-link="kootenay-signal/30min"
               data-cal-namespace="30min"
               data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
             >
-              GET MY SIGNAL CHECKED
+              OR BOOK A CALL
             </button>
             
             <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>

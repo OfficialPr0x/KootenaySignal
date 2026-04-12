@@ -193,6 +193,21 @@ export default function ReportContent({ audit }: { audit: AuditData }) {
 
   return (
     <div>
+      <Link
+        href="/dashboard"
+        style={{
+          color: 'rgba(255,255,255,0.5)',
+          fontSize: '0.8rem',
+          textDecoration: 'none',
+          display: 'inline-block',
+          marginBottom: '1.5rem',
+          fontWeight: 600,
+          transition: 'color 0.3s ease',
+        }}
+      >
+        ← Back to Dashboard
+      </Link>
+
       {/* Header */}
       <div style={{
         textAlign: 'center',

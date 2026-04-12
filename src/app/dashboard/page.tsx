@@ -135,9 +135,9 @@ export default async function DashboardPage() {
             {auditList.map((audit) => (
               <Link
                 key={audit.id}
-                href={audit.status === 'complete' ? `/dashboard/report/${audit.id}` : '#'}
+                href={audit.status === 'complete' ? `/dashboard/report/${audit.id}` : `/dashboard`}
                 className="dash-card"
-                style={{ pointerEvents: audit.status === 'complete' ? 'auto' : 'default' as 'auto' | 'none' }}
+                style={{ pointerEvents: audit.status === 'complete' ? 'auto' : 'none' }}
               >
                 <div
                   className="dash-card-score"
