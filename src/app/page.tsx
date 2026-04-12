@@ -418,16 +418,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. YOU'VE SEEN THIS BEFORE MOMENT + PROOF */}
+      {/* 4. BE THE BUSINESS EVERYONE KNOWS */}
       <section style={{ padding: '8rem 0', background: 'var(--background)' }}>
          <div className="container">
            <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
-             <h2 style={{ fontSize: 'var(--h2-size)', marginBottom: '1.5rem' }}>You’ve Seen These Businesses Everywhere</h2>
+             <h2 style={{ fontSize: 'var(--h2-size)', marginBottom: '1.5rem' }}>Be the Kootenay Business Seen Everywhere</h2>
              <p style={{ fontSize: '2rem', fontFamily: 'var(--font-syne)', fontStyle: 'italic', color: 'var(--primary)', fontWeight: 800 }}>
-               That wasn't luck.
+               Here&apos;s exactly how.
              </p>
              <p style={{ maxWidth: '650px', margin: '2rem auto 0', opacity: 0.6, fontSize: '1.2rem', lineHeight: 1.6 }}>
-               The businesses that "everyone knows" in the Kootenays didn't get there by accident. They are running intentional Signal engines. We are the technicians behind those engines.
+               The businesses that &quot;everyone knows&quot; didn&apos;t get there by accident. They show up in search, on screens, and in conversation — on repeat. We build the system that makes that happen for you.
              </p>
            </div>
 
@@ -440,34 +440,30 @@ export default function Home() {
              <div>
                <div style={{ background: '#0a0d07', padding: '3rem', border: '1px solid var(--primary)', borderRadius: '4px', position: 'relative' }}>
                  <div style={{ position: 'absolute', top: '-20px', left: '20px', background: 'var(--primary)', padding: '0.25rem 1rem', fontSize: '0.75rem', fontWeight: 900, textTransform: 'uppercase', color: 'black' }}>
-                   Case: SEARCHLOCK™
+                   The Goal
                  </div>
                  <p style={{ fontSize: '1.5rem', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.5rem' }}>
-                   "We started seeing calls from people who said ‘I see you everywhere’"
+                   &quot;I see you everywhere&quot; — the moment every local business owner wants to hear on a first call.
                  </p>
-                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                   <div style={{ width: '40px', height: '40px', background: '#e67e22', borderRadius: '50%' }} />
-                   <div>
-                     <p style={{ margin: 0, fontWeight: 700 }}>Local Trade Founder</p>
-                     <p style={{ margin: 0, fontSize: '0.8rem', opacity: 0.5 }}>Sparwood, BC</p>
-                   </div>
-                 </div>
+                 <p style={{ margin: 0, fontSize: '0.9rem', opacity: 0.5, lineHeight: 1.6 }}>
+                   That&apos;s what happens when your signal is dialled in — Google, billboards, and word of mouth all working together.
+                 </p>
                </div>
              </div>
              
              <div>
-               <h3 style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>Real-World Signal Penetration</h3>
+               <h3 style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>How We Get You There</h3>
                <p style={{ opacity: 0.6, marginBottom: '2rem', lineHeight: 1.6 }}>
-                 We don't trust "clicks." We trust volume. Our systems map placements and call routing to ensure that when a local needs help, your name is the only one they remember.
+                 We combine search dominance, digital billboard placements, and AI-powered follow-ups into one system. When a local needs help, your name is the only one they remember.
                </p>
                <div style={{ display: 'flex', gap: '2rem' }}>
                  <div>
-                   <p style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--primary)', margin: 0 }}>4.2x</p>
-                   <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5 }}>Search Volume Map Expansion</p>
+                   <p style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--primary)', margin: 0 }}>3</p>
+                   <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5 }}>Signal Systems Working Together</p>
                  </div>
                  <div>
-                   <p style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--primary)', margin: 0 }}>280%</p>
-                   <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5 }}>Avg Call Intent Increase</p>
+                   <p style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--primary)', margin: 0 }}>1</p>
+                   <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5 }}>Business Per Trade Per Area</p>
                  </div>
                </div>
              </div>
@@ -578,7 +574,7 @@ export default function Home() {
               opacity: 0.9,
               fontFamily: 'var(--font-pjs)'
             }}>
-              Your business — seen where locals actually look.
+              Digital billboards across the Kootenays — your business on screen where locals actually look.
             </p>
           </div>
 
@@ -592,38 +588,38 @@ export default function Home() {
           <div className="mobile-stack" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', marginBottom: '6rem' }}>
             <div>
               <p className="mobile-center" style={{ fontSize: '1.4rem', lineHeight: 1.6, fontFamily: 'var(--font-pjs)', marginBottom: '3rem' }}>
-                We don’t run ads. <br/>
-                <b>We place your business into the real-world flow of the Kootenays.</b>
+                We place your business on <b>digital billboards</b> across the Kootenays — <br/>
+                <b>high-traffic screens that locals pass every single day.</b>
               </p>
               <div className="mobile-hide" style={{ opacity: 0.7, fontSize: '1.1rem', fontStyle: 'italic', borderLeft: '2px solid var(--primary)', paddingLeft: '1.5rem' }}>
-                The same roads. The same stops. The same places everyone passes through every day.
+                Highway corridors. Gas stations. Downtown screens. Real digital billboard placements — not social media ads.
               </div>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
               <div>
                 <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem' }}>
-                  <Milestone size={18} /> Highway Presence
+                  <Milestone size={18} /> Highway Billboards
                 </h4>
-                <p style={{ opacity: 0.7, fontSize: '0.8rem' }}>On the drive into town.</p>
+                <p style={{ opacity: 0.7, fontSize: '0.8rem' }}>Digital screens on major corridors into town.</p>
               </div>
               <div>
                 <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem' }}>
-                  <Monitor size={18} /> In-Town Screens
+                  <Monitor size={18} /> In-Town Displays
                 </h4>
-                <p style={{ opacity: 0.7, fontSize: '0.8rem' }}>Where locals stop & wait.</p>
+                <p style={{ opacity: 0.7, fontSize: '0.8rem' }}>Digital billboard screens where locals stop & wait.</p>
               </div>
               <div>
                 <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem' }}>
                   <Smartphone size={18} /> Digital Reinforce
                 </h4>
-                <p style={{ opacity: 0.7, fontSize: '0.8rem' }}>Appear on their phone.</p>
+                <p style={{ opacity: 0.7, fontSize: '0.8rem' }}>Matched ads on their phone after they see your billboard.</p>
               </div>
               <div>
                 <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem' }}>
                   <RefreshCw size={18} /> Repeat Exposure
                 </h4>
-                <p style={{ opacity: 0.7, fontSize: '0.8rem' }}>Enough to remember.</p>
+                <p style={{ opacity: 0.7, fontSize: '0.8rem' }}>Seen enough times to stick.</p>
               </div>
             </div>
           </div>
@@ -631,7 +627,7 @@ export default function Home() {
           <div style={{ background: '#111', padding: '3rem 2rem', border: '1px solid rgba(255,255,255,0.05)' }}>
              <div className="mobile-grid-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
                <div>
-                 <h2 style={{ fontSize: 'var(--h3-size)', marginBottom: '1.5rem' }}>The Impact of Total Local Presence</h2>
+                 <h2 style={{ fontSize: 'var(--h3-size)', marginBottom: '1.5rem' }}>The Impact of Digital Billboard Presence</h2>
                  <ul style={{ listStyle: 'none', padding: 0, fontSize: '1.1rem', lineHeight: 1.8 }}>
                    <li style={{ marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                      <CheckCircle2 size={20} style={{ color: 'var(--primary)' }} />
