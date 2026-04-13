@@ -88,7 +88,7 @@ export default function Home() {
               color: '#fff',
               textShadow: '0 4px 20px rgba(0,0,0,0.5)',
             }}>
-              If You’re Not Seen — <br className="mobile-hide"/>
+              If You’re Not Seen <br className="mobile-hide"/>
               <span style={{ color: 'var(--primary)' }}>You’re Skipped.</span>
             </h1>
 
@@ -178,6 +178,163 @@ export default function Home() {
             <span>Castlegar</span>
             <span>Trail</span>
             <span>Kimberley</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Founder Story - Jaryd Paquette */}
+      <section style={{ padding: '8rem 0', background: 'var(--background)', position: 'relative', overflow: 'hidden' }}>
+        <Atmosphere />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+            
+            {/* Branded 16:9 Frame */}
+            <div style={{ position: 'relative', marginBottom: '5rem' }}>
+              <div style={{ 
+                position: 'relative',
+                aspectRatio: '16/9',
+                width: '100%',
+                borderRadius: '4px',
+                overflow: 'hidden',
+                border: '1px solid var(--border-color)',
+                boxShadow: '0 40px 80px rgba(0,0,0,0.6)',
+                backgroundColor: '#0a0d07'
+              }}>
+                <Image 
+                  src="https://res.cloudinary.com/doajstql7/image/upload/v1776048942/ChatGPT_Image_Apr_12_2026_10_33_06_PM_jqsll7.png" 
+                  alt="Jaryd Paquette - Kootenay Signal Founder" 
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'bottom right', filter: 'contrast(1.05) brightness(0.9)' }}
+                  priority
+                />
+                
+                {/* Tech Overlay Theming */}
+                <div style={{ 
+                  position: 'absolute', 
+                  top: '20px', 
+                  left: '20px', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '0.5rem',
+                  opacity: 0.6
+                }}>
+                  <div style={{ width: '8px', height: '8px', background: 'var(--primary)', borderRadius: '50%', boxShadow: '0 0 10px var(--primary)' }} />
+                  <span style={{ fontSize: '0.6rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em' }}>Signal Active: sparwood_node_01</span>
+                </div>
+              </div>
+              
+              {/* Frame Accents */}
+              <div style={{ position: 'absolute', top: '-15px', left: '-15px', width: '60px', height: '60px', borderTop: '2px solid var(--primary)', borderLeft: '2px solid var(--primary)', opacity: 0.5 }} />
+              <div style={{ position: 'absolute', bottom: '-15px', right: '-15px', width: '60px', height: '60px', borderBottom: '2px solid var(--primary)', borderRight: '2px solid var(--primary)', opacity: 0.5 }} />
+            </div>
+
+            {/* Story Content */}
+            <div className="founder-story">
+              <span className="badge" style={{ marginBottom: '2.5rem' }}>Identity Protocol</span>
+              
+              <h2 style={{ 
+                fontSize: 'clamp(2rem, 5vw, 3.5rem)', 
+                lineHeight: 1, 
+                marginBottom: '1rem',
+                fontFamily: 'var(--font-serif)'
+              }}>
+                Why I’m Betting on the Kootenays <br />
+                <span className="text-gradient">(And How I Can Help You Win Here)</span>
+              </h2>
+              
+              <p style={{ 
+                fontSize: '1.25rem', 
+                fontWeight: 700, 
+                color: 'var(--primary)', 
+                marginBottom: '4rem',
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em'
+              }}>
+                By Jaryd Paquette
+              </p>
+
+              <div style={{ 
+                fontSize: 'var(--p-large-size)', 
+                lineHeight: 1.8, 
+                opacity: 0.9,
+                fontFamily: 'var(--font-sans)'
+              }}>
+                <p style={{ marginBottom: '2.5rem', fontSize: '1.3rem', fontWeight: 500 }}>
+                  I just moved to Sparwood with a duffelbag of clothes, work boots, a laptop, and a reason to stay alive.
+                </p>
+
+                <p style={{ marginBottom: '2rem' }}>
+                  I’m a lead developer and systems architect by trade. But before I got here, I was homeless in Ottawa. I lost my savings, my stuff, and almost my mind. Then I did something that changed everything: I traded my skills for a roof. That one pivot became <Link href="https://www.hostelhack.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline', fontWeight: 800 }}>HostelHack</Link>—a platform that lets travelers exchange real work for accommodation. It got me off the street, into a hostel, and onto a flight to BC (I was even <Link href="https://www.wfxg.com/online_features/press_releases/hostelhack-launches-after-founder-trades-skills-for-shelter-creating-a-skill-based-exchange-platform/article_e38b2ed7-5663-5488-9f78-c6d9aa8f59f7.html" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>featured on Fox</Link> for it).
+                </p>
+
+                <p style={{ marginBottom: '2rem' }}>
+                  Now I’m building houses and renos by day ($40/hr, a place to live, mountains out my window). And by night, I’m building <b>Kootenay Signal</b>—because this community deserves a digital hub that actually works for local businesses.
+                </p>
+
+                <h3 style={{ fontSize: '2rem', color: '#fff', margin: '4rem 0 2rem' }}>Why should a Kootenay business owner listen to me?</h3>
+                
+                <p style={{ marginBottom: '2rem' }}>
+                  I’m not a suit. I’m not a “growth hacker” selling dreams. I’m a guy who went from zero to a functioning platform in 10 days while sleeping in a hostel. That means I know how to:
+                </p>
+
+                <div style={{ display: 'grid', gap: '2rem', marginBottom: '4rem' }}>
+                  <div style={{ padding: '2rem', background: 'rgba(255,255,255,0.02)', borderLeft: '3px solid var(--primary)' }}>
+                    <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>Fix what’s broken</h4>
+                    <p style={{ opacity: 0.7 }}>Websites that don’t convert, booking systems that leak customers, social media that goes nowhere.</p>
+                  </div>
+                  <div style={{ padding: '2rem', background: 'rgba(255,255,255,0.02)', borderLeft: '3px solid var(--accent)' }}>
+                    <h4 style={{ color: 'var(--accent)', marginBottom: '0.5rem' }}>Automate the boring stuff</h4>
+                    <p style={{ opacity: 0.7 }}>AI booking agents, lead follow‑ups, inventory alerts – so you can go back to actually running your business.</p>
+                  </div>
+                  <div style={{ padding: '2rem', background: 'rgba(255,255,255,0.02)', borderLeft: '3px solid #fff' }}>
+                    <h4 style={{ color: '#fff', marginBottom: '0.5rem' }}>Build without bloat</h4>
+                    <p style={{ opacity: 0.7 }}>I write clean code and lean systems. No $50k “digital transformation” projects. Just solutions that pay for themselves in weeks.</p>
+                  </div>
+                </div>
+
+                <h3 style={{ fontSize: '2rem', color: '#fff', margin: '4rem 0 2rem' }}>What I’m NOT going to do</h3>
+                <ul style={{ listStyle: 'none', padding: 0, marginBottom: '4rem' }}>
+                  <li style={{ marginBottom: '1rem', display: 'flex', gap: '1rem' }}><XCircle size={24} color="#c0392b" /> Sell you a retainer you don’t need.</li>
+                  <li style={{ marginBottom: '1rem', display: 'flex', gap: '1rem' }}><XCircle size={24} color="#c0392b" /> Use buzzwords like “synergy” or “paradigm shift.”</li>
+                  <li style={{ marginBottom: '1rem', display: 'flex', gap: '1rem' }}><XCircle size={24} color="#c0392b" /> Pretend I know your industry better than you do.</li>
+                </ul>
+
+                <h3 style={{ fontSize: '2rem', color: '#fff', margin: '4rem 0 2rem' }}>What I AM offering – right now</h3>
+                <p style={{ marginBottom: '2.5rem' }}>Because I’m new here and I want to earn my place:</p>
+                
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
+                   <div style={{ border: '1px solid rgba(255,255,255,0.1)', padding: '2rem', borderRadius: '4px' }}>
+                      <p style={{ fontWeight: 800, color: 'var(--primary)', marginBottom: '1rem' }}>01. FREE AUDIT</p>
+                      <p style={{ fontSize: '0.95rem', opacity: 0.8 }}>A free 30‑minute tech audit. I’ll show you three specific things that are costing you money.</p>
+                   </div>
+                   <div style={{ border: '2px solid var(--primary)', padding: '2rem', borderRadius: '4px', background: 'rgba(230, 126, 34, 0.05)' }}>
+                      <p style={{ fontWeight: 800, color: 'var(--primary)', marginBottom: '1rem' }}>02. FLAT-FEE BETA</p>
+                      <p style={{ fontSize: '0.95rem', opacity: 0.8 }}>No retainer project for the first three businesses that say “yes.” You pay only for the work delivered.</p>
+                   </div>
+                </div>
+
+                <div style={{ padding: '4rem', background: '#111', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '4px', textAlign: 'center' }}>
+                  <h3 style={{ marginBottom: '2rem' }}>Who I am, simply</h3>
+                  <p style={{ marginBottom: '1rem' }}>I’m the guy who will show up on time, over‑deliver, and never bullshit you.</p>
+                  <p style={{ marginBottom: '1rem' }}>I’ve failed enough to know what actually works.</p>
+                  <p style={{ marginBottom: '3rem' }}>I love the Kootenays because people here value grit over glamour. That’s my language.</p>
+                  
+                  <Link href="/dashboard/new" className="btn btn-primary" style={{ padding: '1.5rem 3rem' }}>
+                    LET'S GET TO WORK
+                  </Link>
+                </div>
+
+                <p style={{ marginTop: '5rem', fontSize: '1.2rem', fontStyle: 'italic', textAlign: 'center', opacity: 0.7 }}>
+                  Let’s grab a coffee in Sparwood, Fernie, or Cranbrook. Or just send me a message through Kootenay Signal. I’ll show you what I’m building – and how I can help you build, too.
+                </p>
+                
+                <p style={{ textAlign: 'center', marginTop: '2rem', fontWeight: 800, fontSize: '1.5rem' }}>– Jaryd</p>
+
+                <p style={{ marginTop: '4rem', fontSize: '0.9rem', opacity: 0.5, maxWidth: '600px', margin: '4rem auto 0', textAlign: 'center' }}>
+                  P.S. My whole messy story is on my site. But the only thing that matters is: I’m here, I’m staying, and I want to make your business run better. No strings.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -698,20 +855,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Rooted update */}
-      <section className="section-padding" style={{ backgroundColor: '#000' }}>
+      {/* Rooted Update */}
+      <section className="section-padding" style={{ backgroundColor: '#000', position: 'relative' }}>
+        <Atmosphere />
         <div className="container">
           <div className="mobile-grid-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem', alignItems: 'center' }}>
             <div className="mobile-center">
               <span className="badge">Kootenay DNA</span>
               <h2 style={{ fontSize: 'var(--h2-size)', marginBottom: '2rem' }}>We live here. <br className="mobile-hide"/>We work here.</h2>
-              <div style={{ fontSize: 'var(--p-size)', opacity: 0.8, lineHeight: 1.6, fontFamily: 'var(--font-pjs)' }}>
+              <div style={{ fontSize: 'var(--p-size)', opacity: 0.8, lineHeight: 1.6, fontFamily: 'var(--font-sans)' }}>
                 <p style={{ marginBottom: '2rem' }}>Reputation is everything here. Word spreads fast. One great site, and you own the area.</p>
                 <p className="mobile-hide">We build for businesses like yours — not boardrooms in Toronto. If your cousin can't find you, neither can customers.</p>
               </div>
             </div>
-            <div style={{ backgroundColor: '#111', padding: '3rem', border: '1px solid var(--primary)', borderRadius: '2px' }}>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '2rem', color: 'var(--primary)', fontFamily: 'var(--font-syne)' }}>The Kootenay Standard</h3>
+            <div style={{ backgroundColor: '#111', padding: '3rem', border: '1px solid var(--primary)', borderRadius: '2px', boxShadow: '0 0 40px rgba(230, 126, 34, 0.05)' }}>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '2rem', color: 'var(--primary)', fontFamily: 'var(--font-serif)' }}>The Kootenay Standard</h3>
               <ul style={{ listStyle: 'none', padding: 0, fontSize: '1.1rem' }}>
                 <li style={{ marginBottom: '1.25rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
                   <span style={{ color: 'var(--primary)' }}>✅</span> <b>Sparwood Based</b>
