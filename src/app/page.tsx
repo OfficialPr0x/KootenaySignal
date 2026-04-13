@@ -22,7 +22,8 @@ import {
   TrendingUp,
   MapPin,
   XCircle,
-  Clock
+  Clock,
+  Signal
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -183,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* Founder Story - Jaryd Paquette */}
-      <section style={{ padding: '8rem 0', background: 'var(--background)', position: 'relative', overflow: 'hidden' }}>
+      <section id="founder" style={{ padding: '8rem 0', background: 'var(--background)', position: 'relative', overflow: 'hidden' }}>
         <Atmosphere />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -659,48 +660,165 @@ export default function Home() {
          </div>
       </section>
 
-      <section id="services" className="section-padding" style={{ backgroundColor: '#0a0d07' }}>
-        <div className="container">
-          <div className="section-header mobile-center" style={{ marginBottom: '6rem' }}>
-            <span className="badge">Weaponized Systems</span>
-            <h2 style={{ fontSize: 'var(--h2-size)' }}>We Build Signal — Not Just Sites</h2>
+      <section id="services" style={{ 
+        padding: '12rem 0', 
+        backgroundColor: '#050704', 
+        position: 'relative', 
+        overflow: 'hidden',
+        borderTop: '1px solid rgba(255,255,255,0.03)'
+      }}>
+        {/* Schema Background Overlay */}
+        <div style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          backgroundImage: `linear-gradient(rgba(230, 126, 34, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(230, 126, 34, 0.03) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
+          opacity: 0.3,
+          pointerEvents: 'none'
+        }} />
+        
+        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '1400px' }}>
+          <div style={{ marginBottom: '6rem' }}>
+            <span className="badge" style={{ marginBottom: '1.25rem' }}>Arsenal Overview</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem' }}>
+              <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 0.9, maxWidth: '700px', margin: 0, fontFamily: 'var(--font-syne)' }}>
+                We Build <span className="text-gradient">Signal</span><br />
+                <span style={{ opacity: 0.3 }}>Not Just Sites</span>
+              </h2>
+              <div className="mobile-hide" style={{ textAlign: 'right', opacity: 0.4 }}>
+                <p style={{ fontSize: '0.65rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2rem' }}>system_status: active</p>
+                <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
+                  <div style={{ width: '40px', height: '2px', background: 'var(--primary)' }} />
+                  <div style={{ width: '20px', height: '2px', background: 'rgba(255,255,255,0.2)' }} />
+                  <div style={{ width: '10px', height: '2px', background: 'rgba(255,255,255,0.1)' }} />
+                </div>
+              </div>
+            </div>
           </div>
           
           <div className="mobile-grid-1" style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(4, 1fr)', 
-            gap: '1.5rem',
-            overflowX: 'auto',
-            paddingBottom: '2rem'
+            gap: '1px',
+            background: 'rgba(255,255,255,0.05)',
+            border: '1px solid rgba(255,255,255,0.05)',
+            boxShadow: '0 40px 100px rgba(0,0,0,0.8)',
+            width: '100%'
           }}>
-            <div className="service-card" style={{ minWidth: '220px', padding: '3rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <span style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>01</span>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>SignalForge™</h3>
-              <p style={{ opacity: 0.8, fontSize: '1rem', lineHeight: 1.6 }}>
-                Build your signal foundation. High-conversion lead engines that capture every local lead.
-              </p>
-            </div>
-            <div className="service-card" style={{ minWidth: '220px', padding: '3rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <span style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>02</span>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>SearchLock™</h3>
-              <p style={{ opacity: 0.8, fontSize: '1rem', lineHeight: 1.6 }}>
-                Own local search permanently. Google, Maps, and Local Search — locked in.
-              </p>
-            </div>
-            <div className="service-card" style={{ minWidth: '220px', padding: '3rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <span style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>03</span>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>GhostOps AI™</h3>
-              <p style={{ opacity: 0.8, fontSize: '1rem', lineHeight: 1.6 }}>
-                Never miss money again. Automated follow-ups, bookings, and missed call handling.
-              </p>
-            </div>
-            <div className="service-card" style={{ minWidth: '220px', padding: '3rem 2rem', background: 'var(--secondary)', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <span style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--primary)', opacity: 0.2, display: 'block', marginBottom: '1rem' }}>04</span>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Kootenay Broadcast™</h3>
-              <p style={{ opacity: 0.8, fontSize: '1rem', lineHeight: 1.6 }}>
-                Be seen everywhere that matters. High-impact local awareness and signal boosting.
-              </p>
-            </div>
+            {[
+              {
+                id: '01',
+                title: 'SignalForge™',
+                tag: 'SYS_CORE',
+                desc: 'The architectural foundation. High-conversion lead engines that capture intent and force action in the local market.',
+                icon: <Zap size={32} className="service-icon" />,
+                color: 'var(--primary)'
+              },
+              {
+                id: '02',
+                title: 'SearchLock™',
+                tag: 'SYS_TERRITORY',
+                desc: 'Total local search encirclement. We own the proximity layer, Google Business, and the Local Pack — permanently.',
+                icon: <Target size={32} className="service-icon" />,
+                color: 'var(--accent)'
+              },
+              {
+                id: '03',
+                title: 'GhostOps AI™',
+                tag: 'SYS_INTEL',
+                desc: 'Autonomous lead handling. Missed call text-back, instant lead nurturing, and AI-driven booking systems that never sleep.',
+                icon: <Radio size={32} className="service-icon" />,
+                color: '#fff'
+              },
+              {
+                id: '04',
+                title: 'Kootenay Broadcast™',
+                tag: 'SYS_BROADCAST',
+                desc: 'Digital billboard domination. High-impact awareness that ensures you are the first name spoken in every conversation.',
+                icon: <Signal size={32} className="service-icon" />,
+                color: 'var(--primary)'
+              }
+            ].map((service, i) => (
+              <div 
+                key={i} 
+                className="service-card-premium"
+                style={{ 
+                  background: '#0a0d07', 
+                  padding: '3rem 2rem',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1.5rem',
+                  transition: 'background 0.3s ease'
+                }}
+              >
+                {/* Visual Accent */}
+                <div style={{ 
+                  position: 'absolute', 
+                  top: 0, 
+                  left: 0, 
+                  width: '3px', 
+                  height: '100%', 
+                  background: i % 2 === 0 ? 'var(--primary)' : 'rgba(255,255,255,0.1)',
+                  opacity: 0.4
+                }} />
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                  <div style={{ color: service.color, opacity: 0.8 }}>
+                    {service.icon}
+                  </div>
+                  <span style={{ 
+                    fontSize: '0.6rem', 
+                    fontWeight: 900, 
+                    opacity: 0.25, 
+                    fontFamily: 'var(--font-mono)',
+                    letterSpacing: '0.15em'
+                  }}>
+                    {service.tag}
+                  </span>
+                </div>
+
+                <div>
+                  <h3 style={{ 
+                    fontSize: 'clamp(1.2rem, 1.8vw, 1.4rem)', 
+                    marginBottom: '0.75rem', 
+                    letterSpacing: '-0.01em',
+                    fontFamily: 'var(--font-syne)',
+                    fontWeight: 800,
+                    lineHeight: 1.1
+                  }}>
+                    {service.title}
+                  </h3>
+                  <p style={{ 
+                    opacity: 0.6, 
+                    fontSize: '0.9rem', 
+                    lineHeight: 1.5,
+                    minHeight: '60px'
+                  }}>
+                    {service.desc}
+                  </p>
+                </div>
+
+                <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <div style={{ width: '6px', height: '6px', background: i === 0 ? '#00ff88' : 'var(--primary)', borderRadius: '50%', boxShadow: `0 0 8px ${i === 0 ? '#00ff88' : 'var(--primary)'}` }} />
+                  <span style={{ fontSize: '0.6rem', fontWeight: 900, textTransform: 'uppercase', opacity: 0.4, letterSpacing: '0.1em' }}>Operational</span>
+                </div>
+                
+                {/* Hover Background Accent */}
+                <div style={{ 
+                  position: 'absolute', 
+                  bottom: '-20%', 
+                  right: '-10%', 
+                  fontSize: '10rem', 
+                  fontWeight: 900, 
+                  opacity: 0.02, 
+                  pointerEvents: 'none'
+                }}>
+                  {service.id}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

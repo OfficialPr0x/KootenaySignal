@@ -398,6 +398,22 @@ h1, h2, h3, h4, h5, h6 {
   .lg-hide-only { display: none !important; }
 }
 
+.service-card-premium {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+.service-card-premium:hover {
+  background: #0f140a !important;
+  transform: translateY(-10px);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 20px rgba(230, 126, 34, 0.1);
+  z-index: 2;
+}
+
+.service-card-premium:hover .service-icon {
+  transform: scale(1.1);
+}
+
+
 /* ═══════════════════════════════════════════════════════════════
    DASHBOARD — Kootenay Signal Command Center
    ═══════════════════════════════════════════════════════════════ */
