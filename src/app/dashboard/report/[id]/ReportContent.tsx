@@ -157,7 +157,7 @@ export default function ReportContent({ audit }: { audit: AuditData }) {
           cal.loaded = true;
         }
         if (ar[0] === L) {
-          const api = function () { p(api, arguments); };
+          const api: any = function () { p(api, arguments); };
           const namespace = ar[1];
           api.q = api.q || [];
           if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar);
