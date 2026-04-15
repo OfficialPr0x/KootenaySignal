@@ -200,18 +200,27 @@ export default function Home() {
           background: 'rgba(13,17,9,0.6)',
           backdropFilter: 'blur(8px)',
           borderTop: '1px solid rgba(255,255,255,0.06)',
-          padding: '1.25rem 4vw'
+          padding: '1.25rem 0'
         }}>
           <div style={{ 
-            display: 'flex', justifyContent: 'center', alignItems: 'center',
-            gap: 'clamp(1rem, 2.5vw, 2.5rem)',
-            width: '100%', flexWrap: 'wrap',
-            fontSize: 'clamp(0.55rem, 0.75vw, 0.7rem)', fontWeight: 800, 
-            textTransform: 'uppercase', letterSpacing: '0.35em',
-            color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-pjs)'
+            display: 'flex', justifyContent: 'stretch', alignItems: 'center',
+            width: '100%',
+            padding: '0 clamp(1.5rem, 4vw, 4rem)',
           }}>
             {['Fernie', 'Sparwood', 'Elkford', 'Cranbrook', 'Nelson', 'Castlegar', 'Trail', 'Kimberley'].map((town, i) => (
-              <span key={i} className={i >= 6 ? '' : ''} style={{ whiteSpace: 'nowrap' }}>
+              <span key={i} style={{ 
+                flex: 1, 
+                textAlign: 'center',
+                whiteSpace: 'nowrap',
+                fontSize: 'clamp(0.65rem, 0.9vw, 0.85rem)', 
+                fontWeight: 800, 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.25em',
+                color: 'rgba(255,255,255,0.4)', 
+                fontFamily: 'var(--font-syne)',
+                borderRight: i < 7 ? '1px solid rgba(255,255,255,0.1)' : 'none',
+                padding: '0.25rem 0',
+              }}>
                 {town}
               </span>
             ))}
