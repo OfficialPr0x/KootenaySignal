@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
+import { SignInButton, Show, UserButton } from "@clerk/nextjs";
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
@@ -33,17 +33,17 @@ export default function Navbar() {
         <Image 
           src="https://res.cloudinary.com/doajstql7/image/upload/v1775879112/ChatGPT_Image_Apr_10__2026__11_27_53_PM-removebg-preview_vjtdqa.png" 
           alt="Kootenay Signal Logo" 
-          width={120}
-          height={120}
+          width={140}
+          height={140}
           className="nav-logo-img"
         />
-        <div className="mobile-hide" style={{ marginLeft: '2rem', borderLeft: '1px solid rgba(255,255,255,0.2)', paddingLeft: '2rem' }}>
+        <div className="mobile-hide" style={{ marginLeft: '1.25rem', borderLeft: '1px solid rgba(255,255,255,0.12)', paddingLeft: '1.25rem' }}>
           <span style={{ 
-            fontSize: '1rem', 
+            fontSize: '1.1rem', 
             fontWeight: 400, 
             fontStyle: 'italic',
             color: 'var(--foreground)', 
-            opacity: 0.7,
+            opacity: 0.6,
             whiteSpace: 'nowrap',
             fontFamily: 'var(--font-serif)',
             display: 'block'
@@ -56,61 +56,25 @@ export default function Navbar() {
         <Show when="signed-out">
           <Link
             href="/signal-check"
-            className="nav-link"
-            style={{ color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}
+            className="nav-link-signal"
           >
             FREE SIGNAL CHECK
           </Link>
           <SignInButton>
-            <button 
-              className="nav-link" 
-              style={{ 
-                background: 'none', 
-                border: 'none', 
-                cursor: 'pointer', 
-                fontWeight: 600,
-                color: 'var(--foreground)',
-                opacity: 0.8,
-                letterSpacing: '0.1em',
-                transition: 'opacity 0.3s ease'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-              onMouseLeave={(e) => e.currentTarget.style.opacity = '0.8'}
-            >
-              SIGN IN
-            </button>
+            <button className="nav-get-started">GET STARTED</button>
           </SignInButton>
-          <SignUpButton>
-            <button className="btn btn-primary" style={{ padding: '0.5rem 1.5rem', fontSize: '0.75rem', fontWeight: 800 }}>GET STARTED</button>
-          </SignUpButton>
         </Show>
         
         <Show when="signed-in">
           <Link
             href="/signal-check"
-            style={{
-              color: 'var(--primary)',
-              fontWeight: 700,
-              fontSize: '0.75rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              textDecoration: 'none',
-              marginRight: '0.5rem',
-            }}
+            className="nav-link-signal"
           >
             FREE SIGNAL CHECK
           </Link>
           <Link 
             href="/dashboard" 
-            style={{ 
-              color: 'rgba(255,255,255,0.6)', 
-              fontWeight: 700, 
-              fontSize: '0.75rem', 
-              textTransform: 'uppercase', 
-              letterSpacing: '0.1em', 
-              textDecoration: 'none',
-              marginRight: '0.5rem',
-            }}
+            className="nav-link-dash"
           >
             DASHBOARD
           </Link>
@@ -171,35 +135,10 @@ export default function Navbar() {
         </Show>
 
         <button 
-          className="btn" 
+          className="nav-cta" 
           data-cal-link="kootenay-signal/30min"
           data-cal-namespace="30min"
           data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-          style={{ 
-            padding: '0.75rem 2rem',
-            fontSize: '0.75rem',
-            fontWeight: 800,
-            fontFamily: 'var(--font-syne)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.15em',
-            background: 'transparent',
-            border: '1px solid var(--primary)',
-            color: 'white',
-            cursor: 'pointer',
-            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'var(--primary)';
-            e.currentTarget.style.boxShadow = '0 0 25px rgba(230, 126, 34, 0.4)';
-            e.currentTarget.style.color = 'black';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'transparent';
-            e.currentTarget.style.boxShadow = 'none';
-            e.currentTarget.style.color = 'white';
-          }}
         >
           Book a Call
         </button>

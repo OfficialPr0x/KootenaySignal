@@ -617,199 +617,146 @@ export default function Home() {
 
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 6: JARYD — Cinematic Central Focus
+          SECTION 6: ABOUT — Meet Jaryd
           ═══════════════════════════════════════════════════════════ */}
       <section id="about" style={{ 
-        padding: 'clamp(5rem, 12vw, 12rem) 0', 
+        padding: 'clamp(6rem, 14vw, 14rem) 0', 
         background: '#070a05',
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Deep atmospheric glow centering the section */}
         <div style={{
-          position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-          width: '70vw', height: '50vw',
-          background: 'radial-gradient(circle, rgba(230,126,34,0.06) 0%, transparent 70%)',
+          position: 'absolute', top: '30%', left: '50%', transform: 'translate(-50%, -50%)',
+          width: '60vw', height: '40vw',
+          background: 'radial-gradient(circle, rgba(230,126,34,0.04) 0%, transparent 70%)',
           pointerEvents: 'none', filter: 'blur(100px)', zIndex: 0
         }} />
 
-        <div ref={s6.ref} className="container" style={{ maxWidth: '1200px', position: 'relative', zIndex: 1 }}>
+        <div ref={s6.ref} className="container" style={{ maxWidth: '1100px', position: 'relative', zIndex: 1 }}>
+          
+          {/* ─── Top: Photo + Intro side by side ─── */}
           <div style={{
             opacity: s6.visible ? 1 : 0,
-            transform: s6.visible ? 'translateY(0)' : 'translateY(60px)',
-            transition: 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)',
-            textAlign: 'center',
-            marginBottom: '4rem'
-          }}>
-            <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
-              marginBottom: '1.5rem'
-            }}>
-              <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
-              <span style={{ fontSize: '0.7rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.4em', color: 'var(--primary)' }}>The Founder</span>
-              <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
-            </div>
-            <h2 style={{ 
-              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', 
-              lineHeight: 1, color: '#fff',
-              fontFamily: 'var(--font-syne)', fontWeight: 800
-            }}>
-              I&apos;m Jaryd.
-            </h2>
-          </div>
-
-          <div style={{ 
-            opacity: s6.visible ? 1 : 0,
-            transform: s6.visible ? 'scale(1)' : 'scale(0.98)',
-            transition: 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s',
-            position: 'relative',
-            maxWidth: '1000px',
-            margin: '0 auto'
-          }}>
-            {/* ─── Cinematic Branded Frame ─── */}
+            transform: s6.visible ? 'translateY(0)' : 'translateY(40px)',
+            transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1)',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: 'clamp(3rem, 6vw, 5rem)',
+            alignItems: 'center',
+            marginBottom: 'clamp(4rem, 8vw, 7rem)'
+          }}
+          className="founder-grid"
+          >
+            {/* Photo */}
             <div style={{ 
               position: 'relative', 
-              aspectRatio: '16/9', 
-              borderRadius: '2px',
-              padding: '12px',
-              background: 'rgba(255,255,255,0.03)',
-              border: '1px solid rgba(255,255,255,0.05)',
-              boxShadow: '0 40px 100px rgba(0,0,0,0.8)'
+              aspectRatio: '4/5', 
+              borderRadius: '6px',
+              overflow: 'hidden',
+              boxShadow: '0 30px 80px rgba(0,0,0,0.6)',
+              border: '1px solid rgba(255,255,255,0.06)'
             }}>
-              {/* Viewfinder Brackets */}
-              <div style={{ position: 'absolute', top: 0, left: 0, width: '40px', height: '40px', borderTop: '2px solid var(--primary)', borderLeft: '2px solid var(--primary)', opacity: 0.6, zIndex: 10 }} />
-              <div style={{ position: 'absolute', top: 0, right: 0, width: '40px', height: '40px', borderTop: '2px solid var(--primary)', borderRight: '2px solid var(--primary)', opacity: 0.6, zIndex: 10 }} />
-              <div style={{ position: 'absolute', bottom: 0, left: 0, width: '40px', height: '40px', borderBottom: '2px solid var(--primary)', borderLeft: '2px solid var(--primary)', opacity: 0.6, zIndex: 10 }} />
-              <div style={{ position: 'absolute', bottom: 0, right: 0, width: '40px', height: '40px', borderBottom: '2px solid var(--primary)', borderRight: '2px solid var(--primary)', opacity: 0.6, zIndex: 10 }} />
+              <Image 
+                src="https://res.cloudinary.com/doajstql7/image/upload/v1776285464/ChatGPT_Image_Apr_12_2026_11_04_25_PM_xi7ewb.png" 
+                alt="Jaryd Paquette — Founder of Kootenay Signal" 
+                fill
+                style={{ objectFit: 'cover' }}
+                priority
+              />
+            </div>
 
-              {/* Technical Labels */}
-              <div style={{ position: 'absolute', top: '24px', left: '24px', fontSize: '0.55rem', letterSpacing: '0.2em', opacity: 0.4, fontWeight: 900, textTransform: 'uppercase', zIndex: 10 }}>ID: FOUNDER_SIGNAL-01</div>
-              <div style={{ position: 'absolute', top: '24px', right: '24px', display: 'flex', alignItems: 'center', gap: '8px', zIndex: 10 }}>
-                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#ff3b30', animation: 'pulse 1.5s infinite' }} />
-                <span style={{ fontSize: '0.55rem', letterSpacing: '0.2em', opacity: 0.4, fontWeight: 900, textTransform: 'uppercase' }}>REC [ON]</span>
-              </div>
-              <div style={{ position: 'absolute', bottom: '24px', left: '24px', fontSize: '0.55rem', letterSpacing: '0.2em', opacity: 0.4, fontWeight: 900, textTransform: 'uppercase', zIndex: 10 }}>LOC: 49.7749° N, 114.8858° W</div>
-
-              <div style={{ 
-                position: 'relative', width: '100%', height: '100%', 
-                overflow: 'hidden', background: '#000'
+            {/* Intro text */}
+            <div>
+              <span style={{ 
+                fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.3em', 
+                color: 'var(--primary)', textTransform: 'uppercase', 
+                display: 'block', marginBottom: '1.25rem' 
               }}>
-                <Image 
-                  src="https://res.cloudinary.com/doajstql7/image/upload/v1776285464/ChatGPT_Image_Apr_12_2026_11_04_25_PM_xi7ewb.png" 
-                  alt="Jaryd Paquette" 
-                  fill
-                  style={{ objectFit: 'cover', filter: 'contrast(1.1) brightness(0.85)' }}
-                  priority
-                />
-                {/* Scanline overlay */}
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03))', backgroundSize: '100% 4px, 3px 100%', pointerEvents: 'none', opacity: 0.4 }} />
-              </div>
+                The Founder
+              </span>
+              <h2 style={{ 
+                fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+                lineHeight: 1.05, color: '#fff',
+                fontFamily: 'var(--font-syne)', fontWeight: 800,
+                marginBottom: '1.75rem'
+              }}>
+                I&apos;m Jaryd.
+              </h2>
+              <p style={{ 
+                fontSize: 'clamp(1.05rem, 1.5vw, 1.2rem)', lineHeight: 1.85, 
+                color: 'rgba(255,255,255,0.55)', fontFamily: 'var(--font-pjs)',
+                marginBottom: '1.5rem'
+              }}>
+                I work construction during the day and build business growth systems at night. I know what it means to put in a shift — I don&apos;t sell dreams, I build <span style={{ color: '#fff', fontWeight: 600 }}>real infrastructure</span> for your business.
+              </p>
+              <p style={{ 
+                fontSize: 'clamp(1.05rem, 1.5vw, 1.2rem)', lineHeight: 1.85, 
+                color: 'rgba(255,255,255,0.55)', fontFamily: 'var(--font-pjs)' 
+              }}>
+                I live in the Kootenays, and I only work with a handful of businesses at a time. No fluff. No runaround. Just honest work that gets you <span style={{ color: '#fff', fontWeight: 600 }}>more customers</span>.
+              </p>
             </div>
           </div>
 
-          {/* ─── Raw Signal Dossier Layout ─── */}
-          <div style={{ 
-            marginTop: '6rem',
+          {/* ─── Bottom: Three value pillars ─── */}
+          <div style={{
             opacity: s6.visible ? 1 : 0,
-            transform: s6.visible ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s',
-            maxWidth: '900px'
-          }}>
-            {/* Hacker style header */}
-            <div style={{ 
-              fontFamily: 'monospace', 
-              fontSize: '0.75rem', 
-              color: 'var(--primary)', 
-              marginBottom: '3rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem',
-              letterSpacing: '0.2em'
-            }}>
-              [ ACCESSING_FOUNDER_FILES ]
-              <div style={{ flex: 1, height: '1px', background: 'rgba(230,126,34,0.1)' }} />
-              SIGNAL_01_DECRYPTED
+            transform: s6.visible ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 'clamp(2rem, 4vw, 3.5rem)',
+            borderTop: '1px solid rgba(255,255,255,0.06)',
+            paddingTop: 'clamp(3rem, 6vw, 4.5rem)'
+          }}
+          className="founder-pillars"
+          >
+            <div>
+              <h3 style={{ 
+                fontSize: 'clamp(1.1rem, 1.5vw, 1.3rem)', color: '#fff', fontWeight: 800, 
+                fontFamily: 'var(--font-syne)', marginBottom: '1rem', lineHeight: 1.3 
+              }}>
+                Built by a Tradesman
+              </h3>
+              <p style={{ 
+                fontSize: '1rem', lineHeight: 1.8, 
+                color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)' 
+              }}>
+                I understand the hustle. Early mornings, long days, earning every dollar. I bring that same work ethic to your online presence.
+              </p>
             </div>
 
-            <div style={{ 
-              display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', 
-              gap: '4rem' 
-            }}>
-              {/* Directive 1 */}
-              <div>
-                <div style={{ fontFamily: 'monospace', color: 'rgba(255,255,255,0.3)', fontSize: '0.7rem', marginBottom: '1rem' }}>
-                  // MODE: TRADESMAN_ORIGIN
-                </div>
-                <h3 style={{ fontSize: '1.4rem', color: '#fff', fontWeight: 800, fontFamily: 'var(--font-syne)', marginBottom: '1.5rem', textTransform: 'uppercase' }}>
-                  Construction by day.<br/>Signal by night.
-                </h3>
-                <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-pjs)' }}>
-                  I work <span style={{ color: 'var(--primary)' }}>construction during the day</span> and build business growth systems at night. I know what it means to put in a shift. I don&apos;t sell dreams; I build load-bearing infrastructure for your business.
-                </p>
-              </div>
-
-              {/* Directive 2 */}
-              <div>
-                <div style={{ fontFamily: 'monospace', color: 'rgba(255,255,255,0.3)', fontSize: '0.7rem', marginBottom: '1rem' }}>
-                  // MODE: LOCAL_INTEGRITY
-                </div>
-                <h3 style={{ fontSize: '1.4rem', color: '#fff', fontWeight: 800, fontFamily: 'var(--font-syne)', marginBottom: '1.5rem', textTransform: 'uppercase' }}>
-                  Hand-Picked Clients.<br/>Zero Static.
-                </h3>
-                <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-pjs)' }}>
-                  I live in the Kootenays, I am getting to know the community, and I only work with a handful of businesses at a time. I don&apos;t scale for the sake of scaling. I deliver for the sake of reputation.
-                </p>
-              </div>
-
-              {/* Directive 3 */}
-              <div>
-                <div style={{ fontFamily: 'monospace', color: 'rgba(255,255,255,0.3)', fontSize: '0.7rem', marginBottom: '1rem' }}>
-                  // MODE: TRANSPARENCY
-                </div>
-                <h3 style={{ fontSize: '1.4rem', color: '#fff', fontWeight: 800, fontFamily: 'var(--font-syne)', marginBottom: '1.5rem', textTransform: 'uppercase' }}>
-                  Truth Over Fluff.<br/>Period.
-                </h3>
-                <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-pjs)' }}>
-                  I am here to <span style={{ color: '#fff' }}>help you get more business.</span> If I can&apos;t help you, I&apos;ll tell you straight up. If I can, we&apos;ll build something that works while you stay focused on your trade.
-                </p>
-              </div>
-
-              {/* Action */}
-              <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingBottom: '1rem' }}>
-                <div style={{ 
-                  padding: '2rem', 
-                  borderLeft: '2px solid var(--primary)', 
-                  background: 'rgba(230,126,34,0.03)',
-                  marginBottom: '2rem'
-                }}>
-                  <div style={{ fontFamily: 'monospace', fontSize: '0.65rem', marginBottom: '1rem', color: 'var(--primary)' }}>[ SYSTEM_DIRECTIVE ]</div>
-                  <p style={{ fontSize: '0.95rem', fontStyle: 'italic', opacity: 0.7, marginBottom: '0' }}>
-                    &ldquo;Build the signal. Cut the noise.&rdquo;
-                  </p>
-                </div>
-                <Link href="/#how-it-works" className="story-link" style={{ fontSize: '0.9rem', fontWeight: 900 }}>
-                  <span style={{ fontFamily: 'monospace' }}>ACCESS_BLUEPRINT_FILE</span>
-                  <ArrowRight size={18} />
-                </Link>
-              </div>
+            <div>
+              <h3 style={{ 
+                fontSize: 'clamp(1.1rem, 1.5vw, 1.3rem)', color: '#fff', fontWeight: 800, 
+                fontFamily: 'var(--font-syne)', marginBottom: '1rem', lineHeight: 1.3 
+              }}>
+                Local. Not Corporate.
+              </h3>
+              <p style={{ 
+                fontSize: '1rem', lineHeight: 1.8, 
+                color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)' 
+              }}>
+                You&apos;re not a ticket number. I get to know your business, your town, and your competition — then I build something that actually works here.
+              </p>
             </div>
 
-            {/* Terminal Footer */}
-            <div style={{ 
-              marginTop: '4rem', 
-              fontFamily: 'monospace', 
-              fontSize: '0.6rem', 
-              opacity: 0.2,
-              display: 'flex',
-              justifyContent: 'space-between',
-              textTransform: 'uppercase',
-              letterSpacing: '0.2em'
-            }}>
-              <span>SIGNAL_STRENGTH: 100%</span>
-              <span>CONNECTION: ENCRYPTED_DIRECT_P2P</span>
-              <span>KOOTENAY_SIGNAL_V2.0.4</span>
+            <div>
+              <h3 style={{ 
+                fontSize: 'clamp(1.1rem, 1.5vw, 1.3rem)', color: '#fff', fontWeight: 800, 
+                fontFamily: 'var(--font-syne)', marginBottom: '1rem', lineHeight: 1.3 
+              }}>
+                Straight Talk Only
+              </h3>
+              <p style={{ 
+                fontSize: '1rem', lineHeight: 1.8, 
+                color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)' 
+              }}>
+                If I can help you, I&apos;ll show you exactly how. If I can&apos;t, I&apos;ll tell you up front. Either way, you&apos;ll know where you stand.
+              </p>
             </div>
           </div>
+
         </div>
       </section>
 
