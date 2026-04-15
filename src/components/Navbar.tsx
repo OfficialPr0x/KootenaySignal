@@ -42,6 +42,7 @@ export default function Navbar() {
   }
 
   return (
+<<<<<<< HEAD
     <nav className="navbar" id="main-nav" style={{
       top: 0,
       left: 0,
@@ -130,12 +131,50 @@ export default function Navbar() {
             </Show>
 
             {/* Primary CTA */}
+=======
+    <nav className="navbar" id="main-nav">
+      <div className="scroll-progress" style={{ width: `${scroll}%` }}></div>
+      <Link href="/" className="nav-logo" style={{ textDecoration: 'none' }}>
+        <Image 
+          src="https://res.cloudinary.com/doajstql7/image/upload/v1775879112/ChatGPT_Image_Apr_10__2026__11_27_53_PM-removebg-preview_vjtdqa.png" 
+          alt="Kootenay Signal Logo" 
+          width={120}
+          height={120}
+          className="nav-logo-img"
+        />
+        <div className="mobile-hide" style={{ marginLeft: '2rem', borderLeft: '1px solid rgba(255,255,255,0.2)', paddingLeft: '2rem' }}>
+          <span style={{ 
+            fontSize: '1rem', 
+            fontWeight: 400, 
+            fontStyle: 'italic',
+            color: 'var(--foreground)', 
+            opacity: 0.7,
+            whiteSpace: 'nowrap',
+            fontFamily: 'var(--font-serif)',
+            display: 'block'
+          }}>
+            The Kootenay's Go-To For More Business
+          </span>
+        </div>
+      </Link>
+      <div className="nav-links">
+        <Show when="signed-out">
+          <Link
+            href="/signal-check"
+            className="nav-link"
+            style={{ color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}
+          >
+            FREE SIGNAL CHECK
+          </Link>
+          <SignInButton>
+>>>>>>> 8648445 (feat: implement free signal check feature with new API and UI updates)
             <button 
               className="nav-cta"
               data-cal-link="kootenay-signal/30min"
             >
               LET&apos;S TALK
             </button>
+<<<<<<< HEAD
           </div>
 
           {/* Mobile Toggle */}
@@ -155,6 +194,98 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+=======
+          </Sig
+            href="/signal-check"
+            style={{
+              color: 'var(--primary)',
+              fontWeight: 700,
+              fontSize: '0.75rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              textDecoration: 'none',
+              marginRight: '0.5rem',
+            }}
+          >
+            FREE SIGNAL CHECK
+          </Link>
+          <Link 
+            href="/dashboard" 
+            style={{ 
+              color: 'rgba(255,255,255,0.6)', 
+              fontWeight: 700, 
+              fontSize: '0.75rem', 
+              textTransform: 'uppercase', 
+              letterSpacing: '0.1em', 
+              textDecoration: 'none',
+              marginRight: '0.5rem',
+            }}
+          >
+            DASHBOARD'0.75rem', 
+              textTransform: 'uppercase', 
+              letterSpacing: '0.1em', 
+              textDecoration: 'none',
+              marginRight: '0.5rem',
+            }}
+          >
+            SIGNAL CHECK
+          </Link>
+          <div style={{ marginRight: '1rem', display: 'flex', alignItems: 'center' }}>
+            <UserButton appearance={{ 
+              variables: {
+                colorPrimary: '#e67e22',
+                colorText: '#ffffff',
+                colorBackground: '#0d1109',
+                colorInputBackground: '#11140e',
+                colorInputText: '#ffffff',
+                fontFamily: 'var(--font-pjs)'
+              },
+              elements: { 
+                userButtonAvatarBox: { 
+                  width: '40px', 
+                  height: '40px', 
+                  border: '2px solid var(--primary)',
+                  boxShadow: '0 0 15px rgba(230, 126, 34, 0.3)',
+                  transition: 'all 0.3s ease'
+                },
+                userButtonPopoverCard: {
+                  backgroundColor: '#0d1109',
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
+                  borderRadius: '4px'
+                },
+                userButtonPopoverActionButton: {
+                  color: 'white',
+                  '&:hover': {
+                    backgroundColor: 'rgba(230, 126, 34, 0.1)',
+                    color: 'var(--primary)'
+                  }
+                },
+                userButtonPopoverActionButtonIcon: {
+                  color: 'var(--primary)'
+                },
+                userButtonPopoverActionButtonText: {
+                  fontFamily: 'var(--font-pjs)',
+                  fontWeight: 600,
+                  color: 'white'
+                },
+                userButtonPopoverFooter: {
+                  display: 'none'
+                },
+                userPreviewMainIdentifier: {
+                  color: 'white',
+                  fontFamily: 'var(--font-syne)',
+                  fontWeight: 800
+                },
+                userPreviewSecondaryIdentifier: {
+                  color: 'rgba(255,255,255,0.4)',
+                  fontFamily: 'var(--font-pjs)'
+                }
+              } 
+            }} />
+          </div>
+        </Show>
+>>>>>>> 8648445 (feat: implement free signal check feature with new API and UI updates)
 
       {/* ─── Mobile Menu Overlay ─── */}
       <div style={{ 

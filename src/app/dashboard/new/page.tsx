@@ -55,20 +55,20 @@ export default function NewAuditPage() {
     return (
       <div className="dash-running">
         <div className="dash-spinner" />
-        <h2>Scanning the Airwaves…</h2>
+        <h2>Checking your signal…</h2>
         <p className="dash-running-status">{status}</p>
         <div className="dash-running-steps">
           <div className="dash-running-step">
-            <span>🔍</span> Deep crawling {form.websiteUrl}…
+            <span>🔍</span> Checking if people can find {form.businessName || 'your business'}…
           </div>
           <div className="dash-running-step">
-            <span>📊</span> Checking Google visibility via SERP…
+            <span>📊</span> Looking for visibility gaps…
           </div>
           <div className="dash-running-step">
-            <span>⚡</span> Measuring site speed with PageSpeed Insights…
+            <span>⚡</span> Scanning speed and trust issues…
           </div>
           <div className="dash-running-step">
-            <span>🤖</span> Running AI analysis with DeepSeek…
+            <span>📈</span> Building your results…
           </div>
         </div>
       </div>
@@ -94,8 +94,8 @@ export default function NewAuditPage() {
       <div className="dash-form-header">
         <h2>New Signal Check</h2>
         <p>
-          Tell us about your business. We'll crawl your site, check your Google presence, 
-          and give you the straight goods — no fluff.
+          Tell us about your business. We&apos;ll check your visibility, trust signals, 
+          and show you what&apos;s costing you customers.
         </p>
       </div>
 
@@ -171,7 +171,7 @@ export default function NewAuditPage() {
         </button>
 
         <p className="dash-form-note">
-          Free for up to 3 checks. AI analysis takes 30–60 seconds.
+          Free for up to 3 checks. Results in 30–60 seconds.
         </p>
       </form>
     </div>

@@ -1496,6 +1496,669 @@ img[src*="clerk"],
   display: none !important; 
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   SIGNAL CHECK — Free Signal Check Lead Magnet
+   ═══════════════════════════════════════════════════════════════ */
+
+.sc-page {
+  min-height: 100vh;
+  background: #0d1109;
+  color: #f4ece1;
+  padding-top: 100px;
+  position: relative;
+}
+
+.sc-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ─── Hero / Landing ─── */
+.sc-hero {
+  padding: 4rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.sc-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image:
+    radial-gradient(ellipse at 30% 40%, rgba(230,126,34,0.2) 0%, transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(39,174,96,0.1) 0%, transparent 50%);
+}
+
+.sc-hero-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.sc-hero-content {
+  text-align: center;
+}
+
+.sc-hero-headline {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-family: var(--font-syne);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+  color: #fff;
+}
+
+.sc-hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  opacity: 0.6;
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.5;
+}
+
+/* ─── Form ─── */
+.sc-form {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.sc-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.sc-field label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.5;
+}
+
+.sc-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  color: #f4ece1;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.sc-input::placeholder {
+  color: rgba(244,236,225,0.2);
+}
+
+.sc-input:focus {
+  border-color: rgba(230,126,34,0.35);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 0 0 3px rgba(230,126,34,0.06);
+}
+
+.sc-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.sc-submit {
+  width: 100%;
+  padding: 1.1rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sc-submit:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(230,126,34,0.3);
+}
+
+.sc-submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.sc-trust-line {
+  text-align: center;
+  opacity: 0.3;
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+
+.sc-error {
+  padding: 0.85rem 1rem;
+  background: rgba(192,57,43,0.08);
+  border: 1px solid rgba(192,57,43,0.2);
+  border-left: 3px solid #c0392b;
+  border-radius: 4px;
+  color: #e74c3c;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+/* ─── Bullets ─── */
+.sc-hero-bullets {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.sc-bullets-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  opacity: 0.4;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.sc-bullets {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2rem;
+}
+
+.sc-bullets li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* ─── Social Proof Strip ─── */
+.sc-proof-strip {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 1.25rem 0;
+  background: rgba(255,255,255,0.01);
+}
+
+.sc-proof-inner {
+  text-align: center;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  opacity: 0.35;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sc-proof-sep {
+  opacity: 0.3;
+}
+
+/* ─── What This Checks ─── */
+.sc-checks-section {
+  padding: 5rem 0;
+}
+
+.sc-section-heading {
+  text-align: center;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-family: var(--font-syne);
+  font-weight: 800;
+  margin-bottom: 3rem;
+}
+
+.sc-checks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.sc-check-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 6px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.sc-check-card:hover {
+  border-color: rgba(230,126,34,0.15);
+  transform: translateY(-2px);
+}
+
+.sc-check-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(230,126,34,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  color: var(--primary);
+}
+
+.sc-check-card h3 {
+  font-size: 1.1rem;
+  font-family: var(--font-syne);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.sc-check-card p {
+  opacity: 0.5;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* ─── Why Section ─── */
+.sc-why-section {
+  padding: 4rem 0 5rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.sc-why-heading {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-family: var(--font-syne);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.2;
+}
+
+.sc-why-body {
+  text-align: center;
+  opacity: 0.5;
+  max-width: 550px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* ─── Bottom CTA ─── */
+.sc-bottom-cta {
+  padding: 5rem 0;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ═══ Scanning State ═══ */
+.sc-scan-wrap {
+  text-align: center;
+  padding: 6rem 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Signal ring animation */
+.sc-signal-ring {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 3rem;
+  position: relative;
+}
+
+.sc-signal-ring-inner {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(230,126,34,0.3);
+}
+
+.sc-signal-ring-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(230,126,34,0.15);
+  animation: scRingPulse 2.5s ease-out infinite;
+}
+
+.sc-signal-ring-pulse--2 {
+  animation-delay: 1.2s;
+}
+
+.sc-signal-ring-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 20px rgba(230,126,34,0.5);
+}
+
+@keyframes scRingPulse {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* Progress bar */
+.sc-progress-track {
+  height: 4px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sc-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), #f39c12);
+  border-radius: 2px;
+  transition: width 0.8s ease;
+}
+
+/* Scan status message */
+.sc-scan-status {
+  font-size: 0.9rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 3rem;
+  animation: scFadeIn 0.4s ease;
+  min-height: 1.5em;
+}
+
+@keyframes scFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scan steps list */
+.sc-scan-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.sc-scan-step {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  opacity: 0.15;
+  transition: opacity 0.4s ease;
+}
+
+.sc-scan-step--active {
+  opacity: 0.5;
+}
+
+.sc-scan-step-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+  transition: background 0.4s ease;
+}
+
+.sc-scan-step--active .sc-scan-step-dot {
+  background: var(--primary);
+}
+
+/* ═══ Results State ═══ */
+.sc-results-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.sc-results-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 3rem 1rem;
+}
+
+.sc-results-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+/* Score block */
+.sc-score-block {
+  margin-top: 2rem;
+}
+
+.sc-score-ring {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  position: relative;
+}
+
+.sc-score-number {
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: var(--font-syne);
+  line-height: 1;
+}
+
+.sc-score-max {
+  font-size: 0.85rem;
+  opacity: 0.3;
+  font-weight: 700;
+}
+
+.sc-score-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  opacity: 0.4;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.sc-score-verdict {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: var(--font-syne);
+}
+
+/* Summary box */
+.sc-summary-box {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Section */
+.sc-section {
+  margin-bottom: 2.5rem;
+}
+
+.sc-section-title {
+  font-size: 1.15rem;
+  font-family: var(--font-syne);
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  color: #f4ece1;
+}
+
+/* Issue cards */
+.sc-issue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.sc-issue-card {
+  background: rgba(192,57,43,0.04);
+  border: 1px solid rgba(192,57,43,0.12);
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+
+.sc-issue-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: rgba(192,57,43,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c0392b;
+  margin-bottom: 1rem;
+}
+
+.sc-issue-title {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-syne);
+}
+
+.sc-issue-desc {
+  font-size: 0.85rem;
+  opacity: 0.55;
+  line-height: 1.5;
+}
+
+/* Strengths */
+.sc-strengths {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sc-strength-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: rgba(39,174,96,0.04);
+  border: 1px solid rgba(39,174,96,0.1);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Quick wins */
+.sc-wins {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sc-win-card {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(230,126,34,0.04);
+  border: 1px solid rgba(230,126,34,0.12);
+  border-radius: 6px;
+  align-items: flex-start;
+}
+
+.sc-win-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(230,126,34,0.12);
+  color: var(--primary);
+  font-weight: 900;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--font-syne);
+}
+
+.sc-win-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Outcomes */
+.sc-outcomes {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 6px;
+  padding: 2rem;
+}
+
+.sc-outcome-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sc-outcome-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
+
+/* CTA Block */
+.sc-cta-block {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, rgba(230,126,34,0.06) 0%, rgba(230,126,34,0.02) 100%);
+  border: 2px solid rgba(230,126,34,0.15);
+  border-radius: 8px;
+  margin-top: 3rem;
+}
+
+/* ─── Signal Check Responsive ─── */
+@media (max-width: 768px) {
+  .sc-page { padding-top: 80px; }
+  .sc-hero { padding: 2rem 0 3rem; }
+  .sc-checks-grid { grid-template-columns: 1fr; }
+  .sc-field-row { grid-template-columns: 1fr; }
+  .sc-issue-grid { grid-template-columns: 1fr; }
+  .sc-bullets { flex-direction: column; align-items: center; }
+}
+
 /* ═══ Print / Save as PDF ═══ */
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }

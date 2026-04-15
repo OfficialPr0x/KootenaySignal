@@ -171,11 +171,18 @@ export default function Home() {
                 flexWrap: 'wrap',
                 justifyContent: 'inherit'
               }}>
+<<<<<<< HEAD
                 <a 
                   href="#how-it-works"
                   className="btn-hero-primary" 
+=======
+                <Link 
+                  href="/signal-check"
+                  className="btn btn-primary" 
+>>>>>>> 8648445 (feat: implement free signal check feature with new API and UI updates)
                   id="btn-cta-hero"
                 >
+<<<<<<< HEAD
                   SEE HOW THIS WORKS
                   <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
                 </a>
@@ -187,6 +194,33 @@ export default function Home() {
                 >
                   LET&apos;S TALK
                 </button>
+=======
+                  FREE SIGNAL CHECK
+                </Link>
+                <Link href="#locals" className="btn btn-secondary mobile-hide" style={{ padding: '1.25rem 2.5rem' }}>
+                  SEE LOCAL RESULTS »
+                </Link>
+              </div>
+              
+              <div style={{ marginTop: '2vh' }}>
+                <div className="badge animate-subtle-glow mobile-font-sm" style={{ 
+                  background: 'rgba(230, 126, 34, 0.1)', 
+                  borderColor: 'rgba(230, 126, 34, 0.3)', 
+                  color: 'rgba(230, 126, 34, 0.9)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  padding: '0.6rem 1.2rem',
+                  fontWeight: 900,
+                  borderRadius: '3px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  lineHeight: 1
+                }}>
+                  <AlertTriangle size={18} className="mobile-hide" />
+                  SCARCITY: We only work with 3–5 per trade, per area.
+                </div>
+>>>>>>> 8648445 (feat: implement free signal check feature with new API and UI updates)
               </div>
             </div>
           </div>
@@ -815,6 +849,7 @@ export default function Home() {
 
 
 
+<<<<<<< HEAD
       {/* ═══════════════════════════════════════════════════════════
           SECTION 7: CTA — Dramatic final close
           ═══════════════════════════════════════════════════════════ */}
@@ -853,6 +888,27 @@ export default function Home() {
             }}>
               No pressure. Just a conversation.
             </p>
+=======
+      {/* Final Conversion Section */}
+      <section id="contact" className="section-padding" style={{ backgroundColor: '#0d1109' }}>
+        <div className="container" style={{ textAlign: 'center', maxWidth: '900px' }}>
+          <span className="badge" style={{ marginBottom: '2rem' }}>Ready to Win?</span>
+          <h2 style={{ fontSize: 'var(--h1-size)', lineHeight: 0.9, marginBottom: '3rem', fontFamily: 'var(--font-syne)' }}>
+            Let’s Talk.
+          </h2>
+          <p style={{ fontSize: 'var(--p-large-size)', marginBottom: '4rem', opacity: 0.8, fontFamily: 'var(--font-pjs)' }}>
+            No pitch. I’ll show you where you’re losing work.
+          </p>
+          
+          <div className="mobile-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
+            <Link 
+              href="/signal-check"
+              className="btn btn-primary" 
+              style={{ padding: '1.8rem 4rem', fontSize: '1.5rem', fontWeight: 800, textDecoration: 'none' }}
+            >
+              RUN MY FREE SIGNAL CHECK
+            </Link>
+>>>>>>> 8648445 (feat: implement free signal check feature with new API and UI updates)
             
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
               <button 

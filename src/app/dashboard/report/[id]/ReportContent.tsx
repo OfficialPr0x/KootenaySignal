@@ -2,6 +2,16 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import {
+  Eye,
+  MapPin,
+  MousePointerClick,
+  Gauge,
+  MessageCircle,
+  Shield,
+  CheckCircle2,
+  ArrowRight,
+} from 'lucide-react';
 
 interface AuditData {
   id: string;
@@ -42,96 +52,9 @@ interface Report {
   cta_message: string;
 }
 
-function ScoreDial({ score, size = 120, label }: { score: number; size?: number; label: string }) {
-  const color = score >= 70 ? '#27ae60' : score >= 40 ? '#e67e22' : '#c0392b';
-  const circumference = 2 * Math.PI * (size / 2 - 8);
-  const dashOffset = circumference - (score / 100) * circumference;
-
-  return (
-    <div style={{ textAlign: 'center' }}>
-      <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={size / 2 - 8}
-          fill="none"
-          stroke="rgba(255,255,255,0.05)"
-          strokeWidth="6"
-        />
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={size / 2 - 8}
-          fill="none"
-          stroke={color}
-          strokeWidth="6"
-          strokeDasharray={circumference}
-          strokeDashoffset={dashOffset}
-          strokeLinecap="round"
-          style={{ transition: 'stroke-dashoffset 1s ease' }}
-        />
-        <text
-          x={size / 2}
-          y={size / 2}
-          textAnchor="middle"
-          dy="0.35em"
-          fill={color}
-          fontSize={size * 0.28}
-          fontWeight="900"
-          fontFamily="var(--font-syne)"
-          style={{ transform: 'rotate(90deg)', transformOrigin: 'center' }}
-        >
-          {score}
-        </text>
-      </svg>
-      <p style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.6, marginTop: '0.5rem' }}>
-        {label}
-      </p>
-    </div>
-  );
-}
-
-function ScoreBar({ score, label }: { score: number; label: string }) {
-  const color = score >= 70 ? '#27ae60' : score >= 40 ? '#e67e22' : '#c0392b';
-  return (
-    <div style={{ marginBottom: '1rem' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
-        <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{label}</span>
-        <span style={{ fontSize: '0.8rem', fontWeight: 800, color }}>{score}/100</span>
-      </div>
-      <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', overflow: 'hidden' }}>
-        <div style={{
-          height: '100%',
-          width: `${score}%`,
-          background: color,
-          borderRadius: '3px',
-          transition: 'width 1s ease',
-        }} />
-      </div>
-    </div>
-  );
-}
-
-function Card({ title, children, accent }: { title: string; children: React.ReactNode; accent?: string }) {
-  return (
-    <div style={{
-      background: 'rgba(255,255,255,0.02)',
-      border: `1px solid ${accent ? accent + '33' : 'rgba(255,255,255,0.05)'}`,
-      borderRadius: '4px',
-      padding: '2rem',
-    }}>
-      <h3 style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.15em', opacity: 0.5, marginBottom: '1.25rem' }}>
-        {title}
-      </h3>
-      {children}
-    </div>
-  );
-}
-
 export default function ReportContent({ audit }: { audit: AuditData }) {
   const rawReport: Report | null = audit.report_data ?? null;
 
-  // Normalize arrays — API may return undefined for any of these
   const report = rawReport ? {
     ...rawReport,
     strengths: rawReport.strengths ?? [],
@@ -142,7 +65,7 @@ export default function ReportContent({ audit }: { audit: AuditData }) {
     recommended_services: rawReport.recommended_services ?? [],
   } : null;
 
-  // Load Cal.com embed on mount so the booking button works
+  // Load Cal.com embed on mount
   useEffect(() => {
     (function (C: any, A: string, L: string) {
       const p = function (a: any, ar: any) { a.q.push(ar); };
@@ -191,6 +114,32 @@ export default function ReportContent({ audit }: { audit: AuditData }) {
     );
   }
 
+  const score = report.signal_score;
+  const scoreColor = score >= 80 ? '#27ae60' : score >= 60 ? '#e67e22' : score >= 40 ? '#e67e22' : '#c0392b';
+  const scoreLabel =
+    score >= 80 ? 'Strong signal' :
+    score >= 60 ? 'Decent, but leaking opportunities' :
+    score >= 40 ? 'Weak visibility and missed potential' :
+    'You\'re likely being overlooked';
+
+  // Build issue cards from sub-scores
+  const issueCards: { icon: React.ReactNode; title: string; desc: string }[] = [];
+  if (report.visibility_score < 65)
+    issueCards.push({ icon: <Eye size={22} />, title: 'Low visibility', desc: 'You\'re not showing up strongly where local customers are looking.' });
+  if (report.local_presence_score < 65)
+    issueCards.push({ icon: <MapPin size={22} />, title: 'Weak location signals', desc: 'Your site doesn\'t clearly tell search engines and visitors that you serve the right area.' });
+  if (report.conversion_score < 65)
+    issueCards.push({ icon: <MousePointerClick size={22} />, title: 'Conversion friction', desc: 'Even when people land on your site, parts of it may be slowing them down or causing doubt.' });
+  if (report.seo_score < 65 || report.paid_readiness_score < 50)
+    issueCards.push({ icon: <Gauge size={22} />, title: 'Performance issues', desc: 'Slow load times or technical issues can hurt both rankings and customer trust.' });
+  if (report.offer_clarity_score < 65)
+    issueCards.push({ icon: <MessageCircle size={22} />, title: 'Message clarity', desc: 'It may not be obvious enough what you do, who you help, or why someone should contact you.' });
+  if (report.trust_score < 65)
+    issueCards.push({ icon: <Shield size={22} />, title: 'Trust gaps', desc: 'Your site may be missing the signals that help visitors feel confident about reaching out.' });
+
+  const topIssues = issueCards.slice(0, 5);
+  const topWins = report.quick_wins.slice(0, 3);
+
   return (
     <div>
       <Link
@@ -202,190 +151,118 @@ export default function ReportContent({ audit }: { audit: AuditData }) {
           display: 'inline-block',
           marginBottom: '1.5rem',
           fontWeight: 600,
-          transition: 'color 0.3s ease',
         }}
       >
         ← Back to Dashboard
       </Link>
 
-      {/* Header */}
+      {/* Results Hero */}
       <div style={{
         textAlign: 'center',
         marginBottom: '3rem',
         padding: '3rem 2rem',
         background: 'rgba(255,255,255,0.01)',
         border: '1px solid rgba(255,255,255,0.05)',
-        borderRadius: '4px',
+        borderRadius: '6px',
       }}>
-        <div style={{ marginBottom: '0.5rem' }}>
-          <span style={{
-            fontSize: '0.7rem',
-            fontWeight: 800,
-            textTransform: 'uppercase',
-            letterSpacing: '0.2em',
-            color: '#e67e22',
-          }}>
-            Kootenay Signal Check Report
-          </span>
-        </div>
-        <h2 style={{ fontSize: '2rem', fontFamily: 'var(--font-syne)', marginBottom: '0.5rem', fontWeight: 800 }}>
-          {audit.business_name}
+        <p style={{ fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#e67e22', marginBottom: '1rem' }}>
+          Signal Check Results
+        </p>
+        <h2 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '0.5rem', lineHeight: 1.1 }}>
+          Here&apos;s what&apos;s costing you business
         </h2>
         <p style={{ opacity: 0.4, fontSize: '0.85rem', marginBottom: '2rem' }}>
-          {audit.website_url} {audit.city && `• ${audit.city}`} {audit.industry && `• ${audit.industry}`}
+          Signal Check for <strong style={{ color: '#f4ece1' }}>{audit.business_name}</strong>
+          {audit.city && <> &middot; {audit.city}</>}
+          {audit.industry && <> &middot; {audit.industry}</>}
         </p>
 
-        <ScoreDial score={report.signal_score} size={160} label="Signal Score" />
+        {/* Main Score */}
+        <div className="sc-score-block">
+          <div className="sc-score-ring" style={{ borderColor: scoreColor, boxShadow: `0 0 40px ${scoreColor}22` }}>
+            <span className="sc-score-number" style={{ color: scoreColor }}>{score}</span>
+            <span className="sc-score-max">/100</span>
+          </div>
+          <p className="sc-score-label">Signal Score</p>
+          <p className="sc-score-verdict" style={{ color: scoreColor }}>{scoreLabel}</p>
+        </div>
+      </div>
 
-        <p style={{
-          fontSize: '1.25rem',
-          fontWeight: 700,
-          fontFamily: 'var(--font-syne)',
-          marginTop: '1.5rem',
-          color: report.signal_score >= 70 ? '#27ae60' : report.signal_score >= 40 ? '#e67e22' : '#c0392b',
-        }}>
-          {report.headline}
-        </p>
-        <p style={{ opacity: 0.6, maxWidth: '600px', margin: '1rem auto 0', lineHeight: 1.6 }}>
+      {/* What this means */}
+      <div className="sc-summary-box" style={{ marginBottom: '2rem' }}>
+        <h3 className="sc-section-title">What this means</h3>
+        <p style={{ opacity: 0.8, lineHeight: 1.7, fontSize: '1.05rem' }}>
           {report.summary}
         </p>
       </div>
 
-      {/* Score Breakdown */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
-        <Card title="Score Breakdown">
-          <ScoreBar score={report.visibility_score} label="Visibility" />
-          <ScoreBar score={report.trust_score} label="Trust" />
-          <ScoreBar score={report.conversion_score} label="Conversion" />
-          <ScoreBar score={report.local_presence_score} label="Local Presence" />
-          <ScoreBar score={report.offer_clarity_score} label="Offer Clarity" />
-          <ScoreBar score={report.paid_readiness_score} label="Paid Ad Readiness" />
-          <ScoreBar score={report.seo_score} label="SEO" />
-        </Card>
-
-        <Card title="Category Scores">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
-            <ScoreDial score={report.visibility_score} size={80} label="Visibility" />
-            <ScoreDial score={report.trust_score} size={80} label="Trust" />
-            <ScoreDial score={report.conversion_score} size={80} label="Conversion" />
-            <ScoreDial score={report.local_presence_score} size={80} label="Local" />
-            <ScoreDial score={report.offer_clarity_score} size={80} label="Clarity" />
-            <ScoreDial score={report.seo_score} size={80} label="SEO" />
+      {/* Core Issue Cards */}
+      {topIssues.length > 0 && (
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 className="sc-section-title">What&apos;s hurting you</h3>
+          <div className="sc-issue-grid">
+            {topIssues.map((issue, i) => (
+              <div key={i} className="sc-issue-card">
+                <div className="sc-issue-icon">{issue.icon}</div>
+                <h4 className="sc-issue-title">{issue.title}</h4>
+                <p className="sc-issue-desc">{issue.desc}</p>
+              </div>
+            ))}
           </div>
-        </Card>
-      </div>
+        </div>
+      )}
 
-      {/* Strengths & Weaknesses */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
-        <Card title="Strengths" accent="#27ae60">
-          <ul style={{ listStyle: 'none', padding: 0 }}>
+      {/* What's Already Working */}
+      {report.strengths.length > 0 && (
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 className="sc-section-title">What&apos;s already working</h3>
+          <div className="sc-strengths">
             {report.strengths.map((s, i) => (
-              <li key={i} style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem', fontSize: '0.9rem' }}>
-                <span style={{ color: '#27ae60', fontWeight: 900, flexShrink: 0 }}>✓</span>
+              <div key={i} className="sc-strength-item">
+                <CheckCircle2 size={18} color="#27ae60" style={{ flexShrink: 0, marginTop: '2px' }} />
                 <span>{s}</span>
-              </li>
+              </div>
             ))}
-          </ul>
-        </Card>
-
-        <Card title="Weaknesses" accent="#c0392b">
-          <ul style={{ listStyle: 'none', padding: 0 }}>
-            {report.weaknesses.map((w, i) => (
-              <li key={i} style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem', fontSize: '0.9rem' }}>
-                <span style={{ color: '#c0392b', fontWeight: 900, flexShrink: 0 }}>✗</span>
-                <span>{w}</span>
-              </li>
-            ))}
-          </ul>
-        </Card>
-      </div>
-
-      {/* Quick Wins */}
-      {report.quick_wins.length > 0 && (
-        <div style={{ marginBottom: '2rem' }}>
-          <Card title="Quick Wins — Fastest Improvements" accent="#e67e22">
-            <div style={{ display: 'grid', gap: '0.75rem' }}>
-              {report.quick_wins.map((qw, i) => (
-                <div key={i} style={{
-                  display: 'flex',
-                  gap: '0.75rem',
-                  padding: '0.75rem 1rem',
-                  background: 'rgba(230,126,34,0.05)',
-                  borderRadius: '4px',
-                  fontSize: '0.9rem',
-                  alignItems: 'flex-start',
-                }}>
-                  <span style={{ color: '#e67e22', fontWeight: 900, fontSize: '1.1rem', flexShrink: 0 }}>⚡</span>
-                  <span>{qw}</span>
-                </div>
-              ))}
-            </div>
-          </Card>
+          </div>
         </div>
       )}
 
-      {/* SEO Issues & Keyword Insights */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
-        {report.seo_issues.length > 0 && (
-          <Card title="SEO Issues">
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {report.seo_issues.map((issue, i) => (
-                <li key={i} style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem', fontSize: '0.85rem' }}>
-                  <span style={{ color: '#f39c12', fontWeight: 900, flexShrink: 0 }}>⚠</span>
-                  <span>{issue}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
-        )}
-
-        {report.keyword_insights.length > 0 && (
-          <Card title="Keyword Rankings">
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {report.keyword_insights.map((insight, i) => (
-                <li key={i} style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem', fontSize: '0.85rem' }}>
-                  <span style={{ color: '#3498db', fontWeight: 900, flexShrink: 0 }}>📍</span>
-                  <span>{insight}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
-        )}
-      </div>
-
-      {/* Recommended Services */}
-      {report.recommended_services.length > 0 && (
+      {/* Fastest Wins */}
+      {topWins.length > 0 && (
         <div style={{ marginBottom: '2rem' }}>
-          <Card title="Recommended Kootenay Signal Services">
-            <div style={{ display: 'grid', gap: '0.5rem' }}>
-              {report.recommended_services.map((s, i) => (
-                <div key={i} style={{
-                  padding: '0.75rem 1rem',
-                  background: 'rgba(230,126,34,0.03)',
-                  border: '1px solid rgba(230,126,34,0.1)',
-                  borderRadius: '4px',
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
-                }}>
-                  {s}
-                </div>
-              ))}
-            </div>
-          </Card>
+          <h3 className="sc-section-title">What to fix first</h3>
+          <div className="sc-wins">
+            {topWins.map((win, i) => (
+              <div key={i} className="sc-win-card">
+                <div className="sc-win-number">{i + 1}</div>
+                <p className="sc-win-text">{win}</p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
+
+      {/* What better signal leads to */}
+      <div className="sc-outcomes" style={{ marginBottom: '2rem' }}>
+        <h3 className="sc-section-title">What better signal can lead to</h3>
+        <div className="sc-outcome-list">
+          {[
+            'More calls from local customers',
+            'Better trust when people land on your site',
+            'Less business lost to competitors who are easier to find',
+          ].map((item, i) => (
+            <div key={i} className="sc-outcome-item">
+              <ArrowRight size={16} color="#e67e22" style={{ flexShrink: 0 }} />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* CTA Block */}
-      <div style={{
-        textAlign: 'center',
-        padding: '3rem 2rem',
-        background: 'linear-gradient(135deg, rgba(230,126,34,0.05) 0%, rgba(230,126,34,0.02) 100%)',
-        border: '2px solid rgba(230,126,34,0.2)',
-        borderRadius: '4px',
-        marginBottom: '2rem',
-      }}>
+      <div className="sc-cta-block" style={{ marginBottom: '2rem' }}>
         <h3 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-syne)', marginBottom: '1rem', fontWeight: 800 }}>
-          Ready to Fix Your Signal?
+          Want help fixing this?
         </h3>
         <p style={{ opacity: 0.7, maxWidth: '500px', margin: '0 auto 2rem', lineHeight: 1.6 }}>
           {report.cta_message}
@@ -395,18 +272,20 @@ export default function ReportContent({ audit }: { audit: AuditData }) {
             className="btn btn-primary"
             data-cal-link="kootenay-signal/30min"
             data-cal-namespace="30min"
-            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+            data-cal-config='{"layout":"month_view"}'
             style={{ padding: '1rem 2.5rem', fontSize: '1rem', fontWeight: 800, cursor: 'pointer' }}
           >
-            Book a Signal Strategy Call
+            LET&apos;S FIX THIS
           </button>
-          <Link
-            href="/dashboard/new"
-            className="dash-new-btn"
-            style={{ padding: '1rem 2.5rem', fontSize: '0.85rem' }}
+          <button
+            className="btn btn-outline"
+            data-cal-link="kootenay-signal/30min"
+            data-cal-namespace="30min"
+            data-cal-config='{"layout":"month_view"}'
+            style={{ padding: '1rem 2.5rem', fontSize: '1rem', cursor: 'pointer' }}
           >
-            <span>Run Another Check</span>
-          </Link>
+            BOOK A SIGNAL CALL
+          </button>
         </div>
       </div>
 
@@ -460,7 +339,7 @@ export default function ReportContent({ audit }: { audit: AuditData }) {
       {/* Footer meta */}
       <div style={{ textAlign: 'center', padding: '2rem 0', opacity: 0.3, fontSize: '0.7rem' }}>
         Report generated on {new Date(audit.created_at).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}
-        <br />Powered by Kootenay Signal Check AI
+        <br />Kootenay Signal &mdash; A free check that shows what&apos;s costing your business customers.
       </div>
     </div>
   );

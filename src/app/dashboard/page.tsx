@@ -82,7 +82,7 @@ export default async function DashboardPage() {
           </div>
           <h2>No Signal Out Here… Yet</h2>
           <p>
-            Every Kootenay business has a signal — most just don't know if anyone can hear it.
+            Every business has a signal — most just don&apos;t know if anyone can hear it.
             Run your first free check and find out where you stand.
           </p>
           <Link href="/dashboard/new" className="dash-empty-cta">
@@ -90,16 +90,16 @@ export default async function DashboardPage() {
           </Link>
           <div className="dash-empty-features">
             <div className="dash-empty-feat">
-              <span>🔍</span> Deep Website Crawl
+              <span>🔍</span> Can people find you?
             </div>
             <div className="dash-empty-feat">
-              <span>📊</span> Google Visibility Check
+              <span>📊</span> Does your site build trust?
             </div>
             <div className="dash-empty-feat">
-              <span>⚡</span> Speed Analysis
+              <span>⚡</span> What to fix first
             </div>
             <div className="dash-empty-feat">
-              <span>🤖</span> AI-Powered Report
+              <span>📈</span> How your site performs
             </div>
           </div>
         </div>
