@@ -197,31 +197,31 @@ export default function Home() {
         <div style={{ 
           position: 'absolute', bottom: 0, left: 0, width: '100%',
           zIndex: 10, pointerEvents: 'none',
-          background: 'rgba(13,17,9,0.6)',
-          backdropFilter: 'blur(8px)',
           borderTop: '1px solid rgba(255,255,255,0.06)',
-          padding: '1.25rem 0'
+          padding: '0.85rem 0'
         }}>
           <div style={{ 
-            display: 'flex', justifyContent: 'stretch', alignItems: 'center',
+            display: 'flex', justifyContent: 'center', alignItems: 'center',
+            gap: '0.4rem',
             width: '100%',
             padding: '0 clamp(1.5rem, 4vw, 4rem)',
           }}>
             {['Fernie', 'Sparwood', 'Elkford', 'Cranbrook', 'Nelson', 'Castlegar', 'Trail', 'Kimberley'].map((town, i) => (
-              <span key={i} style={{ 
-                flex: 1, 
-                textAlign: 'center',
-                whiteSpace: 'nowrap',
-                fontSize: 'clamp(0.65rem, 0.9vw, 0.85rem)', 
-                fontWeight: 800, 
-                textTransform: 'uppercase', 
-                letterSpacing: '0.25em',
-                color: 'rgba(255,255,255,0.4)', 
-                fontFamily: 'var(--font-syne)',
-                borderRight: i < 7 ? '1px solid rgba(255,255,255,0.1)' : 'none',
-                padding: '0.25rem 0',
-              }}>
-                {town}
+              <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                <span style={{ 
+                  whiteSpace: 'nowrap',
+                  fontSize: 'clamp(0.55rem, 0.7vw, 0.7rem)', 
+                  fontWeight: 500, 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.15em',
+                  color: 'rgba(255,255,255,0.3)', 
+                  fontFamily: 'var(--font-sans)',
+                }}>
+                  {town}
+                </span>
+                {i < 7 && (
+                  <span style={{ color: 'rgba(255,255,255,0.12)', fontSize: '0.5rem' }}>·</span>
+                )}
               </span>
             ))}
           </div>
