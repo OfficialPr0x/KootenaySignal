@@ -24,8 +24,8 @@ const vollkorn = Vollkorn({
 });
 
 export const metadata: Metadata = {
-  title: 'Kootenay Signal | Digital Growth for Local Kootenay Business',
-  description: 'The Kootenay\'s Go-To agency for high-conversion web development, AI infrastructure, and local-first marketing.',
+  title: 'Kootenay Signal | I Help Kootenay Businesses Get More Business',
+  description: 'More calls. More jobs. Less guesswork. I help local Kootenay businesses get found, get chosen, and never miss a lead. Based in Sparwood, serving the Kootenays.',
   icons: {
     icon: '/favicon.png',
   },

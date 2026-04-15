@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏔️ Kootenay Signal
 
-## Getting Started
+**"I Help Kootenay Businesses Get More Business."**
 
-First, run the development server:
+Kootenay Signal is a high-performance marketing and digital growth engine designed specifically for local businesses in the Kootenay region. This isn't just a website; it's a high-fidelity conversion machine built to transform "digital ghost towns" into thriving, lead-generating assets.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💎 The Vision
+Local business owners don't care about "marketing funnels" or "latency optimization." They care about calls, jobs, and revenue. Kootenay Signal was built to bridge the gap between world-class technology and the rugged, local reality of the Kootenays.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Core Philosophy
+- **Message First**: No jargon. Just results.
+- **Cinematic Authority**: A design system that commands respect and establishes immediate trust.
+- **Local Focus**: Serving the "Kootenay 8" (Fernie, Sparwood, Elkford, Cranbrook, Nelson, Castlegar, Trail, Kimberley).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ The Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend & Core
+- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/) for lightning-fast performance and SEO.
+- **Styling**: Pure, high-performance CSS (no heavy frameworks) for maximum design control, glassmorphism, and atmospheric effects.
+- **Iconography**: [Lucide React](https://lucide.dev/) for clean, functional visual cues.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Infrastructure & Services
+- **Authentication**: [Clerk](https://clerk.com/) for secure individual business owner dashboards.
+- **Scheduling**: [Cal.com](https://cal.com/) integration for direct, frictionless consultation booking.
+- **Media**: [Cloudinary](https://cloudinary.com/) for cinematic, ultra-optimized image delivery.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📐 Key Components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 1. Cinematic Landing Page
+- **IntersectionObserver Animations**: Staggered scroll reveals that make the content feel "alive."
+- **3-Second Rule Messaging**: Headline-driven architecture to minimize cognitive load.
+- **Bottom-Anchored Territory Strip**: Constant reinforcement of local service areas.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 2. The Marketing Engine
+- **What I Do Section**: Structured grid addressing the three pillars: *Get Found, Get Chosen, Never Miss Out.*
+- **Step-by-Step Blueprint**: A vertical timeline showing the "How" without overwhelming the user.
+- **Outcome Visualizers**: Clear cards showing the "Real Life" results of the service.
+
+### 3. Business Owner Dashboard
+- A private space for clients to view leads, track progress, and manage their growth strategies (Integrated via Clerk).
+
+---
+
+## 🚀 Getting Started
+
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Environment Setup**:
+   Ensure you have your Clerk, Cal.com, and Cloudinary keys configured in `.env.local`.
+
+3. **Run Development**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for Production**:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 🌲 Serving the Kootenays
+Every line of code in this repository is dedicated to helping businesses in:
+**Fernie • Sparwood • Elkford • Cranbrook • Nelson • Castlegar • Trail • Kimberley**
+
+---
+
+*Designed and Built with precision to match the Kootenay Signal reputation.*

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
 import { usePathname } from 'next/navigation';
-import { Menu, X, ChevronRight, Signal } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 
 export default function Navbar() {
   const [scroll, setScroll] = useState(0);
@@ -46,11 +46,12 @@ export default function Navbar() {
       top: 0,
       left: 0,
       width: '100%',
-      height: '90px',
-      background: 'rgba(13, 17, 9, 0.95)',
-      backdropFilter: 'blur(20px)',
-      borderBottom: '1px solid rgba(230, 126, 34, 0.2)',
-      padding: '0 4rem',
+      height: '72px',
+      background: 'rgba(13, 17, 9, 0.92)',
+      backdropFilter: 'blur(24px)',
+      WebkitBackdropFilter: 'blur(24px)',
+      borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+      padding: '0 clamp(1.5rem, 4vw, 4rem)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -66,131 +67,74 @@ export default function Navbar() {
         justifyContent: 'space-between', 
         alignItems: 'center' 
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
-          <Link href="/" className="nav-logo" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-            <Image 
-              src="https://res.cloudinary.com/doajstql7/image/upload/v1775879112/ChatGPT_Image_Apr_10__2026__11_27_53_PM-removebg-preview_vjtdqa.png" 
-              alt="Kootenay Signal Logo" 
-              width={80}
-              height={80}
-              className="nav-logo-img"
-              style={{ height: '60px', width: 'auto' }}
-            />
-            <div className="mobile-hide" style={{ marginLeft: '2rem', display: 'flex', flexDirection: 'column' }}>
-              <span style={{ 
-                fontSize: '0.9rem', 
-                fontWeight: 900, 
-                color: 'var(--primary)', 
-                letterSpacing: '0.15em',
-                lineHeight: 1
-              }}>
-                Kootenay Signal
-              </span>
-              <span style={{ 
-                fontSize: '0.8rem', 
-                fontWeight: 300, 
-                color: 'white', 
-                opacity: 0.3,
-                marginTop: '6px'
-              }}>
-                Dominate The Local Market
-              </span>
-            </div>
-          </Link>
-        </div>
+        {/* ─── Left: Logo + Brand ─── */}
+        <Link href="/" className="nav-logo" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <Image 
+            src="https://res.cloudinary.com/doajstql7/image/upload/v1775879112/ChatGPT_Image_Apr_10__2026__11_27_53_PM-removebg-preview_vjtdqa.png" 
+            alt="Kootenay Signal Logo" 
+            width={80}
+            height={80}
+            className="nav-logo-img"
+            style={{ height: '48px', width: 'auto' }}
+          />
+          <div className="mobile-hide" style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+            <span style={{ 
+              fontSize: '0.9rem', 
+              fontWeight: 900, 
+              color: 'var(--primary)', 
+              letterSpacing: '0.15em',
+              lineHeight: 1
+            }}>
+              Kootenay Signal
+            </span>
+            <span style={{ 
+              fontSize: '0.8rem', 
+              fontWeight: 300, 
+              color: 'white', 
+              opacity: 0.3,
+            }}>
+              More Business. Guaranteed.
+            </span>
+          </div>
+        </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
-          {/* Nav Links Container */}
-          <div className="nav-links mobile-hide" style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
+        {/* ─── Right: Nav items — single clean row ─── */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          
+          {/* Desktop nav links */}
+          <div className="nav-links mobile-hide" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
             <Show when="signed-out">
               <SignInButton>
-                <button 
-                  className="nav-link-premium"
-                  style={{ 
-                    background: 'none', 
-                    border: 'none', 
-                    color: 'white', 
-                    fontSize: '0.8rem', 
-                    fontWeight: 800, 
-                    letterSpacing: '0.05em', 
-                    opacity: 0.5,
-                    cursor: 'pointer',
-                    position: 'relative',
-                    transition: 'all 0.3s'
-                  }}
-                >
-                  Check My Signal
+                <button className="nav-item-btn">
+                  Sign In
                 </button>
               </SignInButton>
             </Show>
 
             <Show when="signed-in">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-                <Link 
-                  href="/dashboard" 
-                  style={{ 
-                    color: 'var(--primary)', 
-                    fontWeight: 900, 
-                    fontSize: '0.8rem', 
-                    letterSpacing: '0.05em',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.6rem'
-                  }}
-                >
-                  <div className="pulse-dot" style={{ width: '6px', height: '6px', background: 'var(--primary)', borderRadius: '50%' }} />
-                  System Status: Active
-                </Link>
-                <UserButton appearance={{ variables: { colorPrimary: '#e67e22' } }} />
-              </div>
+              <Link href="/dashboard" className="nav-item-link">
+                Dashboard
+              </Link>
             </Show>
 
-            <Link href="/#founder" style={{ 
-              color: 'white', 
-              opacity: 0.5, 
-              fontSize: '0.8rem', 
-              fontWeight: 800, 
-              letterSpacing: '0.05em',
-              transition: 'opacity 0.3s'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-            onMouseLeave={(e) => e.currentTarget.style.opacity = '0.5'}
-            >
-              Founder Story
+            <Link href="/#about" className="nav-item-link">
+              About
             </Link>
 
-            {/* Main CTA - Weaponized Industrial Button */}
+            {/* Divider */}
+            <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.08)', margin: '0 0.75rem' }} />
+
+            <Show when="signed-in">
+              <UserButton appearance={{ variables: { colorPrimary: '#e67e22' } }} />
+              <div style={{ width: '0.5rem' }} />
+            </Show>
+
+            {/* Primary CTA */}
             <button 
+              className="nav-cta"
               data-cal-link="kootenay-signal/30min"
-              style={{ 
-                height: '48px',
-                padding: '0 2.5rem',
-                background: 'transparent',
-                color: 'var(--primary)',
-                border: '1px solid var(--primary)',
-                fontSize: '0.8rem',
-                fontWeight: 900,
-                letterSpacing: '0.05em',
-                cursor: 'pointer',
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                transition: 'all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--primary)';
-                e.currentTarget.style.color = 'black';
-                e.currentTarget.style.boxShadow = '0 0 30px rgba(230, 126, 34, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.color = 'var(--primary)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
             >
-              <Signal size={16} />
-              Initiate Signal Boost
+              LET&apos;S TALK
             </button>
           </div>
 
@@ -207,56 +151,75 @@ export default function Navbar() {
               zIndex: 1001
             }}
           >
-            {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* ─── Mobile Menu Overlay ─── */}
       <div style={{ 
         position: 'fixed',
-        top: '-20px',
-        right: '-2rem',
-        width: 'calc(100% + 4rem)',
-        height: '100vh',
-        background: 'rgba(13, 17, 9, 0.98)',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100dvh',
+        background: 'rgba(7, 10, 5, 0.98)',
         zIndex: 1000,
-        transform: isMenuOpen ? 'translateY(20px)' : 'translateY(-100%)',
+        transform: isMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
         opacity: isMenuOpen ? 1 : 0,
         visibility: isMenuOpen ? 'visible' : 'hidden',
-        transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
+        transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
         display: 'flex',
         flexDirection: 'column',
-        padding: '8rem 4rem 4rem',
+        justifyContent: 'center',
+        padding: '4rem 3rem',
         backdropFilter: 'blur(20px)'
       }}>
-        <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-          <div style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '1.5rem' }}>
-            <p style={{ fontSize: '0.8rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '0.1rem' }}>Navigation</p>
-          </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <Show when="signed-out">
+            <SignInButton>
+              <button style={{ 
+                background: 'none', border: 'none', color: 'white', textAlign: 'left', 
+                fontSize: '2rem', fontWeight: 800, fontFamily: 'var(--font-syne)',
+                cursor: 'pointer', padding: '0.5rem 0',
+                opacity: 0.7, transition: 'opacity 0.3s'
+              }}>Sign In</button>
+            </SignInButton>
+          </Show>
+          <Show when="signed-in">
+            <Link 
+              href="/dashboard" 
+              onClick={() => setIsMenuOpen(false)} 
+              style={{ 
+                color: 'white', fontSize: '2rem', fontWeight: 800, 
+                fontFamily: 'var(--font-syne)', padding: '0.5rem 0',
+                opacity: 0.7, transition: 'opacity 0.3s'
+              }}
+            >Dashboard</Link>
+          </Show>
+          <Link 
+            href="/#about" 
+            onClick={() => setIsMenuOpen(false)} 
+            style={{ 
+              color: 'white', fontSize: '2rem', fontWeight: 800, 
+              fontFamily: 'var(--font-syne)', padding: '0.5rem 0',
+              opacity: 0.7, transition: 'opacity 0.3s'
+            }}
+          >About</Link>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-            <Show when="signed-out">
-              <SignInButton>
-                <button style={{ background: 'none', border: 'none', color: 'white', textAlign: 'left', fontSize: '2rem', fontWeight: 800, fontFamily: 'var(--font-syne)' }}>Check My Signal</button>
-              </SignInButton>
-            </Show>
-            <Show when="signed-in">
-              <Link href="/dashboard" onClick={() => setIsMenuOpen(false)} style={{ color: 'white', fontSize: '2rem', fontWeight: 800, fontFamily: 'var(--font-syne)' }}>Command Center</Link>
-            </Show>
-            <Link href="/#founder" onClick={() => setIsMenuOpen(false)} style={{ color: 'white', fontSize: '2rem', fontWeight: 800, fontFamily: 'var(--font-syne)' }}>Founder Story</Link>
-          </div>
+          <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', margin: '1rem 0' }} />
 
-          <div style={{ marginTop: 'auto' }}>
-            <button 
-              className="btn btn-primary" 
-              data-cal-link="kootenay-signal/30min"
-              onClick={() => setIsMenuOpen(false)}
-              style={{ width: '100%', padding: '1.5rem', fontSize: '0.9rem', borderRadius: '4px', letterSpacing: '0.1rem' }}
-            >
-              Initiate Signal Boost
-            </button>
-          </div>
+          <button 
+            className="btn btn-primary" 
+            data-cal-link="kootenay-signal/30min"
+            onClick={() => setIsMenuOpen(false)}
+            style={{ 
+              width: '100%', padding: '1.25rem', fontSize: '1rem', 
+              borderRadius: '4px', letterSpacing: '0.1em', fontWeight: 900
+            }}
+          >
+            LET&apos;S TALK
+          </button>
         </div>
       </div>
     </nav>
