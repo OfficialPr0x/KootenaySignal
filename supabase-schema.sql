@@ -99,6 +99,10 @@ create table if not exists action_items (
   difficulty text not null default 'easy', -- 'easy', 'medium', 'hard'
   is_completed boolean default false,
   is_locked boolean default false, -- premium items they can see but not access
+  impact_score integer not null default 5, -- 1-10, estimated signal score boost
+  estimated_minutes integer not null default 15, -- how long this takes to fix
+  how_to_fix jsonb default '[]'::jsonb, -- step-by-step instructions array
+  completed_at timestamptz, -- when the item was marked complete
   created_at timestamptz default now()
 );
 

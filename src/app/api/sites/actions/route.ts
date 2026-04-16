@@ -44,7 +44,10 @@ export async function PATCH(request: Request) {
 
   const { error } = await supabase
     .from('action_items')
-    .update({ is_completed: body.is_completed })
+    .update({
+      is_completed: body.is_completed,
+      completed_at: body.is_completed ? new Date().toISOString() : null,
+    })
     .eq('id', body.id)
     .eq('site_id', site.id);
 

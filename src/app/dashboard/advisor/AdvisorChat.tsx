@@ -25,7 +25,7 @@ export default function AdvisorChat({ initialMessages, businessName }: { initial
 
   // Handle initial query from URL
   useEffect(() => {
-    if (initialQ && !sentInitial.current && messages.length === 0) {
+    if (initialQ && !sentInitial.current) {
       sentInitial.current = true;
       sendMessage(initialQ);
     }

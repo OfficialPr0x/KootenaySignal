@@ -74,7 +74,13 @@ export async function POST(request: Request) {
       psi_data: psiData,
     }).select().single();
 
-    // Generate new action items
+    // Clear old incomplete action items to avoid duplicates, keep completed ones
+    await supabase.from('action_items')
+      .delete()
+      .eq('site_id', site.id)
+      .eq('is_completed', false);
+
+    // Generate fresh action items
     const actions = generateActionItems(report, crawlData, serpData, psiData);
     if (actions.length > 0) {
       await supabase.from('action_items').insert(
