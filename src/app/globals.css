@@ -2607,22 +2607,22 @@ img[src*="clerk"],
 /* Shell with sidebar */
 .dash-shell--with-sidebar {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
   padding-top: 80px;
+  overflow: hidden;
 }
 
 /* ─── Sidebar ─── */
 .dash-sidebar {
   width: 240px;
-  min-height: calc(100vh - 80px);
+  height: calc(100vh - 80px);
   background: rgba(13,17,9,0.95);
   border-right: 1px solid rgba(255,255,255,0.04);
   display: flex;
   flex-direction: column;
   padding: 2rem 0;
-  position: sticky;
-  top: 80px;
   flex-shrink: 0;
+  overflow-y: auto;
 }
 
 .dash-sidebar-brand {
@@ -2758,6 +2758,8 @@ img[src*="clerk"],
   flex: 1;
   padding: 2rem 2.5rem;
   min-width: 0;
+  overflow-y: auto;
+  height: calc(100vh - 80px);
 }
 
 /* ─── Shared topbar ─── */
@@ -3739,7 +3741,8 @@ img[src*="clerk"],
 .advisor-wrap {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 80px - 4rem);
+  min-height: 0;
 }
 
 .advisor-chat {
