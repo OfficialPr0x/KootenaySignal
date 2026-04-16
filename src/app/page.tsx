@@ -100,6 +100,7 @@ export default function Home() {
   const s3 = useReveal();
   const s4 = useReveal();
   const s5 = useReveal();
+  const sTestimonial = useReveal();
   const s6 = useReveal();
   const s7 = useReveal();
 
@@ -620,6 +621,88 @@ export default function Home() {
                 }}>{outcome.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ═══════════════════════════════════════════════════════════
+          TESTIMONIAL — Video social proof
+          ═══════════════════════════════════════════════════════════ */}
+      <section style={{
+        padding: 'clamp(5rem, 10vw, 10rem) 0',
+        background: '#070a05',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Ambient glow */}
+        <div style={{
+          position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+          width: '60vw', height: '60vw',
+          background: 'radial-gradient(circle, rgba(230,126,34,0.05) 0%, transparent 60%)',
+          pointerEvents: 'none', filter: 'blur(100px)'
+        }} />
+
+        <div ref={sTestimonial.ref} className="container" style={{ maxWidth: '900px', position: 'relative', zIndex: 1 }}>
+          <div style={{
+            textAlign: 'center', marginBottom: 'clamp(2.5rem, 5vw, 4rem)',
+            opacity: sTestimonial.visible ? 1 : 0,
+            transform: sTestimonial.visible ? 'translateY(0)' : 'translateY(40px)',
+            transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)'
+          }}>
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
+              marginBottom: '1.5rem'
+            }}>
+              <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
+              <span style={{ fontSize: '0.7rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.3em', color: 'var(--primary)' }}>Don&apos;t Take My Word For It</span>
+              <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
+            </div>
+
+            <h2 style={{
+              fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.05,
+              color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800,
+              marginBottom: '1rem'
+            }}>
+              See what people <span className="text-gradient">say about us.</span>
+            </h2>
+            <p style={{
+              fontSize: '1.15rem', opacity: 0.4, maxWidth: '500px', margin: '0 auto',
+              fontFamily: 'var(--font-pjs)'
+            }}>
+              You can&apos;t pay for something this good.
+            </p>
+          </div>
+
+          {/* Video container */}
+          <div style={{
+            opacity: sTestimonial.visible ? 1 : 0,
+            transform: sTestimonial.visible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.97)',
+            transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s',
+            position: 'relative',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            border: '1px solid rgba(255,255,255,0.08)',
+            boxShadow: '0 30px 80px rgba(0,0,0,0.5)',
+            aspectRatio: '16/9',
+            maxWidth: '800px',
+            margin: '0 auto'
+          }}>
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster="https://res.cloudinary.com/doajstql7/image/upload/v1776300647/ChatGPT_Image_Apr_15_2026_08_50_40_PM_zkfg8l.png"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block'
+              }}
+            >
+              <source src="https://res.cloudinary.com/doajstql7/video/upload/v1776298495/Check_Out_Our_1_Testimonial___You_Cannot_Pay_For_Something_This_Good_dl8cdw.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
