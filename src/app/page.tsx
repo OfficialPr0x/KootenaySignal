@@ -10,7 +10,15 @@ import {
   TrendingUp,
   Search,
   Users,
-  Shield
+  Shield,
+  Check,
+  Globe,
+  Megaphone,
+  Wrench,
+  MessageSquare,
+  BarChart3,
+  Zap,
+  Star
 } from 'lucide-react';
 
 /* ─── Intersection Observer hook for scroll reveals ─── */
@@ -100,6 +108,9 @@ export default function Home() {
   const s3 = useReveal();
   const s4 = useReveal();
   const s5 = useReveal();
+  const sOffers = useReveal();
+  const sAddons = useReveal();
+  const sOfferCta = useReveal();
   const sTestimonial = useReveal();
   const s6 = useReveal();
   const s7 = useReveal();
@@ -627,6 +638,300 @@ export default function Home() {
 
 
       {/* ═══════════════════════════════════════════════════════════
+          OFFERS — How We Actually Grow Your Business
+          ═══════════════════════════════════════════════════════════ */}
+      <section id="offers" style={{
+        padding: 'clamp(6rem, 12vw, 12rem) 0',
+        background: '#070a05',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Top orange glow divider */}
+        <div style={{
+          position: 'absolute', top: 0, left: '10%', right: '10%', height: '1px',
+          background: 'linear-gradient(90deg, transparent, rgba(230,126,34,0.4), transparent)'
+        }} />
+        {/* Ambient glow */}
+        <div style={{
+          position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
+          width: '70vw', height: '70vw',
+          background: 'radial-gradient(circle, rgba(230,126,34,0.04) 0%, transparent 50%)',
+          pointerEvents: 'none', filter: 'blur(100px)'
+        }} />
+
+        <div ref={sOffers.ref} className="container" style={{ maxWidth: '1100px', position: 'relative', zIndex: 1 }}>
+
+          {/* Header */}
+          <div style={{
+            textAlign: 'center', marginBottom: 'clamp(3rem, 6vw, 5rem)',
+            opacity: sOffers.visible ? 1 : 0,
+            transform: sOffers.visible ? 'translateY(0)' : 'translateY(40px)',
+            transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)'
+          }}>
+            <p style={{
+              fontSize: '0.8rem', opacity: 0.4, maxWidth: '500px', margin: '0 auto 1.5rem',
+              fontFamily: 'var(--font-pjs)', lineHeight: 1.6, fontStyle: 'italic'
+            }}>
+              Most businesses don&apos;t need more effort.<br />
+              They need a system that works.
+            </p>
+
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
+              marginBottom: '1.5rem'
+            }}>
+              <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
+              <span style={{ fontSize: '0.7rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.3em', color: 'var(--primary)' }}>What We Build</span>
+              <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
+            </div>
+
+            <h2 style={{
+              fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.05,
+              color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800,
+              marginBottom: '1rem'
+            }}>
+              How We Actually <span className="text-gradient">Grow Your Business</span>
+            </h2>
+            <p style={{
+              fontSize: '1.2rem', opacity: 0.45, maxWidth: '480px', margin: '0 auto',
+              fontFamily: 'var(--font-pjs)', lineHeight: 1.6
+            }}>
+              Pick what you need. We handle the rest.
+            </p>
+          </div>
+
+          {/* Offer Cards */}
+          <div className="offer-cards-grid">
+
+            {/* CARD 1 — One-Time Build */}
+            <div className="offer-card" style={{
+              opacity: sOffers.visible ? 1 : 0,
+              transform: sOffers.visible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.96)',
+              transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s',
+            }}>
+              <div className="offer-card-inner">
+                <span className="offer-tag">One-Time Build</span>
+                <h3 className="offer-title">A Website<br />That Brings You<br />Customers</h3>
+                <p className="offer-hook">Not just a website. A machine that gets you calls.</p>
+
+                <div className="offer-bullets">
+                  {[
+                    { icon: <Globe size={16} />, text: 'Clean, professional design' },
+                    { icon: <Search size={16} />, text: 'Built to show up on Google' },
+                    { icon: <PhoneIncoming size={16} />, text: 'Turns visitors into real inquiries' },
+                    { icon: <Zap size={16} />, text: 'Works perfectly on mobile' },
+                    { icon: <Shield size={16} />, text: 'Hosting, security & speed handled' },
+                  ].map((b, i) => (
+                    <div key={i} className="offer-bullet">
+                      <span className="offer-bullet-icon">{b.icon}</span>
+                      <span>{b.text}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="offer-result-box">
+                  <p>More people find you.<br /><strong>More people contact you.</strong></p>
+                </div>
+
+                <div className="offer-price">Typical projects: $750 – $1,500</div>
+
+                <button
+                  className="offer-cta"
+                  data-cal-link="kootenay-signal/30min"
+                  data-cal-namespace="30min"
+                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                >
+                  BUILD MY WEBSITE
+                  <ArrowRight size={16} />
+                </button>
+                <p className="offer-subtext">One-time project. No monthly commitment.</p>
+              </div>
+            </div>
+
+            {/* CARD 2 — Monthly System (DOMINANT) */}
+            <div className="offer-card offer-card--popular" style={{
+              opacity: sOffers.visible ? 1 : 0,
+              transform: sOffers.visible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.96)',
+              transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s',
+            }}>
+              <div className="offer-popular-badge"><Star size={12} /> Most Popular</div>
+              <div className="offer-card-inner">
+                <span className="offer-tag">Monthly System</span>
+                <h3 className="offer-title">We Bring You Customers Every Month</h3>
+                <p className="offer-hook">You focus on the work. We bring the jobs.</p>
+
+                <div className="offer-bullets">
+                  {[
+                    { icon: <Search size={16} />, text: 'Show up when people search for your service' },
+                    { icon: <Megaphone size={16} />, text: 'Ads that bring real local customers' },
+                    { icon: <Shield size={16} />, text: 'Systems so no lead gets missed' },
+                    { icon: <MessageSquare size={16} />, text: 'Follow-ups that turn interest into booked jobs' },
+                    { icon: <BarChart3 size={16} />, text: 'Full tracking so you see everything working' },
+                  ].map((b, i) => (
+                    <div key={i} className="offer-bullet">
+                      <span className="offer-bullet-icon">{b.icon}</span>
+                      <span>{b.text}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="offer-result-box offer-result-box--popular">
+                  <p>More calls. More booked jobs.<br /><strong>Less chasing people.</strong></p>
+                </div>
+
+                <div className="offer-price">Most clients invest: $500 – $2,000/month</div>
+
+                <button
+                  className="offer-cta offer-cta--primary"
+                  data-cal-link="kootenay-signal/30min"
+                  data-cal-namespace="30min"
+                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                >
+                  GET MORE CUSTOMERS
+                  <ArrowRight size={16} />
+                </button>
+                <p className="offer-subtext">We build it. We run it. You grow.</p>
+              </div>
+            </div>
+          </div>
+
+          <p style={{
+            textAlign: 'center', marginTop: '2.5rem', fontSize: '0.95rem',
+            opacity: sOffers.visible ? 0.35 : 0,
+            transition: 'opacity 1s ease 0.5s',
+            fontFamily: 'var(--font-pjs)', fontStyle: 'italic'
+          }}>
+            No pressure. Just clarity.
+          </p>
+        </div>
+
+        {/* Bottom orange glow divider */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: '10%', right: '10%', height: '1px',
+          background: 'linear-gradient(90deg, transparent, rgba(230,126,34,0.4), transparent)'
+        }} />
+      </section>
+
+
+      {/* ═══════════════════════════════════════════════════════════
+          ADD-ONS — Need something custom?
+          ═══════════════════════════════════════════════════════════ */}
+      <section style={{
+        padding: 'clamp(4rem, 8vw, 7rem) 0',
+        background: 'var(--background)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div ref={sAddons.ref} className="container" style={{ maxWidth: '800px', position: 'relative', zIndex: 1 }}>
+          <div style={{
+            opacity: sAddons.visible ? 1 : 0,
+            transform: sAddons.visible ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+            textAlign: 'center'
+          }}>
+            <h3 style={{
+              fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#fff',
+              fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1rem'
+            }}>
+              Need something custom?
+            </h3>
+            <p style={{
+              fontSize: '1.1rem', opacity: 0.5, marginBottom: '2rem',
+              fontFamily: 'var(--font-pjs)', lineHeight: 1.6
+            }}>
+              If your business needs something specific, we build it.
+            </p>
+
+            <div className="addon-pills">
+              {['Booking systems', 'Internal tools', 'Custom dashboards', 'Anything slowing you down — we fix it'].map((item, i) => (
+                <span key={i} className="addon-pill">
+                  <Wrench size={14} />
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            <button
+              className="offer-cta offer-cta--outline"
+              data-cal-link="kootenay-signal/30min"
+              data-cal-namespace="30min"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              style={{ marginTop: '2.5rem' }}
+            >
+              ASK ABOUT CUSTOM WORK
+              <ArrowRight size={16} />
+            </button>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ═══════════════════════════════════════════════════════════
+          OFFER CTA — Not sure what you need?
+          ═══════════════════════════════════════════════════════════ */}
+      <section style={{
+        padding: 'clamp(4rem, 8vw, 7rem) 0',
+        background: '#070a05',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div ref={sOfferCta.ref} className="container" style={{ maxWidth: '700px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <div style={{
+            opacity: sOfferCta.visible ? 1 : 0,
+            transform: sOfferCta.visible ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)'
+          }}>
+            <p style={{
+              fontSize: '1rem', opacity: 0.4, marginBottom: '2rem',
+              fontFamily: 'var(--font-pjs)', fontStyle: 'italic', lineHeight: 1.6
+            }}>
+              If you&apos;re not getting calls, something is broken.<br />
+              We fix it.
+            </p>
+
+            <h3 style={{
+              fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', color: '#fff',
+              fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1rem'
+            }}>
+              Not sure what you need?
+            </h3>
+            <p style={{
+              fontSize: '1.15rem', opacity: 0.5, marginBottom: '2.5rem',
+              fontFamily: 'var(--font-pjs)', lineHeight: 1.6
+            }}>
+              We&apos;ll show you exactly what&apos;s missing — for free.
+            </p>
+
+            <div className="mobile-stack" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link
+                href="/signal-check"
+                className="btn-hero-primary"
+                style={{ textDecoration: 'none' }}
+              >
+                RUN FREE SIGNAL CHECK
+                <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
+              </Link>
+              <button
+                className="btn-hero-secondary"
+                data-cal-link="kootenay-signal/30min"
+                data-cal-namespace="30min"
+                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              >
+                BOOK A CALL
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Transition line into testimonials */}
+      <div style={{ height: '80px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'var(--background)' }}>
+        <div style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, var(--primary), transparent)', opacity: 0.2 }} />
+      </div>
+
+
+      {/* ═══════════════════════════════════════════════════════════
           TESTIMONIAL — Video social proof
           ═══════════════════════════════════════════════════════════ */}
       <section style={{
@@ -655,7 +960,7 @@ export default function Home() {
               marginBottom: '1.5rem'
             }}>
               <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
-              <span style={{ fontSize: '0.7rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.3em', color: 'var(--primary)' }}>Don&apos;t Take My Word For It</span>
+              <span style={{ fontSize: '0.7rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.3em', color: 'var(--primary)' }}>Don&apos;t Take Our Word For It</span>
               <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
             </div>
 
@@ -664,7 +969,7 @@ export default function Home() {
               color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800,
               marginBottom: '1rem'
             }}>
-              See what people <span className="text-gradient">say about us.</span>
+              See what happens when <span className="text-gradient">the system is working.</span>
             </h2>
             <p style={{
               fontSize: '1.15rem', opacity: 0.4, maxWidth: '500px', margin: '0 auto',
