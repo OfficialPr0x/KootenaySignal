@@ -36,7 +36,27 @@ function getScoreColor(score: number | null) {
 
 function Chart({ data, label, color }: { data: (number | null)[]; label: string; color: string }) {
   const valid = data.filter((d): d is number => d !== null);
-  if (valid.length < 2) return <p className="rank-chart-empty">Not enough data yet</p>;
+  if (valid.length === 0) return <p className="rank-chart-empty">No data yet</p>;
+
+  if (valid.length === 1) {
+    // Show single data point with value
+    const w = 280;
+    const h = 60;
+    return (
+      <div className="rank-chart">
+        <div className="rank-chart-label">{label}</div>
+        <svg width="100%" height={h} viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none">
+          <line x1="0" y1={h / 2} x2={w} y2={h / 2} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+          <circle cx={w / 2} cy={h / 2} r="4" fill={color} />
+        </svg>
+        <div className="rank-chart-values">
+          <span style={{ color }}>{valid[0]}/100</span>
+          <span style={{ opacity: 0.3 }}>Tracking started — next scan adds trend data</span>
+        </div>
+      </div>
+    );
+  }
+
   const max = Math.max(...valid, 100);
   const min = Math.min(...valid, 0);
   const range = max - min || 1;
