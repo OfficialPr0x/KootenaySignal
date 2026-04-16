@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Send, Bot, User, ArrowRight } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 interface Message {
   id: string;
@@ -15,6 +16,7 @@ export default function AdvisorChat({ initialMessages, businessName }: { initial
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [streamingId, setStreamingId] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const searchParams = useSearchParams();
@@ -34,7 +36,7 @@ export default function AdvisorChat({ initialMessages, businessName }: { initial
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  async function sendMessage(text: string) {
+  const sendMessage = useCallback(async (text: string) => {
     if (!text.trim()) return;
 
     const userMsg: Message = {
@@ -43,6 +45,8 @@ export default function AdvisorChat({ initialMessages, businessName }: { initial
       content: text.trim(),
       created_at: new Date().toISOString(),
     };
+
+    const aiId = `ai-${Date.now()}`;
 
     setMessages(prev => [...prev, userMsg]);
     setInput('');
@@ -55,22 +59,72 @@ export default function AdvisorChat({ initialMessages, businessName }: { initial
         body: JSON.stringify({ message: text.trim() }),
       });
 
-      const data = await res.json();
-
       if (!res.ok) {
+        const data = await res.json().catch(() => ({ error: 'Something went wrong.' }));
         setMessages(prev => [...prev, {
           id: `err-${Date.now()}`,
           role: 'assistant',
           content: data.error || 'Something went wrong. Try again.',
           created_at: new Date().toISOString(),
         }]);
-      } else {
+        setLoading(false);
+        return;
+      }
+
+      const contentType = res.headers.get('content-type') || '';
+
+      // Handle streaming SSE response
+      if (contentType.includes('text/event-stream') && res.body) {
+        // Add empty assistant message to stream into
         setMessages(prev => [...prev, {
-          id: `ai-${Date.now()}`,
+          id: aiId,
+          role: 'assistant',
+          content: '',
+          created_at: new Date().toISOString(),
+        }]);
+        setStreamingId(aiId);
+        setLoading(false);
+
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value, { stream: true });
+          const lines = chunk.split('\n').filter(l => l.trim().startsWith('data:'));
+
+          for (const line of lines) {
+            const data = line.replace(/^data:\s*/, '');
+            if (data === '[DONE]') continue;
+
+            try {
+              const parsed = JSON.parse(data);
+              if (parsed.content) {
+                setMessages(prev =>
+                  prev.map(m =>
+                    m.id === aiId ? { ...m, content: m.content + parsed.content } : m
+                  )
+                );
+              }
+            } catch {
+              // skip malformed
+            }
+          }
+        }
+
+        setStreamingId(null);
+      } else {
+        // Handle non-streaming JSON fallback
+        const data = await res.json();
+        setMessages(prev => [...prev, {
+          id: aiId,
           role: 'assistant',
           content: data.reply,
           created_at: new Date().toISOString(),
         }]);
+        setLoading(false);
       }
     } catch {
       setMessages(prev => [...prev, {
@@ -79,11 +133,11 @@ export default function AdvisorChat({ initialMessages, businessName }: { initial
         content: 'Connection error. Please try again.',
         created_at: new Date().toISOString(),
       }]);
-    } finally {
       setLoading(false);
+    } finally {
       inputRef.current?.focus();
     }
-  }
+  }, []);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -143,7 +197,13 @@ export default function AdvisorChat({ initialMessages, businessName }: { initial
                 {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
               </div>
               <div className="advisor-msg-content">
-                <div className="advisor-msg-text">{msg.content}</div>
+                {msg.role === 'assistant' ? (
+                  <div className={`advisor-msg-text advisor-md${streamingId === msg.id ? ' advisor-streaming' : ''}`}>
+                    <ReactMarkdown>{msg.content || '...'}</ReactMarkdown>
+                  </div>
+                ) : (
+                  <div className="advisor-msg-text">{msg.content}</div>
+                )}
               </div>
             </div>
           ))}
@@ -171,12 +231,12 @@ export default function AdvisorChat({ initialMessages, businessName }: { initial
             onKeyDown={handleKeyDown}
             placeholder="Ask about your business..."
             rows={1}
-            disabled={loading}
+            disabled={loading || streamingId !== null}
           />
           <button
             type="submit"
             className="advisor-send"
-            disabled={loading || !input.trim()}
+            disabled={loading || streamingId !== null || !input.trim()}
           >
             <Send size={18} />
           </button>

@@ -103,11 +103,19 @@ YOUR ROLE:
 - Answer questions about their online presence, SEO, marketing, and business growth
 - Give specific, actionable advice based on their actual data
 - Be encouraging but honest about gaps
-- Keep responses concise (2-4 paragraphs max)
 - Reference their actual scores and metrics when relevant
 - If they ask about something complex (ad campaigns, major SEO overhauls, custom builds), suggest they book a call for implementation help
 - You can suggest simple DIY fixes (update Google Business Profile, add photos, respond to reviews)
 - For bigger wins (website rebuild, ad management, full SEO), gently note that Kootenay Signal can handle it
+
+FORMATTING:
+- Use Markdown formatting in your responses
+- Use **bold** for key metrics, scores, and important terms
+- Use headings (## or ###) to organize longer answers into clear sections
+- Use bullet lists for action steps or lists of items
+- Use numbered lists for step-by-step instructions
+- Keep responses well-structured: 2-4 sections max
+- Add a blank line between sections for readability
 
 TONE: Like a knowledgeable friend who happens to be a marketing expert. Casual, direct, no jargon.
 
@@ -115,11 +123,9 @@ IMPORTANT: Never make up data. If you don't have specific metrics, say so. Focus
 
   const apiKey = process.env.DEEPSEEK_API_KEY;
 
-  let reply = "I'm having trouble connecting right now. Try again in a moment.";
-
   if (apiKey) {
     try {
-      const messages = [
+      const aiMessages = [
         { role: 'system' as const, content: systemPrompt },
         ...chatHistory.map(m => ({ role: m.role as 'user' | 'assistant', content: m.content })),
       ];
@@ -132,23 +138,81 @@ IMPORTANT: Never make up data. If you don't have specific metrics, say so. Focus
         },
         body: JSON.stringify({
           model: 'deepseek-chat',
-          messages,
+          messages: aiMessages,
           temperature: 0.5,
           max_tokens: 800,
+          stream: true,
         }),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        reply = data.choices?.[0]?.message?.content || reply;
+      if (!response.ok || !response.body) {
+        const fallback = generateFallbackReply(body.message, businessContext);
+        await supabase.from('chat_messages').insert({ site_id: site.id, role: 'assistant', content: fallback });
+        return Response.json({ reply: fallback });
       }
+
+      // Stream the response via SSE
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let fullReply = '';
+
+      const stream = new ReadableStream({
+        async start(controller) {
+          try {
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) break;
+
+              const chunk = decoder.decode(value, { stream: true });
+              const lines = chunk.split('\n').filter(line => line.trim().startsWith('data:'));
+
+              for (const line of lines) {
+                const data = line.replace(/^data:\s*/, '');
+                if (data === '[DONE]') continue;
+
+                try {
+                  const parsed = JSON.parse(data);
+                  const content = parsed.choices?.[0]?.delta?.content;
+                  if (content) {
+                    fullReply += content;
+                    controller.enqueue(new TextEncoder().encode(`data: ${JSON.stringify({ content })}\n\n`));
+                  }
+                } catch {
+                  // skip malformed chunks
+                }
+              }
+            }
+
+            // Save full message after stream completes
+            await supabase.from('chat_messages').insert({
+              site_id: site.id,
+              role: 'assistant',
+              content: fullReply,
+            });
+
+            controller.enqueue(new TextEncoder().encode('data: [DONE]\n\n'));
+            controller.close();
+          } catch (err) {
+            console.error('Stream error:', err);
+            controller.close();
+          }
+        },
+      });
+
+      return new Response(stream, {
+        headers: {
+          'Content-Type': 'text/event-stream',
+          'Cache-Control': 'no-cache',
+          'Connection': 'keep-alive',
+        },
+      });
     } catch (err) {
       console.error('Chat AI error:', err);
     }
-  } else {
-    // Fallback without API key
-    reply = generateFallbackReply(body.message, businessContext);
   }
+
+  // Fallback without API key
+  const reply = generateFallbackReply(body.message, businessContext);
 
   // Save assistant message
   await supabase.from('chat_messages').insert({

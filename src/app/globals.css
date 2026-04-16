@@ -2758,7 +2758,6 @@ img[src*="clerk"],
   flex: 1;
   padding: 2rem 2.5rem;
   min-width: 0;
-  max-width: 1000px;
 }
 
 /* ─── Shared topbar ─── */
@@ -3866,6 +3865,134 @@ img[src*="clerk"],
   background: rgba(230,126,34,0.12);
   border: 1px solid rgba(230,126,34,0.2);
   color: #f4ece1;
+}
+
+/* ─── Markdown-formatted assistant messages ─── */
+.advisor-md {
+  white-space: normal;
+}
+
+.advisor-md h1,
+.advisor-md h2,
+.advisor-md h3 {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  color: #f4ece1;
+  margin: 0.8rem 0 0.4rem;
+  line-height: 1.3;
+}
+
+.advisor-md h1:first-child,
+.advisor-md h2:first-child,
+.advisor-md h3:first-child {
+  margin-top: 0;
+}
+
+.advisor-md h1 { font-size: 1.1rem; }
+.advisor-md h2 { font-size: 1rem; color: #e67e22; }
+.advisor-md h3 { font-size: 0.92rem; }
+
+.advisor-md p {
+  margin: 0.5rem 0;
+  line-height: 1.7;
+}
+
+.advisor-md p:first-child { margin-top: 0; }
+.advisor-md p:last-child { margin-bottom: 0; }
+
+.advisor-md strong {
+  color: #f4ece1;
+  font-weight: 700;
+}
+
+.advisor-md em {
+  color: rgba(244,236,225,0.65);
+  font-style: italic;
+}
+
+.advisor-md ul,
+.advisor-md ol {
+  margin: 0.5rem 0;
+  padding-left: 1.35rem;
+}
+
+.advisor-md li {
+  margin: 0.35rem 0;
+  line-height: 1.6;
+}
+
+.advisor-md li::marker {
+  color: #e67e22;
+}
+
+.advisor-md ol li::marker {
+  color: #e67e22;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.advisor-md code {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 0.12rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.82em;
+  color: #e67e22;
+}
+
+.advisor-md pre {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  margin: 0.75rem 0;
+  overflow-x: auto;
+}
+
+.advisor-md pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: rgba(255,255,255,0.7);
+}
+
+.advisor-md blockquote {
+  border-left: 3px solid rgba(230,126,34,0.4);
+  margin: 0.6rem 0;
+  padding: 0.25rem 0 0.25rem 1rem;
+  color: rgba(255,255,255,0.55);
+  font-style: italic;
+}
+
+.advisor-md hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin: 1rem 0;
+}
+
+.advisor-md a {
+  color: #e67e22;
+  text-decoration: underline;
+  text-decoration-color: rgba(230,126,34,0.3);
+  transition: text-decoration-color 0.2s;
+}
+
+.advisor-md a:hover {
+  text-decoration-color: #e67e22;
+}
+
+/* Streaming cursor blink */
+.advisor-streaming::after {
+  content: '▊';
+  display: inline;
+  color: #e67e22;
+  animation: cursorBlink 0.8s steps(1) infinite;
+  margin-left: 1px;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* Typing indicator */
