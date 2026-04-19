@@ -156,22 +156,20 @@ export default function Home() {
             </div>
 
             <h1 className="hero-reveal hero-reveal-2 mobile-center" style={{ 
-              lineHeight: 0.95,
-              maxWidth: '900px',
               color: '#fff',
             }}>
               I Help Kootenay<br className="mobile-hide"/>
               Businesses <span className="text-gradient-hero">Get<br className="mobile-hide"/> More Business.</span>
             </h1>
 
-            <p className="hero-reveal hero-reveal-3 mobile-font-lg" style={{ 
-              fontSize: '1.35rem', 
-              maxWidth: '480px', 
+            <p className="hero-reveal hero-reveal-3 hero-subtitle" style={{ 
               marginBottom: '4vh',
               color: 'rgba(255,255,255,0.6)',
               lineHeight: 1.6,
               fontWeight: 400,
-              fontFamily: 'var(--font-pjs)'
+              fontFamily: 'var(--font-pjs)',
+              wordBreak: 'normal' as const,
+              overflowWrap: 'break-word' as const,
             }}>
               More calls. More jobs. Less guesswork.
             </p>
@@ -206,7 +204,7 @@ export default function Home() {
         </div>
 
         {/* ─── Towns Service Strip — anchored at hero bottom ─── */}
-        <div style={{ 
+        <div className="towns-strip" style={{ 
           position: 'absolute', bottom: 0, left: 0, width: '100%',
           zIndex: 10, pointerEvents: 'none',
           borderTop: '1px solid rgba(255,255,255,0.06)',
@@ -216,16 +214,17 @@ export default function Home() {
             display: 'flex', justifyContent: 'center', alignItems: 'center',
             gap: '0.4rem',
             width: '100%',
-            padding: '0 clamp(1.5rem, 4vw, 4rem)',
+            padding: '0 clamp(1.25rem, 4vw, 4rem)',
+            flexWrap: 'wrap',
           }}>
             {['Fernie', 'Sparwood', 'Elkford', 'Cranbrook', 'Nelson', 'Castlegar', 'Trail', 'Kimberley'].map((town, i) => (
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
                 <span style={{ 
                   whiteSpace: 'nowrap',
-                  fontSize: 'clamp(0.55rem, 0.7vw, 0.7rem)', 
+                  fontSize: 'clamp(0.5rem, 1.5vw, 0.7rem)', 
                   fontWeight: 500, 
                   textTransform: 'uppercase', 
-                  letterSpacing: '0.15em',
+                  letterSpacing: '0.12em',
                   color: 'rgba(255,255,255,0.3)', 
                   fontFamily: 'var(--font-sans)',
                 }}>
