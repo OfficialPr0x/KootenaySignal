@@ -37,8 +37,12 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  // Hide navbar on auth pages
-  if (pathname === '/sign-in' || pathname === '/sign-up' || pathname.startsWith('/sign-in/') || pathname.startsWith('/sign-up/')) {
+  // Hide navbar on auth pages and landing pages
+  if (
+    pathname === '/sign-in' || pathname === '/sign-up' ||
+    pathname.startsWith('/sign-in/') || pathname.startsWith('/sign-up/') ||
+    pathname === '/website-150'
+  ) {
     return null;
   }
 
