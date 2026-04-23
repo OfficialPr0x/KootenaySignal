@@ -43,7 +43,7 @@ export default function Website150() {
           cal.loaded = true;
         }
         if (ar[0] === L) {
-          const api = function () { p(api, arguments); };
+          const api: { q: unknown[]; [key: string]: unknown } = function () { p(api, arguments); } as unknown as { q: unknown[]; [key: string]: unknown };
           const namespace = ar[1];
           api.q = api.q || [];
           if (typeof namespace === 'string') {
