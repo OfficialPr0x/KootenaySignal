@@ -768,7 +768,7 @@ export default function Home() {
               you don&apos;t have a lead problem.
             </p>
 
-            <h2 className="hard-close-h2" style={{ fontSize: 'clamp(3rem, 8vw, 6.5rem)', lineHeight: 1, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '-0.03em', whiteSpace: 'nowrap' }}>
+            <h2 className="hard-close-h2" style={{ fontSize: 'clamp(2.4rem, 6vw, 5.5rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '-0.03em' }}>
               You have a <span className="text-gradient-hero">visibility problem.</span>
             </h2>
 
