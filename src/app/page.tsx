@@ -122,7 +122,7 @@ export default function Home() {
           HERO — CINEMATIC FULL-SCREEN
           ═══════════════════════════════════════════════════════════ */}
       <section className="hero" style={{
-        backgroundImage: `linear-gradient(180deg, rgba(13,17,9,0.2) 0%, rgba(13,17,9,0.6) 50%, rgba(13,17,9,1) 100%), url('https://res.cloudinary.com/doajstql7/image/upload/v1775879081/Elk_Valley_sunset_workshop_scene_gvwak0.png')`,
+        backgroundImage: `linear-gradient(180deg, rgba(13,17,9,0.2) 0%, rgba(13,17,9,0.6) 50%, rgba(13,17,9,1) 100%), url('https://res.cloudinary.com/doajstql7/image/upload/v1777002754/ChatGPT_Image_Apr_23_2026_10_40_28_PM_z260fw.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center 40%',
         position: 'relative',
