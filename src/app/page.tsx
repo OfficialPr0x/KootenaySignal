@@ -715,12 +715,27 @@ export default function Home() {
               <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.75rem' }}>
                 I&apos;m Jaryd.
               </h2>
-              <p style={{ fontSize: 'clamp(1.05rem, 1.5vw, 1.2rem)', lineHeight: 1.85, color: 'rgba(255,255,255,0.55)', fontFamily: 'var(--font-pjs)', marginBottom: '1.5rem' }}>
-                I work construction during the day and build business growth systems at night. I know what it means to put in a shift — I don&apos;t sell dreams, I build <span style={{ color: '#fff', fontWeight: 600 }}>real infrastructure</span> for your business.
-              </p>
-              <p style={{ fontSize: 'clamp(1.05rem, 1.5vw, 1.2rem)', lineHeight: 1.85, color: 'rgba(255,255,255,0.55)', fontFamily: 'var(--font-pjs)' }}>
-                I live in the Kootenays. I only work with a handful of businesses at a time. No fluff. No runaround. Just honest work that gets you <span style={{ color: '#fff', fontWeight: 600 }}>more customers</span>.
-              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2rem' }}>
+                {[
+                  '16+ years in tech, systems, and internet marketing.',
+                  'Built and scaled agencies to mid-6 figures — peak months over $103K MRR.',
+                  '4+ years deep in AI, automation, and custom system architecture.',
+                  'Also built and scaled my own fence and deck business to $282K — because I don\'t believe in selling what I haven\'t lived.',
+                ].map((line, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                    <span style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '1rem', lineHeight: 1.85, flexShrink: 0 }}>—</span>
+                    <p style={{ fontSize: 'clamp(1rem, 1.4vw, 1.1rem)', lineHeight: 1.85, color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--font-pjs)', margin: 0 }}>{line}</p>
+                  </div>
+                ))}
+              </div>
+              <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1.5rem' }}>
+                <p style={{ fontSize: 'clamp(1rem, 1.4vw, 1.1rem)', lineHeight: 1.9, color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-pjs)', margin: 0 }}>
+                  That&apos;s clean. No fluff. No fake guru energy.
+                </p>
+                <p style={{ fontSize: 'clamp(1.1rem, 1.6vw, 1.25rem)', lineHeight: 1.5, color: '#fff', fontWeight: 700, fontFamily: 'var(--font-syne)', margin: '0.5rem 0 0' }}>
+                  Just proof.
+                </p>
+              </div>
             </div>
           </div>
 
