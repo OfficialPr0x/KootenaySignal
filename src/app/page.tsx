@@ -757,7 +757,7 @@ export default function Home() {
 
             <h2 style={{ fontSize: 'clamp(2.5rem, 7vw, 5.5rem)', lineHeight: 0.95, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '-0.03em' }}>
               You have a<br />
-              <span className="text-gradient-hero">visibility<br />problem.</span>
+              <span className="text-gradient-hero">visibility problem.</span>
             </h2>
 
             <p style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)', color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 700, marginBottom: '3.5rem' }}>
