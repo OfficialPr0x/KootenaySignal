@@ -155,12 +155,11 @@ export default function Home() {
               <span style={{
                 fontSize: '0.7rem', fontWeight: 900, textTransform: 'uppercase',
                 letterSpacing: '0.3em', color: 'var(--primary)'
-              }}>Sparwood, BC — Built for Contractors</span>
+              }}>Sparwood, BC · Contractors</span>
             </div>
 
             <h1 className="hero-reveal hero-reveal-2 mobile-center" style={{ color: '#fff' }}>
-              Your phone should<br className="mobile-hide" />
-              be ringing.<br />
+              Your phone<br />should be ringing.<br />
               <span className="text-gradient-hero">It&apos;s not.</span>
             </h1>
 
@@ -210,7 +209,7 @@ export default function Home() {
         </div>
 
         {/* Towns strip */}
-        <div className="towns-strip" style={{ 
+        <div className="towns-strip mobile-towns-hide" style={{ 
           position: 'absolute', bottom: 0, left: 0, width: '100%', zIndex: 10,
           pointerEvents: 'none', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '0.85rem 0'
         }}>
