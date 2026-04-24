@@ -563,7 +563,7 @@ export default function Home() {
 
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 6 — PROOF (Real contractors. Real results.)
+          SECTION 6 — PROOF (Testimonial)
           ═══════════════════════════════════════════════════════════ */}
       <section style={{ padding: 'clamp(6rem, 12vw, 11rem) 0', background: '#000', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '40%', left: '50%', transform: 'translate(-50%, -50%)', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(230,126,34,0.05) 0%, transparent 60%)', filter: 'blur(100px)', pointerEvents: 'none' }} />
@@ -581,7 +581,7 @@ export default function Home() {
               <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
             </div>
             <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '0.75rem' }}>
-              Real contractors.<br /><span className="text-gradient">Real results.</span>
+              Real businesses.<br /><span className="text-gradient">Real results.</span>
             </h2>
             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-pjs)' }}>
               You can&apos;t pay for something this good.
