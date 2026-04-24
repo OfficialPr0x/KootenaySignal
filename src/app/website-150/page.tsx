@@ -220,6 +220,28 @@ export default function Website150() {
               </div>
             ))}
           </div>
+
+          {/* Problem section CTA */}
+          <div style={{ marginTop: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.85rem' }}>
+            <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-pjs)', marginBottom: '0.25rem' }}>
+              Stop being the business they scroll past.
+            </p>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+              <a
+                href={STRIPE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-hero-primary"
+                style={{ fontSize: '0.88rem', padding: '0.9rem 2rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', letterSpacing: '0.07em' }}
+              >
+                FIX THIS — $150
+                <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
+              </a>
+              <button {...calProps} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.45)', borderRadius: '8px', cursor: 'pointer', fontSize: '0.82rem', padding: '0.9rem 1.75rem', letterSpacing: '0.05em', fontWeight: 600, fontFamily: 'var(--font-pjs)', transition: 'all 0.2s' }}>
+                Book a Free Call
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -249,6 +271,9 @@ export default function Website150() {
                 BUY NOW — $150
                 <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
               </a>
+              <button {...calProps} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.4)', borderRadius: '8px', cursor: 'pointer', fontSize: '0.78rem', padding: '0.7rem 1.5rem', letterSpacing: '0.05em', fontWeight: 600, fontFamily: 'var(--font-pjs)', transition: 'all 0.2s', width: '100%', textAlign: 'center' }}>
+                Or Book a Free Call
+              </button>
             </div>
 
             {/* Right — feature list */}
@@ -373,6 +398,28 @@ export default function Website150() {
               />
             ))}
           </div>
+
+          {/* Portfolio section CTA */}
+          <div style={{ marginTop: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.85rem' }}>
+            <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.28)', fontFamily: 'var(--font-pjs)' }}>
+              Your business deserves a site like these. For $150.
+            </p>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+              <a
+                href={STRIPE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-hero-primary"
+                style={{ fontSize: '0.88rem', padding: '0.9rem 2rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', letterSpacing: '0.07em' }}
+              >
+                GET MINE — $150
+                <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
+              </a>
+              <button {...calProps} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.45)', borderRadius: '8px', cursor: 'pointer', fontSize: '0.82rem', padding: '0.9rem 1.75rem', letterSpacing: '0.05em', fontWeight: 600, fontFamily: 'var(--font-pjs)', transition: 'all 0.2s' }}>
+                Book a Free Call
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -421,6 +468,23 @@ export default function Website150() {
           <p style={{ textAlign: 'center', marginTop: '2rem', fontSize: '0.9rem', color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-pjs)' }}>
             Same quality. From someone who actually knows the Kootenay market. <strong style={{ color: 'rgba(255,255,255,0.6)' }}>$150. One time.</strong>
           </p>
+
+          {/* Price section CTA */}
+          <div style={{ marginTop: '3rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a
+              href={STRIPE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-hero-primary"
+              style={{ fontSize: '0.9rem', padding: '1rem 2.25rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', letterSpacing: '0.07em' }}
+            >
+              LOCK IN $150 NOW
+              <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
+            </a>
+            <button {...calProps} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.45)', borderRadius: '8px', cursor: 'pointer', fontSize: '0.86rem', padding: '1rem 1.75rem', letterSpacing: '0.05em', fontWeight: 600, fontFamily: 'var(--font-pjs)', transition: 'all 0.2s' }}>
+              Book a Free 30-Min Call
+            </button>
+          </div>
         </div>
       </section>
 
