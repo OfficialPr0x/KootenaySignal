@@ -87,7 +87,7 @@ export default function Website150() {
   const [activeIdx, setActiveIdx] = useState(0);
 
   const portfolioProjects = [
-    { name: 'Passion for the Cract', url: 'passionforthecract.ca', tag: 'Craft Marketplace', image: 'https://image.thum.io/get/width/1200/crop/630/https://www.passionforthecract.ca/' },
+    { name: 'Passion for the Craft', url: 'passionforthecraft.ca', tag: 'Custom Contracting', image: 'https://res.cloudinary.com/doajstql7/image/upload/v1777068759/ChatGPT_Image_Apr_24_2026_06_12_06_PM_wzcjyq.png' },
     { name: 'HostelHack', url: 'hostelhack.com', tag: 'Travel App', image: 'https://res.cloudinary.com/dpfapm0tl/image/upload/v1774459722/744808c2-e19f-4048-803b-fa9226046a3e_hlb0oj.jpg' },
     { name: 'Revlo', url: 'wearerevlo.com', tag: 'Fitness Community', image: 'https://res.cloudinary.com/dpfapm0tl/image/upload/v1771259282/ChatGPT_Image_Feb_16_2026_11_27_50_AM_uorc1u.png' },
     { name: 'Snowblowr', url: 'snowblowr.com', tag: 'Snow Removal', image: 'https://res.cloudinary.com/dtc6oth0i/image/upload/v1764387886/ChatGPT_Image_Nov_28_2025_10_44_12_PM_idoizu.png' },
