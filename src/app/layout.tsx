@@ -45,6 +45,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${syne.variable} ${plusJakarta.variable} ${vollkorn.variable} antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://app.cal.com" />
+        <link rel="dns-prefetch" href="https://app.cal.com" />
+      </head>
       <body style={{ margin: 0 }}>
         <ClerkProvider>
           <Navbar />

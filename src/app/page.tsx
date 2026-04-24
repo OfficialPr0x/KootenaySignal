@@ -74,7 +74,11 @@ function Counter({ end, suffix = '', duration = 2000 }: { end: number; suffix?: 
 
 export default function Home() {
 
-  useEffect(() => {
+  const calLoaded = useRef(false);
+
+  const loadCal = () => {
+    if (calLoaded.current) return;
+    calLoaded.current = true;
     (function (C, A, L) {
       let p = function (a: any, ar: any) { a.q.push(ar); };
       let d = C.document;
@@ -102,11 +106,21 @@ export default function Home() {
       };
       // @ts-ignore
     })(window, "https://app.cal.com/embed/embed.js", "init");
-
     // @ts-ignore
     Cal("init", "30min", { origin: "https://app.cal.com" });
     // @ts-ignore
     Cal.ns["30min"]("ui", { "cssVarsPerTheme": { "light": { "cal-brand": "#E3A23A" }, "dark": { "cal-brand": "#0F2A24" } }, "hideEventTypeDetails": false, "layout": "month_view" });
+  };
+
+  useEffect(() => {
+    // Load Cal on first pointer interaction anywhere on the page
+    const handler = () => loadCal();
+    window.addEventListener('pointerdown', handler, { once: true });
+    window.addEventListener('touchstart', handler, { once: true, passive: true });
+    return () => {
+      window.removeEventListener('pointerdown', handler);
+      window.removeEventListener('touchstart', handler);
+    };
   }, []);
 
   const s2 = useReveal();
