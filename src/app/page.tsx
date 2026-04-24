@@ -744,23 +744,22 @@ export default function Home() {
       <section id="contact" style={{ padding: 'clamp(7rem, 14vw, 14rem) 0', background: '#0a0a0a', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '80vw', height: '80vw', background: 'radial-gradient(circle, rgba(230,126,34,0.07) 0%, transparent 50%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
 
-        <div ref={s9.ref} className="container" style={{ textAlign: 'center', maxWidth: '680px', position: 'relative', zIndex: 1 }}>
+        <div ref={s9.ref} className="container" style={{ textAlign: 'center', maxWidth: '820px', position: 'relative', zIndex: 1 }}>
           <div style={{
             opacity: s9.visible ? 1 : 0,
             transform: s9.visible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.97)',
             transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1)'
           }}>
-            <p style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-pjs)', lineHeight: 1.7, marginBottom: '2.5rem' }}>
-              If your phone isn&apos;t ringing…<br />
+            <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.25rem)', color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-pjs)', lineHeight: 1.7, marginBottom: '2rem' }}>
+              If your phone isn&apos;t ringing…
               you don&apos;t have a lead problem.
             </p>
 
-            <h2 style={{ fontSize: 'clamp(2.5rem, 7vw, 5.5rem)', lineHeight: 0.95, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '-0.03em' }}>
-              You have a<br />
-              <span className="text-gradient-hero">visibility problem.</span>
+            <h2 className="hard-close-h2" style={{ fontSize: 'clamp(3rem, 8vw, 6.5rem)', lineHeight: 1, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '-0.03em', whiteSpace: 'nowrap' }}>
+              You have a <span className="text-gradient-hero">visibility problem.</span>
             </h2>
 
-            <p style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)', color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 700, marginBottom: '3.5rem' }}>
+            <p style={{ fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 700, marginBottom: '3rem' }}>
               I fix that.
             </p>
 
