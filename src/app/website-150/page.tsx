@@ -6,6 +6,7 @@ import {
   Search, PhoneCall, DollarSign, RefreshCw,
   Smartphone, Globe, Phone, Layers, Zap, MapPin,
   ChevronLeft, ChevronRight, ExternalLink,
+  Shield, Clock, TrendingUp, Gift,
 } from 'lucide-react';
 
 // ─────────────────────────────────────────────
@@ -13,6 +14,7 @@ import {
 const SPOTS_CLAIMED = 3;
 // ─────────────────────────────────────────────
 const TOTAL_SPOTS = 10;
+const STRIPE_URL = 'https://buy.stripe.com/7sY5kxbYf0I35Kk08db3q02';
 
 function useReveal(threshold = 0.05) {
   const ref = useRef<HTMLDivElement>(null);
@@ -75,6 +77,7 @@ export default function Website150() {
   const sWhat    = useReveal();
   const sPort    = useReveal();
   const sPrice   = useReveal();
+  const sHow     = useReveal();
   const sMirror  = useReveal();
   const sInc     = useReveal();
   const sSpots   = useReveal();
@@ -128,24 +131,34 @@ export default function Website150() {
 
           {/* Headline */}
           <h1 className="hero-reveal hero-reveal-2" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, lineHeight: 1, letterSpacing: '-0.04em', textTransform: 'uppercase', marginBottom: '2.25rem', color: '#fff' }}>
-            A Website That Actually<br />
-            <span className="text-gradient-hero">Works. $150.</span>
+            A $3,800 Website.<br />
+            <span className="text-gradient-hero">Yours for $150.</span>
           </h1>
 
           <p className="hero-reveal hero-reveal-3" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.25rem)', color: 'rgba(255,255,255,0.6)', maxWidth: '600px', margin: '0 auto 3rem', lineHeight: 1.8, fontFamily: 'var(--font-pjs)', fontWeight: 400 }}>
-            Locking in <strong style={{ color: '#fff', fontWeight: 700 }}>exactly {TOTAL_SPOTS} Kootenay business owners</strong> at a flat $150 —
-            built, launched, done. Invisible online? Broken site? I&apos;m fixing it.
-            This price doesn&apos;t exist anywhere else. It won&apos;t exist here much longer.
+            Locking in <strong style={{ color: '#fff', fontWeight: 700 }}>exactly {TOTAL_SPOTS} Kootenay business owners</strong> at $150 —
+            custom-built website, live in 7 days, everything included. 5 pages. Mobile-ready. SEO-ready.
+            The kind of site agencies charge $3,800 for.{' '}
+            <strong style={{ color: '#fff', fontWeight: 700 }}>When these spots are gone, this price is gone forever.</strong>
           </p>
 
           {/* CTA */}
           <div className="hero-reveal hero-reveal-4" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <button className="btn-hero-primary" {...calProps} style={{ fontSize: '0.95rem', padding: '1.1rem 2.75rem', letterSpacing: '0.1em' }}>
-              LOCK IN MY SPOT — $150
+            <a
+              href={STRIPE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-hero-primary"
+              style={{ fontSize: '1rem', padding: '1.2rem 3rem', letterSpacing: '0.08em', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+            >
+              BUY NOW · $150 · SKIP THE CALL
               <ArrowRight size={18} style={{ marginLeft: '0.6rem' }} />
+            </a>
+            <button {...calProps} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.55)', borderRadius: '8px', cursor: 'pointer', fontSize: '0.82rem', padding: '0.75rem 1.75rem', letterSpacing: '0.06em', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'var(--font-serif)', transition: 'all 0.2s' }}>
+              Or Book a Free 30-Min Call First
             </button>
             <span style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.28)', fontFamily: 'var(--font-pjs)', letterSpacing: '0.02em' }}>
-              No contracts. No monthly fees. No bullshit.
+              Pay now · Intake form in your inbox · Site live in 7 days · No headaches.
             </span>
           </div>
 
@@ -220,24 +233,33 @@ export default function Website150() {
               <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: 1.05, marginBottom: '1.5rem' }}>
                 Not a Template.<br />Not a DIY Builder.<br /><span className="text-gradient">A Real Website.</span>
               </h2>
-              <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)', lineHeight: 1.8, marginBottom: '2.5rem' }}>
+              <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)', lineHeight: 1.8, marginBottom: '0.75rem' }}>
                 Everything a Kootenay business owner needs to look credible, get found, and turn visitors into paying customers.
               </p>
-              <button className="btn-hero-primary" {...calProps} style={{ fontSize: '0.85rem', padding: '0.9rem 2rem' }}>
-                GET STARTED — $150
+              <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-pjs)', lineHeight: 1.7, marginBottom: '2.5rem' }}>
+                Agencies charge $3,800–$8,000 for this. You pay $150. One time.
+              </p>
+              <a
+                href={STRIPE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-hero-primary"
+                style={{ fontSize: '0.85rem', padding: '0.9rem 2rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+              >
+                BUY NOW — $150
                 <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
-              </button>
+              </a>
             </div>
 
             {/* Right — feature list */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
               {([
-                { Icon: Smartphone, title: 'Mobile-First Design', desc: '70%+ of your customers are searching on their phone. Your site looks perfect on every screen.' },
-                { Icon: Globe, title: 'Google-Ready SEO', desc: 'Structured so Google knows you exist. Show up when locals search for what you do.' },
-                { Icon: Phone, title: 'Click-to-Call & Contact Forms', desc: 'One tap to call you. A form that gets you real leads. Zero friction between them and booking.' },
-                { Icon: Layers, title: 'Portfolio & Services Pages', desc: 'Show your work. List your services. Give them every reason to choose you over the next guy.' },
-                { Icon: Zap, title: 'Fast & Reliable', desc: 'No bloated builders. No plugins dragging you down. Clean, fast, professional code.' },
-                { Icon: MapPin, title: 'Local Presence Setup', desc: 'Google Maps embed and Google Business Profile tips so locals find you first.' },
+                { Icon: Smartphone, title: 'Mobile-First Design', desc: 'Over 70% of your customers are searching on their phones right now. Your site looks flawless on every screen — and Google ranks mobile-ready sites higher in local search.' },
+                { Icon: Globe, title: 'Built to Rank on Google', desc: 'Local SEO baked in from day one: title tags, meta descriptions, schema markup. When someone in your area searches for what you do — you show up. Not your competitor.' },
+                { Icon: Phone, title: 'Click-to-Call + Lead Forms', desc: 'One tap and they\'re calling you. A contact form that lands straight in your inbox the second it\'s filled out. Zero friction between seeing your site and booking a job.' },
+                { Icon: Layers, title: 'Every Page You Actually Need', desc: 'Home, Services, About, Gallery/Portfolio, Contact — 5 fully custom pages, each designed to do a specific job: convert a visitor into a customer.' },
+                { Icon: Zap, title: 'Blazing Fast, Zero Bloat', desc: 'Written in clean code — no WordPress, no Wix, no page builder garbage. Fast sites rank better on Google, hold attention longer, and look far more professional.' },
+                { Icon: MapPin, title: 'Local Discovery Setup', desc: 'Google Maps embedded. Directions link included. Google Business Profile optimization guide provided. Get found by people around the corner who need you today.' },
               ] as { Icon: React.ElementType; title: string; desc: string }[]).map(({ Icon, title, desc }, i, arr) => (
                 <div key={i} style={{ display: 'flex', gap: '1.25rem', padding: '1.75rem 0', borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none', alignItems: 'flex-start' }}>
                   <div style={{ width: '38px', height: '38px', borderRadius: '8px', background: 'rgba(230,126,34,0.07)', border: '1px solid rgba(230,126,34,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
@@ -448,48 +470,163 @@ export default function Website150() {
             ))}
           </div>
 
-          <button className="btn-hero-primary" {...calProps} style={{ fontSize: '0.92rem', padding: '1rem 2.5rem' }}>
-            OKAY — BOOK MY SPOT
-            <ArrowRight size={17} style={{ marginLeft: '0.6rem' }} />
-          </button>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.9rem' }}>
+            <a
+              href={STRIPE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-hero-primary"
+              style={{ fontSize: '0.92rem', padding: '1rem 2.5rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+            >
+              OKAY — BUY MY SITE FOR $150
+              <ArrowRight size={17} style={{ marginLeft: '0.6rem' }} />
+            </a>
+            <button {...calProps} style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.3)', cursor: 'pointer', fontSize: '0.8rem', fontFamily: 'var(--font-pjs)', textDecoration: 'underline', padding: 0 }}>
+              or book a free call first
+            </button>
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════ WHAT'S INCLUDED ═══════════════════════ */}
       <section ref={sInc.ref} style={{ padding: '9rem 0', opacity: sInc.visible ? 1 : 0, transform: sInc.visible ? 'none' : 'translateY(40px)', transition: 'opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)' }}>
-        <div className="container" style={{ maxWidth: '660px' }}>
+        <div className="container" style={{ maxWidth: '760px' }}>
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <div className="badge">Every Single Thing Included</div>
             <h2 style={{ fontSize: 'var(--h2-size)', lineHeight: 1.05 }}>
-              $150. <span className="text-gradient">Here&apos;s Exactly What You Get.</span>
+              $3,800+ In Real Value.<br /><span className="text-gradient">$150 Right Now.</span>
             </h2>
+            <p style={{ marginTop: '1.25rem', fontSize: 'var(--p-size)', color: 'rgba(255,255,255,0.45)', maxWidth: '560px', margin: '1.25rem auto 0', fontFamily: 'var(--font-pjs)', lineHeight: 1.75 }}>
+              Here&apos;s every deliverable with its real market price attached — so you know exactly what you&apos;re walking away from if you scroll past this.
+            </p>
           </div>
 
           <div style={{ border: '1px solid rgba(230,126,34,0.18)', borderRadius: '16px', overflow: 'hidden' }}>
-            {[
-              'Custom-designed website — not a Wix template',
-              'Up to 5 pages: Home, Services, About, Gallery/Portfolio, Contact',
-              'Mobile-responsive — perfect on every device',
-              'Click-to-call button + working contact form',
-              'SEO foundation: title tags, meta descriptions, structured for Google',
-              'Google Maps embed + directions link',
-              'Fast load times — zero bloated page builders',
-              'Social media profile links',
-              'Delivered within 7 business days',
-              '1 round of revisions included',
-              '30-day post-launch support',
-            ].map((item, idx, arr) => (
-              <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.1rem 1.75rem', borderBottom: idx < arr.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none', transition: 'background 0.2s' }}
+            {([
+              { item: 'Custom-built website — 5 full pages, zero templates', value: '$1,200', detail: 'Home, Services, About, Gallery & Contact. Every page designed from scratch to convert.' },
+              { item: 'Mobile-first responsive design', value: '$400', detail: 'Pixel-perfect on every iPhone, Android, and tablet. Google rewards this with higher rankings.' },
+              { item: 'Click-to-call button + working lead form', value: '$200', detail: 'One tap to dial you. Every form submission hits your inbox the moment it\'s sent.' },
+              { item: 'Local SEO foundation — built to rank on Google', value: '$600', detail: 'Title tags, meta descriptions, schema markup + Google Business Profile optimization guide.' },
+              { item: 'Google Maps embed + tap-to-directions link', value: '$150', detail: 'Local customers find you and navigate to you in one tap. Zero friction.' },
+              { item: 'Fast-loading, clean code — no page builder bloat', value: '$350', detail: 'No Wix, no WordPress. Lean custom code = faster load times = better Google rankings.' },
+              { item: 'Social media profile links + integration', value: '$100', detail: 'Instagram, Facebook, TikTok — all connected and looking sharp.' },
+              { item: '7-business-day delivery', value: '$250', detail: 'Agencies take 6–12 weeks. You\'re live in a week.' },
+              { item: '1 full round of revisions included', value: '$200', detail: 'Review it. Request changes. I fix it. No extra charge, no arguments.' },
+              { item: '30-day post-launch support', value: '$350', detail: 'Bug? Question? Small update? I\'ve got you covered for a full month after launch.' },
+            ] as { item: string; value: string; detail: string }[]).map(({ item, value, detail }, idx, arr) => (
+              <div key={idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', padding: '1.1rem 1.75rem', borderBottom: idx < arr.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none', transition: 'background 0.2s' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.background = 'rgba(230,126,34,0.03)'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.background = 'transparent'; }}>
-                <Check size={14} color="var(--accent)" strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                <span style={{ fontSize: '0.935rem', color: 'rgba(255,255,255,0.75)', fontFamily: 'var(--font-pjs)' }}>{item}</span>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.9rem', flex: 1 }}>
+                  <Check size={14} color="var(--accent)" strokeWidth={2.5} style={{ flexShrink: 0, marginTop: '3px' }} />
+                  <div>
+                    <span style={{ fontSize: '0.935rem', color: 'rgba(255,255,255,0.82)', fontFamily: 'var(--font-pjs)', display: 'block', fontWeight: 600 }}>{item}</span>
+                    <span style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.28)', fontFamily: 'var(--font-pjs)', display: 'block', marginTop: '0.2rem', lineHeight: 1.5 }}>{detail}</span>
+                  </div>
+                </div>
+                <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'rgba(255,255,255,0.18)', fontFamily: 'var(--font-serif)', flexShrink: 0, textDecoration: 'line-through', textDecorationColor: 'rgba(231,76,60,0.4)' }}>{value}</span>
               </div>
             ))}
-            <div style={{ padding: '1.75rem 1.75rem', background: 'rgba(230,126,34,0.06)', borderTop: '1px solid rgba(230,126,34,0.18)', display: 'flex', alignItems: 'baseline', gap: '1rem', justifyContent: 'center' }}>
-              <span style={{ fontSize: 'clamp(2.5rem, 7vw, 3.25rem)', fontWeight: 800, color: 'var(--primary)', fontFamily: 'var(--font-serif)', lineHeight: 1 }}>$150</span>
-              <span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-pjs)' }}>one-time · no monthly fees · first {TOTAL_SPOTS} only</span>
+            {/* Total value row */}
+            <div style={{ padding: '1.1rem 1.75rem', background: 'rgba(255,255,255,0.02)', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '0.72rem', fontWeight: 900, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.2em', fontFamily: 'var(--font-serif)' }}>Total Market Value</span>
+              <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'rgba(255,255,255,0.18)', fontFamily: 'var(--font-serif)', textDecoration: 'line-through', textDecorationColor: 'rgba(231,76,60,0.45)' }}>$3,800+</span>
             </div>
+            {/* Price + Buy Now row */}
+            <div style={{ padding: '1.75rem 1.75rem', background: 'rgba(230,126,34,0.06)', borderTop: '1px solid rgba(230,126,34,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.25rem' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem' }}>
+                <span style={{ fontSize: 'clamp(2.5rem, 7vw, 3.25rem)', fontWeight: 800, color: 'var(--primary)', fontFamily: 'var(--font-serif)', lineHeight: 1 }}>$150</span>
+                <span style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-pjs)' }}>one-time · no monthly fees · first {TOTAL_SPOTS} only</span>
+              </div>
+              <a
+                href={STRIPE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-hero-primary"
+                style={{ fontSize: '0.9rem', padding: '0.9rem 1.75rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', letterSpacing: '0.07em' }}
+              >
+                BUY NOW
+                <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
+              </a>
+            </div>
+          </div>
+
+          {/* Risk reversal */}
+          <div style={{ marginTop: '1.5rem', padding: '1.4rem 1.75rem', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+            <Shield size={18} color="var(--primary)" strokeWidth={1.75} style={{ flexShrink: 0, marginTop: '2px' }} />
+            <div>
+              <p style={{ fontSize: '0.9rem', fontWeight: 700, color: '#fff', marginBottom: '0.3rem', fontFamily: 'var(--font-serif)' }}>You Review It Before It Goes Live</p>
+              <p style={{ fontSize: '0.84rem', color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-pjs)', lineHeight: 1.65 }}>
+                You see the site before anyone else does. If it&apos;s not right, I fix it. You don&apos;t go live until you&apos;re happy with it. Zero risk.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ HOW IT WORKS ═══════════════════════ */}
+      <section ref={sHow.ref} style={{ padding: '9rem 0', borderTop: '1px solid rgba(255,255,255,0.04)', opacity: sHow.visible ? 1 : 0, transform: sHow.visible ? 'none' : 'translateY(40px)', transition: 'opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)' }}>
+        <div className="container" style={{ maxWidth: '900px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <div className="badge">The Process</div>
+            <h2 style={{ fontSize: 'var(--h2-size)', lineHeight: 1.05, marginBottom: '1.25rem' }}>
+              From Zero to Live Site<br /><span className="text-gradient">In 3 Steps.</span>
+            </h2>
+            <p style={{ fontSize: 'var(--p-size)', color: 'rgba(255,255,255,0.45)', maxWidth: '480px', margin: '0 auto', fontFamily: 'var(--font-pjs)', lineHeight: 1.75 }}>
+              No drawn-out meetings. No six-week timelines. No back-and-forth invoices. Here&apos;s how it actually works.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+            {([
+              {
+                step: '01',
+                Icon: Gift,
+                title: 'Pay $150 Today',
+                desc: 'Click "Buy Now" below. Takes 2 minutes. You\'re locked in at this price — guaranteed. No call required.',
+                sub: 'Or book a free 30-min call first if you want to chat before paying.',
+              },
+              {
+                step: '02',
+                Icon: Clock,
+                title: 'Fill a 15-Min Form',
+                desc: 'You\'ll get a short intake form by email. Tell me about your business, services, and what you want. That\'s the full extent of your work.',
+                sub: '15 minutes. One time. Then I take it from here.',
+              },
+              {
+                step: '03',
+                Icon: TrendingUp,
+                title: 'Review & Go Live',
+                desc: 'In 7 business days, your site is ready. You review it, tell me any tweaks, I fix them. We launch. Done.',
+                sub: 'No surprises. No extra invoices. Exactly what was promised.',
+              },
+            ] as { step: string; Icon: React.ElementType; title: string; desc: string; sub: string }[]).map(({ step, Icon: StepIcon, title, desc, sub }, i) => (
+              <div key={i} style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '14px', position: 'relative', overflow: 'hidden' }}>
+                <span style={{ position: 'absolute', top: '1.5rem', right: '1.75rem', fontSize: '3.5rem', fontWeight: 900, color: 'rgba(255,255,255,0.025)', fontFamily: 'var(--font-serif)', lineHeight: 1 }}>{step}</span>
+                <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: 'rgba(230,126,34,0.1)', border: '1px solid rgba(230,126,34,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                  <StepIcon size={20} color="var(--primary)" strokeWidth={1.75} />
+                </div>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#fff', marginBottom: '0.75rem', fontFamily: 'var(--font-serif)', letterSpacing: '-0.02em' }}>{title}</h3>
+                <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-pjs)', lineHeight: 1.7, marginBottom: '1rem' }}>{desc}</p>
+                <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.22)', fontFamily: 'var(--font-pjs)', lineHeight: 1.6, fontStyle: 'italic' }}>{sub}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.9rem' }}>
+            <a
+              href={STRIPE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-hero-primary"
+              style={{ fontSize: '0.95rem', padding: '1.1rem 2.75rem', letterSpacing: '0.08em', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+            >
+              START NOW — PAY $150
+              <ArrowRight size={18} style={{ marginLeft: '0.6rem' }} />
+            </a>
+            <p style={{ fontSize: '0.76rem', color: 'rgba(255,255,255,0.2)', fontFamily: 'var(--font-pjs)' }}>
+              {spotsLeft} spots left · Kootenay businesses only
+            </p>
           </div>
         </div>
       </section>
@@ -516,10 +653,21 @@ export default function Website150() {
             ))}
           </div>
 
-          <button className="btn-hero-primary" {...calProps} style={{ fontSize: '0.95rem', padding: '1.1rem 2.75rem', letterSpacing: '0.1em' }}>
-            I WANT ONE OF THESE SPOTS
-            <ArrowRight size={18} style={{ marginLeft: '0.6rem' }} />
-          </button>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.9rem' }}>
+            <a
+              href={STRIPE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-hero-primary"
+              style={{ fontSize: '0.95rem', padding: '1.1rem 2.75rem', letterSpacing: '0.1em', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+            >
+              CLAIM MY SPOT — $150
+              <ArrowRight size={18} style={{ marginLeft: '0.6rem' }} />
+            </a>
+            <button {...calProps} style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.3)', cursor: 'pointer', fontSize: '0.8rem', fontFamily: 'var(--font-pjs)', textDecoration: 'underline', padding: 0 }}>
+              or book a free 30-min call first
+            </button>
+          </div>
         </div>
       </section>
 
@@ -533,18 +681,29 @@ export default function Website150() {
             Stop Letting a Bad Website<br /><span className="text-gradient">Cost You Clients.</span>
           </h2>
           <p style={{ fontSize: 'var(--p-large-size)', color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)', lineHeight: 1.85, marginBottom: '3.5rem' }}>
-            Book a 30-minute call. Tell me about your business.
-            I&apos;ll build something that makes people reach out and actually book you.{' '}
-            <strong style={{ color: 'rgba(255,255,255,0.75)' }}>$150. Done. No headaches.</strong>
+            Right now, someone in the Kootenays is searching for exactly what you offer — and they&apos;re finding your competition instead.
+            $150 fixes that. A professional site, live in 7 days, zero monthly fees.{' '}
+            <strong style={{ color: 'rgba(255,255,255,0.75)' }}>When these {spotsLeft} spots are gone, this price is gone. No waitlist. No exceptions.</strong>
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.75rem' }}>
-            <button className="btn-hero-primary" {...calProps} style={{ fontSize: '1rem', padding: '1.2rem 3rem', letterSpacing: '0.08em' }}>
-              BOOK MY $150 WEBSITE — RIGHT NOW
-              <ArrowRight size={18} style={{ marginLeft: '0.65rem' }} />
-            </button>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.9rem' }}>
+              <a
+                href={STRIPE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-hero-primary"
+                style={{ fontSize: '1rem', padding: '1.2rem 3rem', letterSpacing: '0.08em', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+              >
+                BUY NOW — LOCK IN $150
+                <ArrowRight size={18} style={{ marginLeft: '0.65rem' }} />
+              </a>
+              <button {...calProps} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.4)', borderRadius: '8px', cursor: 'pointer', fontSize: '0.8rem', padding: '0.7rem 1.75rem', letterSpacing: '0.05em', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'var(--font-serif)', transition: 'all 0.2s' }}>
+                Book a Free Call First
+              </button>
+            </div>
             <div style={{ display: 'flex', gap: '2.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              {['Only 10 spots total', 'No monthly fees', 'Local to the Kootenays', '7-day delivery'].map((item, i) => (
+              {[`${spotsLeft} spots left at this price`, 'No monthly fees. Ever.', '7-day delivery', 'Review before it goes live'].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: 'rgba(255,255,255,0.28)', fontFamily: 'var(--font-pjs)' }}>
                   <Check size={11} color="var(--accent)" strokeWidth={3} />
                   {item}
