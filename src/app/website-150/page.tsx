@@ -5,6 +5,7 @@ import {
   ArrowRight, Check, X,
   Search, PhoneCall, DollarSign, RefreshCw,
   Smartphone, Globe, Phone, Layers, Zap, MapPin,
+  ChevronLeft, ChevronRight, ExternalLink,
 } from 'lucide-react';
 
 // ─────────────────────────────────────────────
@@ -72,11 +73,35 @@ export default function Website150() {
 
   const sProb    = useReveal();
   const sWhat    = useReveal();
+  const sPort    = useReveal();
   const sPrice   = useReveal();
   const sMirror  = useReveal();
   const sInc     = useReveal();
   const sSpots   = useReveal();
   const sFinal   = useReveal();
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const portfolioProjects = [
+    { name: 'Passion for the Cract', url: 'passionforthecract.ca', tag: 'Craft Marketplace', image: 'https://image.thum.io/get/width/1200/crop/630/https://www.passionforthecract.ca/' },
+    { name: 'HostelHack', url: 'hostelhack.com', tag: 'Travel App', image: 'https://res.cloudinary.com/dpfapm0tl/image/upload/v1774459722/744808c2-e19f-4048-803b-fa9226046a3e_hlb0oj.jpg' },
+    { name: 'Revlo', url: 'wearerevlo.com', tag: 'Fitness Community', image: 'https://res.cloudinary.com/dpfapm0tl/image/upload/v1771259282/ChatGPT_Image_Feb_16_2026_11_27_50_AM_uorc1u.png' },
+    { name: 'Snowblowr', url: 'snowblowr.com', tag: 'Snow Removal', image: 'https://res.cloudinary.com/dtc6oth0i/image/upload/v1764387886/ChatGPT_Image_Nov_28_2025_10_44_12_PM_idoizu.png' },
+    { name: 'Scale With Jaryd', url: 'scalewithjaryd.com', tag: 'Business Coaching', image: 'https://res.cloudinary.com/ds1sfjkua/image/upload/v1765743855/ChatGPT_Image_Dec_14_2025_03_24_01_PM_fm1rgt.png' },
+    { name: 'IndeedBot', url: 'indeedbot.xyz', tag: 'AI Job Search', image: 'https://res.cloudinary.com/dpfapm0tl/image/upload/v1770923699/ChatGPT_Image_Feb_12_2026_02_14_17_PM_nxwmok.png' },
+    { name: 'DocsStudio', url: 'docsstudio.dev', tag: 'Documentation Tool', image: 'https://res.cloudinary.com/dpfapm0tl/image/upload/v1775257813/ChatGPT_Image_Apr_3_2026_07_08_40_PM_aqoo6r.png' },
+  ];
+
+  const goTo = (i: number) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const card = container.children[i] as HTMLElement;
+    container.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+    setActiveIdx(i);
+  };
+  const goPrev = () => goTo(Math.max(0, activeIdx - 1));
+  const goNext = () => goTo(Math.min(portfolioProjects.length - 1, activeIdx + 1));
 
   const calProps = {
     'data-cal-link': 'kootenay-signal/30min',
@@ -102,8 +127,8 @@ export default function Website150() {
           </div>
 
           {/* Headline */}
-          <h1 className="hero-reveal hero-reveal-2" style={{ fontSize: 'clamp(3.25rem, 10vw, 7.5rem)', fontWeight: 800, lineHeight: 0.88, letterSpacing: '-0.04em', textTransform: 'uppercase', marginBottom: '2.25rem', color: '#fff' }}>
-            A Website<br />That Actually<br />
+          <h1 className="hero-reveal hero-reveal-2" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, lineHeight: 1, letterSpacing: '-0.04em', textTransform: 'uppercase', marginBottom: '2.25rem', color: '#fff' }}>
+            A Website That Actually<br />
             <span className="text-gradient-hero">Works. $150.</span>
           </h1>
 
@@ -225,6 +250,106 @@ export default function Website150() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ PORTFOLIO ═══════════════════════ */}
+      <section ref={sPort.ref} style={{ padding: '9rem 0', borderTop: '1px solid rgba(255,255,255,0.04)', opacity: sPort.visible ? 1 : 0, transform: sPort.visible ? 'none' : 'translateY(40px)', transition: 'opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)' }}>
+        <div className="container" style={{ maxWidth: '1180px' }}>
+
+          {/* Section header */}
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <div className="badge">Past Work</div>
+            <h2 style={{ fontSize: 'var(--h2-size)', lineHeight: 1.05, marginBottom: '1.25rem' }}>
+              Real Sites.<br /><span className="text-gradient">Real Results.</span>
+            </h2>
+            <p style={{ fontSize: 'var(--p-size)', color: 'rgba(255,255,255,0.45)', maxWidth: '500px', margin: '0 auto', fontFamily: 'var(--font-pjs)', lineHeight: 1.75 }}>
+              Every one of these was built from scratch. No templates. No drag-and-drop.
+            </p>
+          </div>
+
+          {/* Carousel */}
+          <div style={{ position: 'relative' }}>
+
+            {/* Arrow — prev */}
+            <button
+              onClick={goPrev}
+              disabled={activeIdx === 0}
+              aria-label="Previous"
+              style={{ position: 'absolute', left: '-1.75rem', top: '50%', transform: 'translateY(-50%)', zIndex: 10, width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(13,17,9,0.92)', border: '1px solid rgba(255,255,255,0.09)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: activeIdx === 0 ? 'not-allowed' : 'pointer', opacity: activeIdx === 0 ? 0.2 : 1, transition: 'opacity 0.2s', backdropFilter: 'blur(8px)' }}
+            >
+              <ChevronLeft size={18} color="#fff" strokeWidth={2} />
+            </button>
+
+            {/* Scroll container */}
+            <div
+              ref={scrollRef}
+              style={{ display: 'flex', overflowX: 'auto', scrollSnapType: 'x mandatory', scrollBehavior: 'smooth', gap: '1.25rem', paddingBottom: '2px', WebkitOverflowScrolling: 'touch' as React.CSSProperties['WebkitOverflowScrolling'], scrollbarWidth: 'none' as React.CSSProperties['scrollbarWidth'] }}
+              onScroll={() => {
+                const el = scrollRef.current;
+                if (!el) return;
+                const cardW = (el.children[0] as HTMLElement)?.offsetWidth + 20 || 1;
+                setActiveIdx(Math.round(el.scrollLeft / cardW));
+              }}
+            >
+              {portfolioProjects.map((p, i) => (
+                <a
+                  key={i}
+                  href={`https://www.${p.url}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="port-card"
+                  style={{ flexShrink: 0, width: 'clamp(280px, 42vw, 460px)', scrollSnapAlign: 'start', textDecoration: 'none', display: 'block', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.015)', overflow: 'hidden', transition: 'border-color 0.3s, transform 0.3s' }}
+                >
+                  {/* Image */}
+                  <div style={{ aspectRatio: '1.91 / 1', overflow: 'hidden', background: '#0a0d07', position: 'relative' }}>
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      loading="lazy"
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
+                      className="port-img"
+                    />
+                    {/* Tag overlay */}
+                    <span style={{ position: 'absolute', top: '0.85rem', left: '0.85rem', fontSize: '0.62rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--primary)', background: 'rgba(13,17,9,0.82)', border: '1px solid rgba(230,126,34,0.2)', borderRadius: '50px', padding: '0.3rem 0.75rem', backdropFilter: 'blur(6px)' }}>
+                      {p.tag}
+                    </span>
+                  </div>
+
+                  {/* Footer */}
+                  <div style={{ padding: '1.1rem 1.4rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div>
+                      <p style={{ fontWeight: 700, fontSize: '0.93rem', color: '#fff', margin: 0, fontFamily: 'var(--font-serif)', letterSpacing: '-0.01em' }}>{p.name}</p>
+                      <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.28)', margin: '0.2rem 0 0', fontFamily: 'var(--font-pjs)' }}>{p.url}</p>
+                    </div>
+                    <ExternalLink size={13} color="rgba(255,255,255,0.2)" style={{ flexShrink: 0 }} />
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* Arrow — next */}
+            <button
+              onClick={goNext}
+              disabled={activeIdx === portfolioProjects.length - 1}
+              aria-label="Next"
+              style={{ position: 'absolute', right: '-1.75rem', top: '50%', transform: 'translateY(-50%)', zIndex: 10, width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(13,17,9,0.92)', border: '1px solid rgba(255,255,255,0.09)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: activeIdx === portfolioProjects.length - 1 ? 'not-allowed' : 'pointer', opacity: activeIdx === portfolioProjects.length - 1 ? 0.2 : 1, transition: 'opacity 0.2s', backdropFilter: 'blur(8px)' }}
+            >
+              <ChevronRight size={18} color="#fff" strokeWidth={2} />
+            </button>
+          </div>
+
+          {/* Dot indicators */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginTop: '2.25rem' }}>
+            {portfolioProjects.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                style={{ width: i === activeIdx ? '24px' : '7px', height: '7px', borderRadius: '50px', background: i === activeIdx ? 'var(--primary)' : 'rgba(255,255,255,0.15)', border: 'none', padding: 0, cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)' }}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -435,6 +560,8 @@ export default function Website150() {
           0%, 100% { opacity: 1; transform: scale(1); }
           50% { opacity: 0.35; transform: scale(0.7); }
         }
+        .port-card:hover { border-color: rgba(230,126,34,0.22) !important; transform: translateY(-2px); }
+        .port-card:hover .port-img { transform: scale(1.04); }
         @media (max-width: 768px) {
           .w150-two-col { grid-template-columns: 1fr !important; }
           .w150-price-row { grid-template-columns: 1fr !important; gap: 0.35rem !important; }
