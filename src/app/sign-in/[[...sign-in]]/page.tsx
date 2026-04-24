@@ -38,7 +38,7 @@ export default function SignInPage() {
         <div style={{ position: 'relative', zIndex: 10 }}>
           <Link href="/">
             <Image 
-              src="https://res.cloudinary.com/doajstql7/image/upload/v1777002763/f3d21215-ada9-4ea3-b86d-510a6885c8f5_oj45dn.png" 
+              src="https://res.cloudinary.com/doajstql7/image/upload/v1777003162/f3d21215-ada9-4ea3-b86d-510a6885c8f5-removebg-preview_uat1ay.png" 
               alt="Kootenay Signal Logo" 
               width={120}
               height={120}
@@ -88,7 +88,7 @@ export default function SignInPage() {
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
             <Link href="/">
               <Image 
-                src="https://res.cloudinary.com/doajstql7/image/upload/v1777002763/f3d21215-ada9-4ea3-b86d-510a6885c8f5_oj45dn.png" 
+                src="https://res.cloudinary.com/doajstql7/image/upload/v1777003162/f3d21215-ada9-4ea3-b86d-510a6885c8f5-removebg-preview_uat1ay.png" 
                 alt="Kootenay Signal Logo" 
                 width={70}
                 height={70}

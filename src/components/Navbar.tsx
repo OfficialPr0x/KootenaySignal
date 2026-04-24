@@ -52,7 +52,7 @@ export default function Navbar() {
         <div className="scroll-progress" style={{ width: `${scroll}%` }}></div>
         <Link href="/" className="nav-logo" style={{ textDecoration: 'none' }}>
           <Image 
-            src="https://res.cloudinary.com/doajstql7/image/upload/v1777002763/f3d21215-ada9-4ea3-b86d-510a6885c8f5_oj45dn.png" 
+            src="https://res.cloudinary.com/doajstql7/image/upload/v1777003162/f3d21215-ada9-4ea3-b86d-510a6885c8f5-removebg-preview_uat1ay.png" 
             alt="Kootenay Signal Logo" 
             width={140}
             height={140}
