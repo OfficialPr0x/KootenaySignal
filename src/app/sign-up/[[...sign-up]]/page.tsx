@@ -38,7 +38,7 @@ export default function SignUpPage() {
         <div style={{ position: 'relative', zIndex: 10 }}>
           <Link href="/">
             <Image 
-              src="https://res.cloudinary.com/doajstql7/image/upload/v1775879112/ChatGPT_Image_Apr_10__2026__11_27_53_PM-removebg-preview_vjtdqa.png" 
+              src="https://res.cloudinary.com/doajstql7/image/upload/v1777002763/f3d21215-ada9-4ea3-b86d-510a6885c8f5_oj45dn.png" 
               alt="Kootenay Signal Logo" 
               width={120}
               height={120}
@@ -88,7 +88,7 @@ export default function SignUpPage() {
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
             <Link href="/">
               <Image 
-                src="https://res.cloudinary.com/doajstql7/image/upload/v1775879112/ChatGPT_Image_Apr_10__2026__11_27_53_PM-removebg-preview_vjtdqa.png" 
+                src="https://res.cloudinary.com/doajstql7/image/upload/v1777002763/f3d21215-ada9-4ea3-b86d-510a6885c8f5_oj45dn.png" 
                 alt="Kootenay Signal Logo" 
                 width={70}
                 height={70}
