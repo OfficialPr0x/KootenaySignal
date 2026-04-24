@@ -271,7 +271,7 @@ export default function Website150() {
                 BUY NOW — $150
                 <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
               </a>
-              <button {...calProps} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.4)', borderRadius: '8px', cursor: 'pointer', fontSize: '0.78rem', padding: '0.7rem 1.5rem', letterSpacing: '0.05em', fontWeight: 600, fontFamily: 'var(--font-pjs)', transition: 'all 0.2s', width: '100%', textAlign: 'center' }}>
+              <button {...calProps} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.4)', borderRadius: '8px', cursor: 'pointer', fontSize: '0.78rem', padding: '0.7rem 1.5rem', letterSpacing: '0.05em', fontWeight: 600, fontFamily: 'var(--font-pjs)', transition: 'all 0.2s', marginTop: '0.6rem', display: 'inline-block' }}>
                 Or Book a Free Call
               </button>
             </div>
