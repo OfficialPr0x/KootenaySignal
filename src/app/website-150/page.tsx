@@ -8,6 +8,7 @@ import {
   ChevronLeft, ChevronRight, ExternalLink,
   Shield, Clock, TrendingUp, Gift,
 } from 'lucide-react';
+import CheckoutModal from './CheckoutModal';
 
 // ─────────────────────────────────────────────
 // UPDATE THIS NUMBER AS SPOTS ARE CLAIMED
@@ -95,6 +96,7 @@ export default function Website150() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showCheckout, setShowCheckout] = useState(false);
 
   const portfolioProjects = [
     { name: 'Passion for the Craft', url: 'passionforthecraft.ca', tag: 'Custom Contracting', image: 'https://res.cloudinary.com/doajstql7/image/upload/v1777068759/ChatGPT_Image_Apr_24_2026_06_12_06_PM_wzcjyq.png' },
@@ -123,7 +125,17 @@ export default function Website150() {
   };
 
   return (
-    <main style={{ background: 'var(--background)', color: 'var(--foreground)', position: 'relative', overflow: 'hidden', paddingBottom: '72px' }}>
+    <main
+      style={{ background: 'var(--background)', color: 'var(--foreground)', position: 'relative', overflow: 'hidden', paddingBottom: '72px' }}
+      onClick={(e) => {
+        const a = (e.target as HTMLElement).closest('a[href]') as HTMLAnchorElement | null;
+        if (a?.getAttribute('href') === STRIPE_URL) {
+          e.preventDefault();
+          setShowCheckout(true);
+        }
+      }}
+    >
+      {showCheckout && <CheckoutModal onClose={() => setShowCheckout(false)} />}
 
       {/* ═══════════════════════ HERO ═══════════════════════ */}
       <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', padding: '9rem 0 6rem', overflow: 'hidden' }}>
