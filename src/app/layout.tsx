@@ -1,6 +1,7 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Syne, Plus_Jakarta_Sans, Vollkorn } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import Navbar from "@/components/Navbar";
 
@@ -53,6 +54,7 @@ export default function RootLayout({
         <ClerkProvider>
           <Navbar />
           {children}
+          <Analytics />
         </ClerkProvider>
       </body>
     </html>
