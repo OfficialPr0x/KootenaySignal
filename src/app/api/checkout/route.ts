@@ -22,6 +22,13 @@ const ADDON_PRICES: Record<string, number> = {
   gmb: 9700,
 };
 
+const ADDON_LABELS: Record<string, string> = {
+  seo: 'Google Ranking Boost ($97)',
+  'missed-call': 'Missed Call Text-Back ($147)',
+  'ai-quote': 'AI Quote Assistant ($97)',
+  gmb: 'Google Profile Optimization ($97)',
+};
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -38,12 +45,17 @@ export async function POST(req: NextRequest) {
 
     const addOnTotal = (addOns ?? []).reduce((sum, id) => sum + (ADDON_PRICES[id] ?? 0), 0);
     const amount = 15000 + addOnTotal;
+    const amountDollars = (amount / 100).toFixed(2);
+
+    const addonLines = (addOns ?? []).map(id => ADDON_LABELS[id] ?? id);
+    const lineItems = ['Custom Website – 5 Pages, 7-Day Delivery ($150.00)', ...addonLines];
+    const description = `${businessName} | ${lineItems.join(' + ')} | Total: $${amountDollars} CAD`;
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: 'cad',
       receipt_email: email,
-      description: `Website Build — ${businessName}`,
+      description,
       metadata: {
         name,
         businessName,
@@ -51,7 +63,13 @@ export async function POST(req: NextRequest) {
         phone,
         businessType,
         notes: notes ?? '',
-        addOns: (addOns ?? []).join(', '),
+        // Individual line items for easy filtering/reporting in Stripe
+        item_website: '$150.00',
+        ...(addOns ?? []).reduce<Record<string, string>>((acc, id) => {
+          if (ADDON_PRICES[id]) acc[`item_${id}`] = `$${(ADDON_PRICES[id] / 100).toFixed(2)}`;
+          return acc;
+        }, {}),
+        total_cad: `$${amountDollars}`,
         source: 'website-150-funnel',
       },
     });
