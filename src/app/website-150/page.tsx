@@ -73,6 +73,12 @@ export default function Website150() {
     });
   }, []);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 700);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const sProb    = useReveal();
   const sWhat    = useReveal();
   const sPort    = useReveal();
@@ -82,9 +88,13 @@ export default function Website150() {
   const sInc     = useReveal();
   const sSpots   = useReveal();
   const sFinal   = useReveal();
+  const sFor     = useReveal();
+  const sFaq     = useReveal();
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const portfolioProjects = [
     { name: 'Passion for the Craft', url: 'passionforthecraft.ca', tag: 'Custom Contracting', image: 'https://res.cloudinary.com/doajstql7/image/upload/v1777068759/ChatGPT_Image_Apr_24_2026_06_12_06_PM_wzcjyq.png' },
@@ -113,7 +123,7 @@ export default function Website150() {
   };
 
   return (
-    <main style={{ background: 'var(--background)', color: 'var(--foreground)', position: 'relative', overflow: 'hidden' }}>
+    <main style={{ background: 'var(--background)', color: 'var(--foreground)', position: 'relative', overflow: 'hidden', paddingBottom: '72px' }}>
 
       {/* ═══════════════════════ HERO ═══════════════════════ */}
       <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', padding: '9rem 0 6rem', overflow: 'hidden' }}>
@@ -242,6 +252,36 @@ export default function Website150() {
               </button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ IS THIS FOR YOU? ═══════════════════════ */}
+      <section ref={sFor.ref} style={{ padding: '7rem 0', borderTop: '1px solid rgba(255,255,255,0.05)', opacity: sFor.visible ? 1 : 0, transform: sFor.visible ? 'none' : 'translateY(40px)', transition: 'opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)' }}>
+        <div className="container" style={{ maxWidth: '1040px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+            <div className="badge">Made for Kootenay Businesses</div>
+            <h2 style={{ fontSize: 'var(--h2-size)', lineHeight: 1.05 }}>
+              Sound Like You?<br /><span className="text-gradient">Then This Is For You.</span>
+            </h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(168px, 1fr))', gap: '0.65rem', marginBottom: '3rem' }}>
+            {[
+              'Trades & Contractors', 'Plumbers / Electricians', 'Landscapers', 'Snow Removal',
+              'Restaurants & Cafés', 'Retail & Boutiques', 'Hair & Beauty Salons',
+              'Mechanics / Auto', 'Photographers / Video', 'Real Estate Agents',
+              'Fitness & Personal Training', 'Cleaning Services',
+              'Tour Guides & Outfitters', 'Bed & Breakfasts', 'Pet Services & Grooming',
+            ].map((biz, i) => (
+              <div key={i} style={{ padding: '0.9rem 1.1rem', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                <Check size={11} color="var(--accent)" strokeWidth={3} style={{ flexShrink: 0 }} />
+                <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.58)', fontFamily: 'var(--font-pjs)', margin: 0, lineHeight: 1.35 }}>{biz}</p>
+              </div>
+            ))}
+          </div>
+          <p style={{ textAlign: 'center', fontSize: '0.88rem', color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-pjs)' }}>
+            If your business is in the Kootenays and you serve local customers —{' '}
+            <strong style={{ color: 'rgba(255,255,255,0.55)' }}>this is for you.</strong>
+          </p>
         </div>
       </section>
 
@@ -534,6 +574,26 @@ export default function Website150() {
             ))}
           </div>
 
+          {/* Cost of delay */}
+          <div style={{ marginBottom: '3.5rem', padding: '1.75rem 2.25rem', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', textAlign: 'left' }}>
+            <p style={{ fontSize: '0.65rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.25em', color: 'rgba(255,255,255,0.18)', fontFamily: 'var(--font-serif)', marginBottom: '1.25rem' }}>Quick Math</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+              {[
+                { label: 'Average job value', value: '$500' },
+                { label: 'Extra jobs / month from visibility', value: '× 2' },
+                { label: 'Extra revenue in year 1', value: '$12,000' },
+              ].map(({ label, value }, i) => (
+                <div key={i}>
+                  <p style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 800, color: i === 2 ? 'var(--primary)' : '#fff', fontFamily: 'var(--font-serif)', lineHeight: 1, marginBottom: '0.35rem' }}>{value}</p>
+                  <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-pjs)', lineHeight: 1.4 }}>{label}</p>
+                </div>
+              ))}
+            </div>
+            <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.28)', fontFamily: 'var(--font-pjs)', marginTop: '1.25rem', lineHeight: 1.6 }}>
+              That&apos;s conservative. The website costs $150 once — it pays for itself the moment it books a single job. Every month you wait is money left on the table.
+            </p>
+          </div>
+
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.9rem' }}>
             <a
               href={STRIPE_URL}
@@ -735,6 +795,61 @@ export default function Website150() {
         </div>
       </section>
 
+      {/* ═══════════════════════ FAQ ═══════════════════════ */}
+      <section ref={sFaq.ref} style={{ padding: '9rem 0', borderTop: '1px solid rgba(255,255,255,0.04)', opacity: sFaq.visible ? 1 : 0, transform: sFaq.visible ? 'none' : 'translateY(40px)', transition: 'opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)' }}>
+        <div className="container" style={{ maxWidth: '760px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <div className="badge">No Surprises</div>
+            <h2 style={{ fontSize: 'var(--h2-size)', lineHeight: 1.05 }}>
+              Every Question You Have,<br /><span className="text-gradient">Answered.</span>
+            </h2>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {([
+              { q: 'Do I own my website?', a: 'Yes — completely. The code, the design, the domain. Once it\'s built and paid for, it\'s yours forever. You are never tied to me or any platform.' },
+              { q: 'Are there monthly fees?', a: 'Not from me. Ever. You\'ll need hosting (~$5–$15/mo from providers like Vercel or Cloudflare) and a domain (~$15/yr). I\'ll set both up for you as part of the build and walk you through it.' },
+              { q: 'What if I\'m not happy with it?', a: 'You review the full site before it goes live. If something isn\'t right, I fix it — one full round of revisions is included. And if after revisions you\'re still not satisfied, I\'ll refund you in full. Zero risk.' },
+              { q: 'What if I don\'t have photos?', a: 'Send what you have — even phone photos are a start. If you have nothing, I\'ll source professional, high-quality images that match your industry and look sharp. No extra charge.' },
+              { q: 'What if I\'m not tech-savvy?', a: 'That\'s exactly who this is built for. You fill out a 15-minute intake form. I handle domain registration, hosting setup, design, code — everything. You don\'t touch a single technical thing.' },
+              { q: 'Can I update the site myself after launch?', a: 'Yes. I\'ll hand you a simple guide for updating text and images. Or just email me the change and I\'ll handle it during your 30-day post-launch support window at no charge.' },
+              { q: 'Why only 10 spots?', a: 'Every site is built by me personally — no outsourcing, no templates, no shortcuts. 10 is the maximum I can deliver at this price without cutting corners on quality. When they\'re gone, the price goes back to market rate permanently.' },
+              { q: 'What happens after 30 days of support?', a: 'The site runs on its own indefinitely. If you ever want additions, new pages, or ongoing updates, I\'m available as a retainer — but there\'s no obligation. Most clients never need me again.' },
+            ] as { q: string; a: string }[]).map(({ q, a }, i, arr) => (
+              <div key={i} style={{ borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', padding: '1.5rem 0', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left' }}
+                >
+                  <span style={{ fontSize: '1rem', fontWeight: 700, color: openFaq === i ? '#fff' : 'rgba(255,255,255,0.7)', fontFamily: 'var(--font-serif)', letterSpacing: '-0.01em', lineHeight: 1.4 }}>{q}</span>
+                  <span style={{ flexShrink: 0, width: '28px', height: '28px', borderRadius: '50%', background: openFaq === i ? 'rgba(230,126,34,0.12)' : 'rgba(255,255,255,0.04)', border: `1px solid ${openFaq === i ? 'rgba(230,126,34,0.28)' : 'rgba(255,255,255,0.08)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', color: openFaq === i ? 'var(--primary)' : 'rgba(255,255,255,0.28)', fontSize: '1.15rem', fontFamily: 'var(--font-pjs)', lineHeight: 1 }}>
+                    {openFaq === i ? '−' : '+'}
+                  </span>
+                </button>
+                {openFaq === i && (
+                  <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-pjs)', lineHeight: 1.78, paddingBottom: '1.5rem', paddingRight: '2.5rem', marginTop: '-0.25rem' }}>{a}</p>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: '3.5rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a
+              href={STRIPE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-hero-primary"
+              style={{ fontSize: '0.88rem', padding: '0.9rem 2rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', letterSpacing: '0.07em' }}
+            >
+              I&apos;M IN — $150
+              <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
+            </a>
+            <button {...calProps} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.45)', borderRadius: '8px', cursor: 'pointer', fontSize: '0.82rem', padding: '0.9rem 1.75rem', letterSpacing: '0.05em', fontWeight: 600, fontFamily: 'var(--font-pjs)', transition: 'all 0.2s' }}>
+              Still have a question? Book a free call.
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════════════════ FINAL CTA ═══════════════════════ */}
       <section ref={sFinal.ref} style={{ padding: '11rem 0', textAlign: 'center', opacity: sFinal.visible ? 1 : 0, transform: sFinal.visible ? 'none' : 'translateY(40px)', transition: 'opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', bottom: '-20%', left: '50%', transform: 'translateX(-50%)', width: '80vw', height: '80vw', maxWidth: '800px', background: 'radial-gradient(circle, rgba(230,126,34,0.06) 0%, transparent 65%)', pointerEvents: 'none', filter: 'blur(60px)' }} />
@@ -777,6 +892,37 @@ export default function Website150() {
           </div>
         </div>
       </section>
+
+      {/* ═══════════════════════ STICKY BOTTOM BAR ═══════════════════════ */}
+      <div style={{
+        position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
+        padding: '0.8rem 1.5rem',
+        background: 'rgba(10,13,7,0.97)',
+        borderTop: '1px solid rgba(230,126,34,0.22)',
+        backdropFilter: 'blur(18px)',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem',
+        transform: scrolled ? 'translateY(0)' : 'translateY(100%)',
+        transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1)',
+        flexWrap: 'wrap',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', flexWrap: 'wrap' }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.68rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.28)', fontFamily: 'var(--font-serif)' }}>
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--primary)', display: 'inline-block', animation: 'pulseDot 1.5s infinite' }} />
+            {spotsLeft} of {TOTAL_SPOTS} spots left
+          </span>
+          <span style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.38)', fontFamily: 'var(--font-pjs)' }}>Custom website · 7-day delivery · No monthly fees</span>
+        </div>
+        <a
+          href={STRIPE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-hero-primary"
+          style={{ fontSize: '0.83rem', padding: '0.65rem 1.5rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', letterSpacing: '0.08em', whiteSpace: 'nowrap' }}
+        >
+          BUY NOW — $150
+          <ArrowRight size={14} style={{ marginLeft: '0.45rem' }} />
+        </a>
+      </div>
 
       <style>{`
         @keyframes pulseDot {
