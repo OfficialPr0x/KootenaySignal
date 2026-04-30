@@ -220,4 +220,58 @@ create policy "Service role full access — chat_messages"
 -- DONE
 -- All 5 tables created:
 --   audits, sites, snapshots, action_items, chat_messages
+
+-- ================================================================
+-- TABLE: subscriptions
+-- Used by: /api/webhooks/stripe (synced from Stripe events)
+-- Tracks all active monthly retainer subscribers
+-- ================================================================
+create table if not exists subscriptions (
+  id                       uuid        default gen_random_uuid() primary key,
+  stripe_customer_id       text        not null,
+  stripe_subscription_id   text        not null unique,
+  stripe_price_id          text,
+
+  plan_name                text        not null,
+  plan_slug                text        not null,
+  -- plan_slug values: 'automation' | 'seo-retainer' | 'ads-management'
+  --                   'signal-core' | 'search-vault' | 'search-sync'
+
+  customer_email           text,
+  customer_name            text,
+
+  status                   text        not null default 'active',
+  -- status values: 'active' | 'past_due' | 'canceled' | 'unpaid' | 'trialing'
+
+  current_period_start     timestamptz,
+  current_period_end       timestamptz,
+  cancel_at_period_end     boolean     default false,
+
+  amount                   integer,    -- unit amount in cents (CAD)
+  currency                 text        default 'cad',
+
+  created_at               timestamptz default now(),
+  updated_at               timestamptz default now()
+);
+
+create index if not exists idx_subscriptions_customer_id on subscriptions (stripe_customer_id);
+create index if not exists idx_subscriptions_status      on subscriptions (status);
+create index if not exists idx_subscriptions_plan_slug   on subscriptions (plan_slug);
+
+alter table subscriptions enable row level security;
+
+create policy "Service role full access — subscriptions"
+  on subscriptions for all
+  using (true)
+  with check (true);
+
+drop trigger if exists trg_subscriptions_updated_at on subscriptions;
+create trigger trg_subscriptions_updated_at
+  before update on subscriptions
+  for each row execute function set_updated_at();
+
+-- ================================================================
+-- COMPLETE — All 6 tables:
+--   audits, sites, snapshots, action_items, chat_messages,
+--   subscriptions
 -- ================================================================

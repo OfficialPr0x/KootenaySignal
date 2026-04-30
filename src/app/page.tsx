@@ -23,8 +23,104 @@ import {
   Phone,
   MapPin,
   MousePointerClick,
-  RefreshCw
+  RefreshCw,
+  Loader2
 } from 'lucide-react';
+
+// ── Retainer plan definitions ──────────────────────────────────────────────
+const RETAINER_PLANS = [
+  {
+    slug: 'automation',
+    name: 'Automation Management',
+    price: '$497',
+    period: '/mo',
+    tagline: 'Your systems always running.',
+    features: [
+      'Workflow monitoring & optimization',
+      'New automation builds',
+      'Missed call / lead response systems',
+      'CRM integration maintenance',
+      'Monthly review call',
+    ],
+  },
+  {
+    slug: 'seo-retainer',
+    name: 'SEO Retainer',
+    price: '$997',
+    period: '/mo',
+    tagline: 'Fully managed monthly search visibility.',
+    features: [
+      'Ongoing backlink acquisition',
+      'Monthly content strategy',
+      'Keyword rank tracking',
+      'Technical SEO audits',
+      'Google Search Console monitoring',
+      'Monthly reporting',
+    ],
+  },
+  {
+    slug: 'ads-management',
+    name: 'Ads Management',
+    price: '$1,000',
+    period: '/mo',
+    tagline: 'Google & Meta — all done for you.',
+    features: [
+      'Google Ads campaign management',
+      'Meta (Facebook/Instagram) ads',
+      'Ad copy & creative direction',
+      'Audience targeting & optimization',
+      'Weekly performance reporting',
+      'Monthly strategy review',
+    ],
+  },
+  {
+    slug: 'signal-core',
+    name: 'SignalCore™',
+    price: '$1,500',
+    period: '/mo',
+    tagline: 'Foundation for regional search dominance.',
+    featured: true,
+    features: [
+      'Google Business Profile management',
+      'Local citation building',
+      'Core SEO maintenance',
+      'Monthly reporting',
+      'Keyword tracking',
+    ],
+  },
+  {
+    slug: 'search-vault',
+    name: 'SearchVault™',
+    price: '$2,500',
+    period: '/mo',
+    tagline: 'Advanced visibility — everything in SignalCore plus more.',
+    features: [
+      'Everything in SignalCore™',
+      'Content strategy & creation',
+      'Backlink acquisition',
+      'Competitive analysis',
+      'Schema markup implementation',
+      'Technical SEO audits',
+    ],
+  },
+  {
+    slug: 'search-sync',
+    name: 'SearchSync™',
+    price: '$3,000',
+    period: '/mo',
+    tagline: 'Full multi-platform sync — total search presence.',
+    features: [
+      'Everything in SearchVault™',
+      'Multi-platform sync',
+      'Social media integration',
+      'Review management',
+      'Local ads management',
+      'Priority support',
+    ],
+  },
+] as const;
+
+type PlanSlug = typeof RETAINER_PLANS[number]['slug'];
 
 /* ─── Intersection Observer hook for scroll reveals ─── */
 function useReveal(threshold = 0.05) {
@@ -131,6 +227,30 @@ export default function Home() {
   const s7 = useReveal();
   const s8 = useReveal();
   const s9 = useReveal();
+  const s10 = useReveal();
+
+  const [subscribing, setSubscribing] = useState<PlanSlug | null>(null);
+
+  async function handleSubscribe(slug: PlanSlug) {
+    setSubscribing(slug);
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan: slug }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert(data.error ?? 'Something went wrong. Please try again.');
+        setSubscribing(null);
+      }
+    } catch {
+      alert('Network error. Please try again.');
+      setSubscribing(null);
+    }
+  }
 
   return (
     <main style={{ position: 'relative', overflow: 'hidden' }}>
@@ -684,7 +804,155 @@ export default function Home() {
 
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 8 — ABOUT (Meet Jaryd)
+          SECTION 8 — RETAINERS (Monthly Services)
+          ═══════════════════════════════════════════════════════════ */}
+      <section id="retainers" style={{ padding: 'clamp(6rem, 12vw, 11rem) 0', background: '#000', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: 0, left: '10%', right: '10%', height: '1px', background: 'linear-gradient(90deg, transparent, rgba(230,126,34,0.3), transparent)' }} />
+        <div style={{ position: 'absolute', top: '30%', left: '50%', transform: 'translateX(-50%)', width: '70vw', height: '50vw', background: 'radial-gradient(ellipse, rgba(230,126,34,0.05) 0%, transparent 60%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
+
+        <div ref={s10.ref} className="container" style={{ maxWidth: '1200px', position: 'relative', zIndex: 1 }}>
+          {/* Header */}
+          <div style={{
+            textAlign: 'center', marginBottom: 'clamp(3rem, 5vw, 5rem)',
+            opacity: s10.visible ? 1 : 0,
+            transform: s10.visible ? 'translateY(0)' : 'translateY(40px)',
+            transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)'
+          }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+              <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
+              <span style={{ fontSize: '0.7rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.3em', color: 'var(--primary)' }}>Monthly Retainers</span>
+              <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
+            </div>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.25rem' }}>
+              Ongoing services.<br /><span className="text-gradient-hero">Monthly results.</span>
+            </h2>
+            <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-pjs)', maxWidth: '520px', margin: '0 auto', lineHeight: 1.7 }}>
+              Done-for-you monthly retainers. Pick what your business needs, cancel anytime.
+            </p>
+          </div>
+
+          {/* Plan cards */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '1.25rem',
+          }}
+          className="retainers-grid"
+          >
+            {RETAINER_PLANS.map((plan, i) => (
+              <div key={plan.slug} style={{
+                opacity: s10.visible ? 1 : 0,
+                transform: s10.visible ? 'translateY(0)' : 'translateY(30px)',
+                transition: `all 0.75s cubic-bezier(0.16, 1, 0.3, 1) ${0.1 + i * 0.08}s`,
+                position: 'relative',
+                padding: 'clamp(1.5rem, 2.5vw, 2.25rem)',
+                background: 'featured' in plan && plan.featured
+                  ? 'rgba(230,126,34,0.07)'
+                  : 'rgba(255,255,255,0.025)',
+                border: 'featured' in plan && plan.featured
+                  ? '1px solid rgba(230,126,34,0.35)'
+                  : '1px solid rgba(255,255,255,0.06)',
+                borderRadius: '14px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.25rem',
+                boxShadow: 'featured' in plan && plan.featured
+                  ? '0 0 60px rgba(230,126,34,0.08)'
+                  : 'none',
+              }}>
+                {'featured' in plan && plan.featured && (
+                  <div style={{
+                    position: 'absolute', top: '-1px', left: '50%', transform: 'translateX(-50%)',
+                    background: 'var(--primary)', color: '#000', fontSize: '0.62rem',
+                    fontWeight: 900, letterSpacing: '0.18em', textTransform: 'uppercase',
+                    padding: '0.3rem 1rem', borderRadius: '0 0 8px 8px',
+                    fontFamily: 'var(--font-pjs)',
+                  }}>
+                    Most Popular
+                  </div>
+                )}
+
+                {/* Plan name + price */}
+                <div>
+                  <p style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--primary)', fontFamily: 'var(--font-pjs)', marginBottom: '0.5rem' }}>
+                    Monthly
+                  </p>
+                  <h3 style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-syne)', marginBottom: '0.6rem', lineHeight: 1.2 }}>
+                    {plan.name}
+                  </h3>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.25rem', marginBottom: '0.5rem' }}>
+                    <span style={{ fontSize: 'clamp(2rem, 3vw, 2.6rem)', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-syne)', lineHeight: 1 }}>
+                      {plan.price}
+                    </span>
+                    <span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-pjs)', fontWeight: 600 }}>
+                      {plan.period}
+                    </span>
+                  </div>
+                  <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-pjs)', lineHeight: 1.5, margin: 0 }}>
+                    {plan.tagline}
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)' }} />
+
+                {/* Feature list */}
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', flex: 1 }}>
+                  {plan.features.map((feature, fi) => (
+                    <li key={fi} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
+                      <Check size={14} strokeWidth={2.5} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '3px' }} />
+                      <span style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--font-pjs)', lineHeight: 1.5 }}>
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA */}
+                <button
+                  onClick={() => handleSubscribe(plan.slug)}
+                  disabled={subscribing !== null}
+                  style={{
+                    marginTop: 'auto',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
+                    padding: '0.85rem 1.5rem',
+                    background: 'featured' in plan && plan.featured ? 'var(--primary)' : 'transparent',
+                    color: 'featured' in plan && plan.featured ? '#000' : '#fff',
+                    border: 'featured' in plan && plan.featured ? 'none' : '1px solid rgba(255,255,255,0.15)',
+                    borderRadius: '8px',
+                    fontSize: '0.82rem', fontWeight: 800, fontFamily: 'var(--font-pjs)',
+                    textTransform: 'uppercase', letterSpacing: '0.1em',
+                    cursor: subscribing !== null ? 'wait' : 'pointer',
+                    transition: 'all 0.25s ease',
+                    opacity: subscribing !== null && subscribing !== plan.slug ? 0.5 : 1,
+                  }}
+                >
+                  {subscribing === plan.slug ? (
+                    <><Loader2 size={14} style={{ animation: 'spin 0.8s linear infinite' }} /> Redirecting…</>
+                  ) : (
+                    <>Get Started <ArrowRight size={14} /></>
+                  )}
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer note */}
+          <p style={{
+            textAlign: 'center', marginTop: '2.5rem',
+            fontSize: '0.78rem', color: 'rgba(255,255,255,0.2)',
+            fontFamily: 'var(--font-pjs)', fontWeight: 600, letterSpacing: '0.05em',
+            opacity: s10.visible ? 1 : 0,
+            transition: 'opacity 0.8s ease 0.7s',
+          }}>
+            Billed monthly via Stripe · Cancel anytime · CAD pricing
+          </p>
+        </div>
+      </section>
+
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 9 — ABOUT (Meet Jaryd)
           ═══════════════════════════════════════════════════════════ */}
       <section id="about" style={{ padding: 'clamp(6rem, 14vw, 14rem) 0', background: '#000', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '30%', left: '50%', transform: 'translate(-50%, -50%)', width: '60vw', height: '40vw', background: 'radial-gradient(circle, rgba(230,126,34,0.04) 0%, transparent 70%)', filter: 'blur(100px)', pointerEvents: 'none' }} />
