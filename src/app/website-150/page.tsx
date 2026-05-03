@@ -126,6 +126,7 @@ export default function Website150() {
 
   return (
     <main
+      className="w150-page"
       style={{ background: 'var(--background)', color: 'var(--foreground)', position: 'relative', overflow: 'hidden', paddingBottom: '72px' }}
       onClick={(e) => {
         const a = (e.target as HTMLElement).closest('a[href]') as HTMLAnchorElement | null;
@@ -138,7 +139,7 @@ export default function Website150() {
       {showCheckout && <CheckoutModal onClose={() => setShowCheckout(false)} />}
 
       {/* ═══════════════════════ HERO ═══════════════════════ */}
-      <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', padding: '9rem 0 6rem', overflow: 'hidden' }}>
+      <section className="w150-hero" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', padding: '9rem 0 6rem', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-15%', left: '50%', transform: 'translateX(-50%)', width: '90vw', height: '90vw', maxWidth: '1000px', background: 'radial-gradient(circle, rgba(230,126,34,0.07) 0%, transparent 60%)', pointerEvents: 'none', filter: 'blur(60px)', zIndex: 0 }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center', maxWidth: '860px' }}>
@@ -165,7 +166,7 @@ export default function Website150() {
           </p>
 
           {/* CTA */}
-          <div className="hero-reveal hero-reveal-4" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+          <div className="hero-reveal hero-reveal-4 w150-hero-cta" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <a
               href={STRIPE_URL}
               target="_blank"
@@ -223,14 +224,14 @@ export default function Website150() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1px', background: 'rgba(255,255,255,0.05)', borderRadius: '16px', overflow: 'hidden' }}>
+          <div className="w150-problem-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1px', background: 'rgba(255,255,255,0.05)', borderRadius: '16px', overflow: 'hidden' }}>
             {([
               { Icon: Search, num: '01', title: 'They Google You', desc: 'Someone needs exactly what you do. They search. You don\'t show up — or what shows up looks like it was built in 2009 and never touched since.' },
               { Icon: PhoneCall, num: '02', title: 'They Call Someone Else', desc: 'Your competitor\'s site had a phone number, photos of real work, a few Google reviews. Yours had none of that. Or nothing at all.' },
               { Icon: DollarSign, num: '03', title: 'You Lose the Job', desc: 'Not because you were less qualified. Not because you were more expensive. Because you didn\'t look like you were worth calling.' },
               { Icon: RefreshCw, num: '04', title: 'And It Repeats', desc: 'Every single day. Every search. Every person who needed exactly you — ended up somewhere else. This is the leak you can\'t see.' },
             ] as { Icon: React.ElementType; num: string; title: string; desc: string }[]).map(({ Icon, num, title, desc }, i) => (
-              <div key={i} style={{ padding: '3rem 2.75rem', background: 'rgba(13,17,9,1)', position: 'relative', overflow: 'hidden', transition: 'background 0.3s' }}
+              <div key={i} className="w150-problem-card" style={{ padding: '3rem 2.75rem', background: 'rgba(13,17,9,1)', position: 'relative', overflow: 'hidden', transition: 'background 0.3s' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.background = 'rgba(230,126,34,0.03)'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.background = 'rgba(13,17,9,1)'; }}>
                 <span style={{ position: 'absolute', top: '2rem', right: '2.5rem', fontSize: '3.5rem', fontWeight: 900, color: 'rgba(255,255,255,0.03)', fontFamily: 'var(--font-serif)', lineHeight: 1 }}>{num}</span>
@@ -300,9 +301,9 @@ export default function Website150() {
       {/* ═══════════════════════ WHAT I BUILD ═══════════════════════ */}
       <section ref={sWhat.ref} style={{ padding: '9rem 0', borderTop: '1px solid rgba(255,255,255,0.04)', opacity: sWhat.visible ? 1 : 0, transform: sWhat.visible ? 'none' : 'translateY(40px)', transition: 'opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)' }}>
         <div className="container" style={{ maxWidth: '1040px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6rem', alignItems: 'start' }}>
+          <div className="w150-what-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6rem', alignItems: 'start' }}>
             {/* Left — sticky header */}
-            <div style={{ position: 'sticky', top: '8rem' }}>
+            <div className="w150-what-sticky" style={{ position: 'sticky', top: '8rem' }}>
               <div className="badge">What You Get</div>
               <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: 1.05, marginBottom: '1.5rem' }}>
                 Not a Template.<br />Not a DIY Builder.<br /><span className="text-gradient">A Real Website.</span>
@@ -369,10 +370,11 @@ export default function Website150() {
           </div>
 
           {/* Carousel */}
-          <div style={{ position: 'relative' }}>
+          <div className="w150-portfolio-wrap" style={{ position: 'relative' }}>
 
             {/* Arrow — prev */}
             <button
+              className="w150-carousel-arrow w150-carousel-prev"
               onClick={goPrev}
               disabled={activeIdx === 0}
               aria-label="Previous"
@@ -430,6 +432,7 @@ export default function Website150() {
 
             {/* Arrow — next */}
             <button
+              className="w150-carousel-arrow w150-carousel-next"
               onClick={goNext}
               disabled={activeIdx === portfolioProjects.length - 1}
               aria-label="Next"
@@ -489,9 +492,9 @@ export default function Website150() {
           </div>
 
           {/* Table */}
-          <div style={{ border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px', overflow: 'hidden' }}>
+          <div className="w150-price-table" style={{ border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px', overflow: 'hidden' }}>
             {/* Header row */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '1rem 2rem' }}>
+            <div className="w150-price-head" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '1rem 2rem' }}>
               {['Option', 'What You Pay', 'The Reality'].map((h, i) => (
                 <span key={i} style={{ fontSize: '0.65rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.25)' }}>{h}</span>
               ))}
@@ -502,7 +505,7 @@ export default function Website150() {
               { label: 'Local Agency', price: '$2,500–$8,000+', note: '$200+/mo to maintain after. Months of back-and-forth.', bad: true },
               { label: 'Kootenay Signal — First 10 Only', price: '$150. Flat. Once.', note: 'Local. Professional. Done in 7 days. No monthly fees. Ever.', bad: false },
             ].map((item, i, arr) => (
-              <div key={i} style={{
+              <div key={i} className="w150-price-row" style={{
                 display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0',
                 padding: '1.5rem 2rem',
                 background: item.bad ? 'transparent' : 'rgba(230,126,34,0.05)',
@@ -548,7 +551,7 @@ export default function Website150() {
             You Expect Your Clients to<br /><span className="text-gradient">Pull the Trigger.</span><br />Why Won&apos;t You?
           </h2>
 
-          <div style={{ padding: '2.25rem 2.75rem', background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', textAlign: 'left', marginBottom: '3.5rem', borderLeft: '3px solid var(--primary)' }}>
+          <div className="w150-mirror-quote" style={{ padding: '2.25rem 2.75rem', background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', textAlign: 'left', marginBottom: '3.5rem', borderLeft: '3px solid var(--primary)' }}>
             <p style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)', color: 'rgba(255,255,255,0.65)', fontFamily: 'var(--font-pjs)', lineHeight: 1.9, fontStyle: 'italic' }}>
               &ldquo;You&apos;re great at what you do. You want people to just book you — no shopping around, no three quotes, no &lsquo;I&apos;ll think about it.&rsquo; You want them to see your work, trust you immediately, and just call.&rdquo;
             </p>
@@ -565,7 +568,7 @@ export default function Website150() {
           </p>
 
           {/* With / Without grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', overflow: 'hidden', marginBottom: '4rem', textAlign: 'left' }}>
+          <div className="w150-mirror-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', overflow: 'hidden', marginBottom: '4rem', textAlign: 'left' }}>
             {[
               { trade: 'Plumber', yes: 'Quick — calling this guy', no: 'Who are you again?' },
               { trade: 'Electrician', yes: 'Booked. Done.', no: 'Let me get 3 quotes...' },
@@ -589,7 +592,7 @@ export default function Website150() {
           {/* Cost of delay */}
           <div style={{ marginBottom: '3.5rem', padding: '1.75rem 2.25rem', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', textAlign: 'left' }}>
             <p style={{ fontSize: '0.65rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.25em', color: 'rgba(255,255,255,0.18)', fontFamily: 'var(--font-serif)', marginBottom: '1.25rem' }}>Quick Math</p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+            <div className="w150-math-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
               {[
                 { label: 'Average job value', value: '$500' },
                 { label: 'Extra jobs / month from visibility', value: '× 2' },
@@ -650,7 +653,7 @@ export default function Website150() {
               { item: '1 full round of revisions included', value: '$200', detail: 'Review it. Request changes. I fix it. No extra charge, no arguments.' },
               { item: '30-day post-launch support', value: '$350', detail: 'Bug? Question? Small update? I\'ve got you covered for a full month after launch.' },
             ] as { item: string; value: string; detail: string }[]).map(({ item, value, detail }, idx, arr) => (
-              <div key={idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', padding: '1.1rem 1.75rem', borderBottom: idx < arr.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none', transition: 'background 0.2s' }}
+              <div key={idx} className="w150-included-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', padding: '1.1rem 1.75rem', borderBottom: idx < arr.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none', transition: 'background 0.2s' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.background = 'rgba(230,126,34,0.03)'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.background = 'transparent'; }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.9rem', flex: 1 }}>
@@ -669,7 +672,7 @@ export default function Website150() {
               <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'rgba(255,255,255,0.18)', fontFamily: 'var(--font-serif)', textDecoration: 'line-through', textDecorationColor: 'rgba(231,76,60,0.45)' }}>$3,800+</span>
             </div>
             {/* Price + Buy Now row */}
-            <div style={{ padding: '1.75rem 1.75rem', background: 'rgba(230,126,34,0.06)', borderTop: '1px solid rgba(230,126,34,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.25rem' }}>
+            <div className="w150-included-cta-row" style={{ padding: '1.75rem 1.75rem', background: 'rgba(230,126,34,0.06)', borderTop: '1px solid rgba(230,126,34,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem' }}>
                 <span style={{ fontSize: 'clamp(2.5rem, 7vw, 3.25rem)', fontWeight: 800, color: 'var(--primary)', fontFamily: 'var(--font-serif)', lineHeight: 1 }}>$150</span>
                 <span style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-pjs)' }}>one-time · no monthly fees · first {TOTAL_SPOTS} only</span>
@@ -713,7 +716,7 @@ export default function Website150() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+          <div className="w150-steps-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
             {([
               {
                 step: '01',
@@ -838,7 +841,7 @@ export default function Website150() {
                   </span>
                 </button>
                 {openFaq === i && (
-                  <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-pjs)', lineHeight: 1.78, paddingBottom: '1.5rem', paddingRight: '2.5rem', marginTop: '-0.25rem' }}>{a}</p>
+                  <p className="w150-faq-answer" style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-pjs)', lineHeight: 1.78, paddingBottom: '1.5rem', paddingRight: '2.5rem', marginTop: '-0.25rem' }}>{a}</p>
                 )}
               </div>
             ))}
@@ -893,7 +896,7 @@ export default function Website150() {
                 Book a Free Call First
               </button>
             </div>
-            <div style={{ display: 'flex', gap: '2.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div className="w150-final-benefits" style={{ display: 'flex', gap: '2.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               {[`${spotsLeft} spots left at this price`, 'No monthly fees. Ever.', '7-day delivery', 'Review before it goes live'].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: 'rgba(255,255,255,0.28)', fontFamily: 'var(--font-pjs)' }}>
                   <Check size={11} color="var(--accent)" strokeWidth={3} />
@@ -906,7 +909,7 @@ export default function Website150() {
       </section>
 
       {/* ═══════════════════════ STICKY BOTTOM BAR ═══════════════════════ */}
-      <div style={{
+      <div className="w150-sticky-bar" style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
         padding: '0.8rem 1.5rem',
         background: 'rgba(10,13,7,0.97)',
@@ -917,7 +920,7 @@ export default function Website150() {
         transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1)',
         flexWrap: 'wrap',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', flexWrap: 'wrap' }}>
+        <div className="w150-sticky-meta" style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', flexWrap: 'wrap' }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.68rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.28)', fontFamily: 'var(--font-serif)' }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--primary)', display: 'inline-block', animation: 'pulseDot 1.5s infinite' }} />
             {spotsLeft} of {TOTAL_SPOTS} spots left
@@ -925,10 +928,10 @@ export default function Website150() {
           <span style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.38)', fontFamily: 'var(--font-pjs)' }}>Custom website · 7-day delivery · No monthly fees</span>
         </div>
         <a
+          className="btn-hero-primary w150-sticky-cta"
           href={STRIPE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-hero-primary"
           style={{ fontSize: '0.83rem', padding: '0.65rem 1.5rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', letterSpacing: '0.08em', whiteSpace: 'nowrap' }}
         >
           BUY NOW — $150
@@ -943,10 +946,103 @@ export default function Website150() {
         }
         .port-card:hover { border-color: rgba(230,126,34,0.22) !important; transform: translateY(-2px); }
         .port-card:hover .port-img { transform: scale(1.04); }
+        @media (max-width: 1024px) {
+          .w150-what-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+          }
+          .w150-what-sticky {
+            position: static !important;
+            top: auto !important;
+          }
+        }
         @media (max-width: 768px) {
-          .w150-two-col { grid-template-columns: 1fr !important; }
-          .w150-price-row { grid-template-columns: 1fr !important; gap: 0.35rem !important; }
-          .w150-sticky { position: static !important; }
+          .w150-page section {
+            padding: 5.5rem 0 !important;
+          }
+          .w150-hero {
+            min-height: auto !important;
+            padding: 7rem 0 4rem !important;
+          }
+          .w150-page .container {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+          }
+          .w150-hero h1 {
+            font-size: clamp(2rem, 11vw, 2.7rem) !important;
+            line-height: 1.05 !important;
+          }
+          .w150-hero-cta .btn-hero-primary,
+          .w150-hero-cta button {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .w150-problem-grid,
+          .w150-mirror-grid,
+          .w150-steps-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .w150-problem-card {
+            padding: 1.5rem 1.25rem !important;
+          }
+          .w150-carousel-arrow {
+            display: none !important;
+          }
+          .port-card {
+            width: 85vw !important;
+          }
+          .w150-price-head {
+            display: none !important;
+          }
+          .w150-price-row {
+            grid-template-columns: 1fr !important;
+            gap: 0.35rem !important;
+            padding: 1rem 1rem !important;
+          }
+          .w150-mirror-quote {
+            padding: 1.5rem 1.25rem !important;
+          }
+          .w150-math-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+          }
+          .w150-included-row,
+          .w150-included-cta-row {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+          .w150-faq-answer {
+            padding-right: 0 !important;
+          }
+          .w150-final-benefits {
+            gap: 0.85rem !important;
+            justify-content: flex-start !important;
+          }
+          .w150-sticky-bar {
+            padding: 0.75rem 1rem !important;
+            gap: 0.7rem !important;
+            justify-content: center !important;
+          }
+          .w150-sticky-meta {
+            width: 100%;
+            justify-content: center !important;
+            gap: 0.55rem !important;
+          }
+          .w150-sticky-meta span:last-child {
+            display: none !important;
+          }
+          .w150-sticky-cta {
+            width: 100%;
+            justify-content: center !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .w150-hero {
+            padding-top: 6.25rem !important;
+          }
+          .w150-hero h1 {
+            font-size: clamp(1.8rem, 10vw, 2.3rem) !important;
+          }
         }
       `}</style>
     </main>

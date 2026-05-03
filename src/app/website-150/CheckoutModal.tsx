@@ -274,11 +274,12 @@ export default function CheckoutModal({ onClose }: { onClose: () => void }) {
 
   return (
     <div onClick={e => { if (e.target === e.currentTarget) onClose(); }}
+      className="w150-modal-overlay"
       style={{ position: 'fixed', inset: 0, zIndex: 1000, background: 'rgba(5,8,4,0.9)', backdropFilter: 'blur(14px)', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '1.5rem 1rem', overflowY: 'auto' }}>
-      <div style={{ width: '100%', maxWidth: step === 3 ? '660px' : step === 2 ? '580px' : '520px', background: '#0d1109', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '18px', overflow: 'hidden', position: 'relative', margin: 'auto', transition: 'max-width 0.4s cubic-bezier(0.16,1,0.3,1)' }}>
+      <div className="w150-modal-card" style={{ width: '100%', maxWidth: step === 3 ? '660px' : step === 2 ? '580px' : '520px', background: '#0d1109', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '18px', overflow: 'hidden', position: 'relative', margin: 'auto', transition: 'max-width 0.4s cubic-bezier(0.16,1,0.3,1)' }}>
 
         {/* Header */}
-        <div style={{ padding: '1.75rem 1.75rem 0', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+        <div className="w150-modal-header" style={{ padding: '1.75rem 1.75rem 0', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
           <div>
             <p style={{ fontSize: '0.62rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--primary)', fontFamily: 'var(--font-serif)', marginBottom: '0.3rem' }}>Step {step} of 3</p>
             <h2 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-serif)', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
@@ -293,7 +294,7 @@ export default function CheckoutModal({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* Progress */}
-        <div style={{ padding: '0 1.75rem', marginBottom: '1.75rem', display: 'flex', gap: '0.5rem' }}>
+        <div className="w150-modal-progress" style={{ padding: '0 1.75rem', marginBottom: '1.75rem', display: 'flex', gap: '0.5rem' }}>
           {STEPS.map(s => (
             <div key={s.num} style={{ flex: 1 }}>
               <div style={{ height: '3px', borderRadius: '2px', background: step >= s.num ? 'var(--primary)' : 'rgba(255,255,255,0.07)', transition: 'background 0.4s' }} />
@@ -303,7 +304,7 @@ export default function CheckoutModal({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* Body */}
-        <div style={{ padding: '0 1.75rem 1.75rem' }}>
+        <div className="w150-modal-body" style={{ padding: '0 1.75rem 1.75rem' }}>
 
           {/* ── STEP 1 ── */}
           {step === 1 && (
@@ -319,7 +320,7 @@ export default function CheckoutModal({ onClose }: { onClose: () => void }) {
                 </div>
               )}
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }}>
+              <div className="w150-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }}>
                 <div>
                   <label style={labelStyle}>Your Name *</label>
                   <input type="text" placeholder="Jane Smith" value={form.name} onChange={e => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: undefined }); }} style={inputStyle('name')} />
@@ -332,7 +333,7 @@ export default function CheckoutModal({ onClose }: { onClose: () => void }) {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }}>
+              <div className="w150-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }}>
                 <div>
                   <label style={labelStyle}>Email *</label>
                   <input type="email" placeholder="jane@smithplumbing.ca" value={form.email} onChange={e => { setForm({ ...form, email: e.target.value }); setErrors({ ...errors, email: undefined }); }} style={inputStyle('email')} />
@@ -457,13 +458,60 @@ export default function CheckoutModal({ onClose }: { onClose: () => void }) {
               <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-pjs)', lineHeight: 1.75, marginBottom: '1.25rem' }}>
                 Pick a time for your <strong style={{ color: '#fff' }}>free 15-minute kickoff call</strong> — we&apos;ll cover your goals, style, and anything specific before I start building.
               </p>
-              <div ref={calRef} id="cal-inline-booking" style={{ width: '100%', minHeight: '480px', borderRadius: '10px', overflow: 'hidden', background: 'rgba(255,255,255,0.01)' }} />
+              <div className="w150-cal-inline" ref={calRef} id="cal-inline-booking" style={{ width: '100%', minHeight: '480px', borderRadius: '10px', overflow: 'hidden', background: 'rgba(255,255,255,0.01)' }} />
               <p style={{ marginTop: '1rem', fontSize: '0.72rem', color: 'rgba(255,255,255,0.18)', fontFamily: 'var(--font-pjs)', textAlign: 'center', lineHeight: 1.5 }}>
                 Can&apos;t find a time? Skip this — I&apos;ll follow up by email within 24 hours.
               </p>
             </div>
           )}
         </div>
+
+        <style>{`
+          @media (max-width: 768px) {
+            .w150-modal-overlay {
+              padding: 0 !important;
+              align-items: stretch !important;
+            }
+            .w150-modal-card {
+              max-width: none !important;
+              min-height: 100dvh;
+              border-radius: 0 !important;
+              border-left: none !important;
+              border-right: none !important;
+              margin: 0 !important;
+            }
+            .w150-modal-header {
+              padding: 1rem 1rem 0 !important;
+              margin-bottom: 1rem !important;
+            }
+            .w150-modal-header h2 {
+              font-size: 1.08rem !important;
+            }
+            .w150-modal-progress {
+              padding: 0 1rem !important;
+              margin-bottom: 1rem !important;
+            }
+            .w150-modal-progress p {
+              font-size: 0.52rem !important;
+              letter-spacing: 0.03em !important;
+            }
+            .w150-modal-body {
+              padding: 0 1rem 1rem !important;
+            }
+            .w150-form-grid {
+              grid-template-columns: 1fr !important;
+            }
+            .w150-cal-inline {
+              min-height: 420px !important;
+            }
+          }
+          @media (max-width: 480px) {
+            .w150-modal-header h2 {
+              font-size: 1rem !important;
+              line-height: 1.25 !important;
+            }
+          }
+        `}</style>
       </div>
     </div>
   );
