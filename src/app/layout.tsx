@@ -25,8 +25,12 @@ const vollkorn = Vollkorn({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.kootenaysignal.com'),
   title: 'Kootenay Signal | I Help Kootenay Businesses Get More Business',
   description: 'More calls. More jobs. Less guesswork. I help local Kootenay businesses get found, get chosen, and never miss a lead. Based in Sparwood, serving the Kootenays.',
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: '/favicon.png',
   },
