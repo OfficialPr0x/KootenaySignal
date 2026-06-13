@@ -77,6 +77,7 @@ export default function Navbar() {
         {/* Desktop nav links */}
         <div className="nav-links nav-links-desktop">
           <Show when="signed-out">
+            <Link href="/case-studies/black-timber-contracting" className="nav-link-dash">OUR WORK</Link>
             <Link href="/signal-check" className="nav-link-signal">FREE SIGNAL CHECK</Link>
             <SignInButton>
               <button className="nav-get-started">GET STARTED</button>
@@ -84,6 +85,7 @@ export default function Navbar() {
           </Show>
           
           <Show when="signed-in">
+            <Link href="/case-studies/black-timber-contracting" className="nav-link-dash">OUR WORK</Link>
             <Link href="/signal-check" className="nav-link-signal">FREE SIGNAL CHECK</Link>
             <Link href="/dashboard" className="nav-link-dash">DASHBOARD</Link>
             <div style={{ marginRight: '1rem', display: 'flex', alignItems: 'center' }}>
@@ -170,6 +172,9 @@ export default function Navbar() {
       <div className={`mobile-menu ${mobileOpen ? 'active' : ''}`}>
         <div className="mobile-menu-inner">
           <Show when="signed-out">
+            <Link href="/case-studies/black-timber-contracting" className="mobile-menu-link" onClick={() => setMobileOpen(false)}>
+              OUR WORK
+            </Link>
             <Link href="/signal-check" className="mobile-menu-link" onClick={() => setMobileOpen(false)}>
               FREE SIGNAL CHECK
             </Link>
@@ -181,6 +186,9 @@ export default function Navbar() {
           </Show>
 
           <Show when="signed-in">
+            <Link href="/case-studies/black-timber-contracting" className="mobile-menu-link" onClick={() => setMobileOpen(false)}>
+              OUR WORK
+            </Link>
             <Link href="/signal-check" className="mobile-menu-link" onClick={() => setMobileOpen(false)}>
               FREE SIGNAL CHECK
             </Link>
