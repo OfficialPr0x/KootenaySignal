@@ -215,7 +215,7 @@ export default function BlackTimberCaseStudy() {
             <span style={SECTION_LABEL}>Case Study · Built by Kootenay Signal</span>
           </div>
 
-          <h1 style={{ fontSize: 'clamp(2.6rem, 7vw, 5.2rem)', lineHeight: 1.02, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, letterSpacing: '-0.02em', marginBottom: '1.75rem' }}>
+          <h1 style={{ fontSize: 'clamp(2.6rem, 7vw, 5.2rem)', lineHeight: 1.02, color: '#fff', fontFamily: 'var(--font-pjs)', fontWeight: 800, letterSpacing: '-0.02em', marginBottom: '1.75rem' }}>
             Black Timber<br /><span className="text-gradient-hero">Contracting.</span>
           </h1>
 
@@ -277,12 +277,12 @@ export default function BlackTimberCaseStudy() {
             marginBottom: 'clamp(3rem, 5vw, 4.5rem)',
           }}>
             <div style={{ textAlign: 'center', minWidth: '150px', margin: '0 auto' }}>
-              <div style={{ fontSize: 'clamp(4.5rem, 11vw, 7rem)', lineHeight: 0.9, fontWeight: 800, fontFamily: 'var(--font-syne)', letterSpacing: '-0.04em' }} className="text-gradient-hero">A</div>
-              <div style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-syne)', marginTop: '0.5rem' }}>9.4 / 10</div>
+              <div style={{ fontSize: 'clamp(4.5rem, 11vw, 7rem)', lineHeight: 0.9, fontWeight: 800, fontFamily: 'var(--font-pjs)', letterSpacing: '-0.04em' }} className="text-gradient-hero">A</div>
+              <div style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-pjs)', marginTop: '0.5rem' }}>9.4 / 10</div>
               <div style={{ fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-pjs)', marginTop: '0.35rem' }}>Overall build grade</div>
             </div>
             <div style={{ flex: 1, minWidth: '280px' }}>
-              <h2 style={{ fontSize: 'clamp(1.3rem, 2.6vw, 1.9rem)', color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, lineHeight: 1.2, marginBottom: '1rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.3rem, 2.6vw, 1.9rem)', color: '#fff', fontFamily: 'var(--font-pjs)', fontWeight: 800, lineHeight: 1.2, marginBottom: '1rem' }}>
                 Independently graded against the source code.
               </h2>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-pjs)', lineHeight: 1.7 }}>
@@ -300,11 +300,11 @@ export default function BlackTimberCaseStudy() {
           }}>
             <div style={{ padding: '1.75rem', background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px' }}>
               <div style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-pjs)', marginBottom: '0.65rem' }}>Built elsewhere</div>
-              <div style={{ fontSize: 'clamp(2rem, 4vw, 2.6rem)', fontWeight: 800, color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-syne)', textDecoration: 'line-through', textDecorationColor: 'rgba(230,126,34,0.5)' }}>$15,000+</div>
+              <div style={{ fontSize: 'clamp(2rem, 4vw, 2.6rem)', fontWeight: 800, color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)', textDecoration: 'line-through', textDecorationColor: 'rgba(230,126,34,0.5)' }}>$15,000+</div>
             </div>
             <div style={{ padding: '1.75rem', background: 'rgba(230,126,34,0.07)', border: '1px solid rgba(230,126,34,0.35)', borderRadius: '12px' }}>
               <div style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--primary)', fontFamily: 'var(--font-pjs)', marginBottom: '0.65rem' }}>With Kootenay Signal</div>
-              <div style={{ fontSize: 'clamp(2rem, 4vw, 2.6rem)', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-syne)' }}>$5,000</div>
+              <div style={{ fontSize: 'clamp(2rem, 4vw, 2.6rem)', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-pjs)' }}>$5,000</div>
             </div>
             <div style={{ padding: '1.75rem', background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--font-pjs)', lineHeight: 1.6, margin: 0 }}>
@@ -326,7 +326,7 @@ export default function BlackTimberCaseStudy() {
               { end: 6, suffix: '+', label: 'AI models routed per job' },
             ].map((stat, i) => (
               <div key={i} style={{ background: '#0a0a0a', padding: 'clamp(1.5rem, 3vw, 2.25rem) 1.25rem', textAlign: 'center' }}>
-                <div style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)', fontWeight: 800, fontFamily: 'var(--font-syne)', lineHeight: 1, marginBottom: '0.6rem' }} className="text-gradient-hero">
+                <div style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)', fontWeight: 800, fontFamily: 'var(--font-pjs)', lineHeight: 1, marginBottom: '0.6rem' }} className="text-gradient-hero">
                   <Counter end={stat.end} suffix={stat.suffix} />
                 </div>
                 <div style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-pjs)', lineHeight: 1.5 }}>{stat.label}</div>
@@ -350,7 +350,7 @@ export default function BlackTimberCaseStudy() {
               <span style={SECTION_LABEL}>The Build</span>
               <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
             </div>
-            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.25rem' }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-pjs)', fontWeight: 800, marginBottom: '1.25rem' }}>
               One machine, three layers.
             </h2>
             <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
@@ -370,7 +370,7 @@ export default function BlackTimberCaseStudy() {
                 borderRadius: '14px',
               }}>
                 <div style={{ fontSize: '0.66rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'var(--primary)', fontFamily: 'var(--font-pjs)', marginBottom: '1rem' }}>{l.tag}</div>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-syne)', marginBottom: '0.75rem', lineHeight: 1.2 }}>{l.title}</h3>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-pjs)', marginBottom: '0.75rem', lineHeight: 1.2 }}>{l.title}</h3>
                 <p style={{ fontSize: '0.92rem', color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)', lineHeight: 1.65, margin: 0 }}>{l.body}</p>
               </div>
             ))}
@@ -392,7 +392,7 @@ export default function BlackTimberCaseStudy() {
               <span style={SECTION_LABEL}>The Scorecard</span>
               <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
             </div>
-            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800 }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-pjs)', fontWeight: 800 }}>
               How it scores.
             </h2>
           </div>
@@ -405,8 +405,8 @@ export default function BlackTimberCaseStudy() {
                 transition: `all 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${0.1 + i * 0.08}s`,
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.6rem', gap: '1rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '1rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-syne)' }}>{dim.name}</span>
-                  <span style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--primary)', fontFamily: 'var(--font-syne)' }}>{dim.score.toFixed(1)}</span>
+                  <span style={{ fontSize: '1rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-pjs)' }}>{dim.name}</span>
+                  <span style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--primary)', fontFamily: 'var(--font-pjs)' }}>{dim.score.toFixed(1)}</span>
                 </div>
                 {/* Bar track */}
                 <div style={{ height: '6px', background: 'rgba(255,255,255,0.06)', borderRadius: '999px', overflow: 'hidden', marginBottom: '0.55rem' }}>
@@ -442,7 +442,7 @@ export default function BlackTimberCaseStudy() {
               <span style={SECTION_LABEL}>The AI Suite</span>
               <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
             </div>
-            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.25rem' }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-pjs)', fontWeight: 800, marginBottom: '1.25rem' }}>
               Five AI tools that<br /><span className="text-gradient-hero">sell for you.</span>
             </h2>
             <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
@@ -463,7 +463,7 @@ export default function BlackTimberCaseStudy() {
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '1rem' }}>
                   <div style={{ color: 'var(--primary)', display: 'flex', flexShrink: 0, width: '42px', height: '42px', alignItems: 'center', justifyContent: 'center', background: 'rgba(230,126,34,0.08)', borderRadius: '10px', border: '1px solid rgba(230,126,34,0.18)' }}>{tool.icon}</div>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-syne)', margin: 0 }}>{tool.name}</h3>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-pjs)', margin: 0 }}>{tool.name}</h3>
                 </div>
                 <p style={{ fontSize: '1rem', color: 'var(--primary)', fontFamily: 'var(--font-pjs)', fontStyle: 'italic', fontWeight: 600, marginBottom: '0.6rem' }}>&ldquo;{tool.fear}&rdquo;</p>
                 <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)', lineHeight: 1.65, margin: 0 }}>{tool.body}</p>
@@ -487,7 +487,7 @@ export default function BlackTimberCaseStudy() {
               <span style={SECTION_LABEL}>The Back Office</span>
               <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
             </div>
-            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.25rem' }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-pjs)', fontWeight: 800, marginBottom: '1.25rem' }}>
               Where most agencies stop,<br /><span className="text-gradient-hero">we kept going.</span>
             </h2>
             <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
@@ -509,7 +509,7 @@ export default function BlackTimberCaseStudy() {
               }}>
                 <div style={{ color: 'var(--primary)', display: 'flex', flexShrink: 0, marginTop: '2px' }}>{item.icon}</div>
                 <div>
-                  <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-syne)', margin: '0 0 0.4rem' }}>{item.title}</h4>
+                  <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-pjs)', margin: '0 0 0.4rem' }}>{item.title}</h4>
                   <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)', lineHeight: 1.6, margin: 0 }}>{item.body}</p>
                 </div>
               </div>
@@ -542,7 +542,7 @@ export default function BlackTimberCaseStudy() {
               <Check size={18} strokeWidth={3} />
             </div>
             <div>
-              <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-syne)', margin: '0 0 0.6rem' }}>Verified against the live repository</h3>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-pjs)', margin: '0 0 0.6rem' }}>Verified against the live repository</h3>
               <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.55)', fontFamily: 'var(--font-pjs)', lineHeight: 1.65, margin: 0 }}>
                 Framework versions, the 9-task AI routing layer with model fallbacks and per-request cost caps, BC tax math, the tokenized e-sign flow, the AI bookkeeper&apos;s receipt-reading actions, the four-sink lead delivery, and all 18 guide chapters were each confirmed in real source files — not just claimed.
               </p>
@@ -575,7 +575,7 @@ export default function BlackTimberCaseStudy() {
                       }}
                       aria-expanded={open}
                     >
-                      <span style={{ fontSize: '1rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-syne)', lineHeight: 1.3 }}>{row.title}</span>
+                      <span style={{ fontSize: '1rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-pjs)', lineHeight: 1.3 }}>{row.title}</span>
                       <span style={{ color: 'var(--primary)', display: 'flex', flexShrink: 0 }}>{open ? <Minus size={18} /> : <Plus size={18} />}</span>
                     </button>
                     <div style={{ maxHeight: open ? '300px' : '0', transition: 'max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1)', overflow: 'hidden' }}>
@@ -612,7 +612,7 @@ export default function BlackTimberCaseStudy() {
               We understand your business — BC tax rules, permit authorities, snow loads, and the paperwork that eats your evenings. We understand AI as real, cost-governed infrastructure that books work and files receipts.
             </p>
 
-            <h2 className="hard-close-h2" style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4.5rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-syne)', fontWeight: 800, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+            <h2 className="hard-close-h2" style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4.5rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-pjs)', fontWeight: 800, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
               That&apos;s the standard.<br /><span className="text-gradient-hero">That&apos;s Kootenay Signal.</span>
             </h2>
 
