@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import VideoHighlight from '@/components/VideoHighlight';
 import {
   ArrowRight,
   ExternalLink,
@@ -195,11 +196,13 @@ export default function BlackTimberCaseStudy() {
   return (
     <main style={{ position: 'relative', overflow: 'hidden' }}>
 
+      <VideoHighlight />
+
       {/* ═══════════════════════════════════════════════════════════
           HERO
           ═══════════════════════════════════════════════════════════ */}
       <section style={{
-        padding: 'clamp(9rem, 18vw, 13rem) 0 clamp(5rem, 9vw, 8rem)',
+        padding: 'clamp(3rem, 6vw, 5rem) 0 clamp(5rem, 9vw, 8rem)',
         background: '#000', position: 'relative', overflow: 'hidden',
       }}>
         <div style={{

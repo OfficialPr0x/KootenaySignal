@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import VideoHighlight from '@/components/VideoHighlight';
 import { 
   ArrowRight, 
   PhoneIncoming, 
@@ -254,6 +255,8 @@ export default function Home() {
 
   return (
     <main style={{ position: 'relative', overflow: 'hidden' }}>
+
+      <VideoHighlight />
 
       {/* ═══════════════════════════════════════════════════════════
           HERO — THE PROBLEM + THE RESULT

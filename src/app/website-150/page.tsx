@@ -8,6 +8,7 @@ import {
   ChevronLeft, ChevronRight, ExternalLink,
   Shield, Clock, TrendingUp, Gift,
 } from 'lucide-react';
+import VideoHighlight from '@/components/VideoHighlight';
 import CheckoutModal from './CheckoutModal';
 
 // ─────────────────────────────────────────────
@@ -138,8 +139,10 @@ export default function Website150() {
     >
       {showCheckout && <CheckoutModal onClose={() => setShowCheckout(false)} />}
 
+      <VideoHighlight offsetNav={false} />
+
       {/* ═══════════════════════ HERO ═══════════════════════ */}
-      <section className="w150-hero" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', padding: '9rem 0 6rem', overflow: 'hidden' }}>
+      <section className="w150-hero" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', padding: '4rem 0 6rem', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-15%', left: '50%', transform: 'translateX(-50%)', width: '90vw', height: '90vw', maxWidth: '1000px', background: 'radial-gradient(circle, rgba(230,126,34,0.07) 0%, transparent 60%)', pointerEvents: 'none', filter: 'blur(60px)', zIndex: 0 }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center', maxWidth: '860px' }}>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import VideoHighlight from '@/components/VideoHighlight';
 import {
   Search,
   Shield,
@@ -373,6 +374,7 @@ export default function SignalCheckPage() {
   // ─── LANDING PHASE (DEFAULT) ──────────────────────────────
   return (
     <main className="sc-page">
+      <VideoHighlight />
       {/* Hero */}
       <section className="sc-hero">
         <div className="sc-hero-inner">
