@@ -20,6 +20,10 @@ import {
   Users,
   Search,
   Mic,
+  X,
+  Lock,
+  ArrowRightLeft,
+  Maximize2,
 } from 'lucide-react';
 
 /* ─── Intersection Observer hook for scroll reveals ─── */
@@ -139,6 +143,73 @@ const STACK = [
   'OpenAI Whisper', 'Cloudinary',
 ];
 
+const SYSTEM = [
+  {
+    img: '/black-timber-admin/02-dashboard-overview.png',
+    tag: '01 · The Command Center',
+    title: 'The whole business on one screen.',
+    body: 'The moment they log in: live pipeline value, open documents, drafts, and every recent quote — plus one-click access to all six tools.',
+    oldWay: 'Job details scattered across phone notes, the truck console, and memory.',
+    newWay: 'One dashboard — $36K pipeline, recent docs, every tool a click away.',
+  },
+  {
+    img: '/black-timber-admin/03-quote-builder.png',
+    tag: '02 · Quote Builder',
+    title: 'Quotes, estimates & invoices — AI and BC tax baked in.',
+    body: 'Describe the job, let AI suggest line items grounded in real local pricing, and watch the total build live. GST and PST are handled correctly for real-property installs vs. supply contracts.',
+    oldWay: 'Hand-written quotes, guessed tax, hours rebuilding the same spreadsheet.',
+    newWay: 'AI-drafted line items, correct BC tax, a live grand total — in minutes.',
+  },
+  {
+    img: '/black-timber-admin/04-quote-pdf-preview.png',
+    tag: '03 · Branded Output',
+    title: 'A $28,000 quote that looks the part.',
+    body: 'One click turns the builder into a branded, logo-stamped PDF — line items, totals, and signature blocks — the kind of document that wins a job on professionalism alone.',
+    oldWay: 'A plain Word doc, a number sent over text, or nothing at all.',
+    newWay: 'One-click branded PDF, fully on-brand and client-ready.',
+  },
+  {
+    img: '/black-timber-admin/06-e-sign-client-signing-portal.png',
+    tag: '04 · E-Sign',
+    title: 'Send it. Track it. Get it signed.',
+    body: 'Turn any quote into a signature envelope, email it, and watch the timeline — sent, viewed, signed — update in real time. No DocuSign subscription required.',
+    oldWay: 'Print, scan, chase, and hope the signed copy ever comes back.',
+    newWay: 'A tokenized signing link with a full sent → viewed → signed audit trail.',
+  },
+  {
+    img: '/black-timber-admin/07-client-signature-page.png',
+    tag: '05 · The Client Side',
+    title: 'The customer signs from their couch.',
+    body: 'The homeowner gets a clean, branded page, reviews the full quote, and signs with a finger on their phone — with an AI assistant on hand to answer questions right there.',
+    oldWay: 'Back-and-forth emails, a missing pen, a week of delay.',
+    newWay: 'Finger-signed on mobile in under a minute, captured legally.',
+  },
+  {
+    img: '/black-timber-admin/05-ai-bookkeeper-files-notes-receipts.png',
+    tag: '06 · AI Bookkeeper',
+    title: 'The shoebox of receipts is dead.',
+    body: 'Snap a receipt and AI reads it, names it, categorizes it, and files it into the right folder — Bank & Deposits, Receipts, Subcontractors, Tax & GST — as a clean, searchable record.',
+    oldWay: 'A glovebox of faded receipts and a year-end panic at the accountant.',
+    newWay: 'Photograph → AI reads, files, and books it automatically.',
+  },
+  {
+    img: '/black-timber-admin/08-leads-popup-subscribers.png',
+    tag: '07 · Leads & Prospecting',
+    title: 'No lead leaks — plus outbound on autopilot.',
+    body: 'Every popup signup, quote, and booking is captured and tagged. An AI prospector scans the region for GCs and developers and builds a B2B pipeline — routed through OpenRouter, SerpAPI, and Sonar.',
+    oldWay: 'Leads lost in DMs and voicemail; outbound prospecting never happens.',
+    newWay: 'Every lead captured and tagged — and AI finds the next ones for you.',
+  },
+  {
+    img: '/black-timber-admin/09-ops-concierge.png',
+    tag: '08 · Ops Concierge',
+    title: 'Run the business by talking to it.',
+    body: 'An internal AI assistant — type, or hold the mic and dictate with Whisper. Draft a follow-up, think through a job, or ask how to run the day. The business answers back.',
+    oldWay: 'It all lives in your head — and walks out the door when you do.',
+    newWay: 'A voice-driven ops brain that drafts, plans, and remembers.',
+  },
+];
+
 export default function BlackTimberCaseStudy() {
   const calLoaded = useRef(false);
 
@@ -186,12 +257,25 @@ export default function BlackTimberCaseStudy() {
   const sLayers = useReveal();
   const sScore = useReveal();
   const sTools = useReveal();
+  const sSystem = useReveal();
   const sOffice = useReveal();
   const sVerify = useReveal();
   const sHood = useReveal();
   const sClose = useReveal();
 
   const [openHood, setOpenHood] = useState<number | null>(0);
+  const [lightbox, setLightbox] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightbox(null); };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [lightbox]);
 
   return (
     <main style={{ position: 'relative', overflow: 'hidden' }}>
@@ -523,6 +607,113 @@ export default function BlackTimberCaseStudy() {
 
 
       {/* ═══════════════════════════════════════════════════════════
+          INSIDE THE MACHINE — real admin screenshots
+          ═══════════════════════════════════════════════════════════ */}
+      <section style={{ padding: 'clamp(6rem, 12vw, 11rem) 0', background: '#000', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: 0, left: '10%', right: '10%', height: '1px', background: 'linear-gradient(90deg, transparent, rgba(230,126,34,0.3), transparent)' }} />
+        <div style={{ position: 'absolute', top: '15%', left: '50%', transform: 'translateX(-50%)', width: '70vw', height: '50vw', background: 'radial-gradient(ellipse, rgba(230,126,34,0.05) 0%, transparent 60%)', filter: 'blur(90px)', pointerEvents: 'none' }} />
+
+        <div ref={sSystem.ref} className="container" style={{ maxWidth: '1120px', position: 'relative', zIndex: 1 }}>
+          {/* Header */}
+          <div style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 5vw, 4rem)', opacity: sSystem.visible ? 1 : 0, transform: sSystem.visible ? 'translateY(0)' : 'translateY(40px)', transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+              <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
+              <span style={SECTION_LABEL}>Inside The Machine</span>
+              <div style={{ width: '30px', height: '1px', background: 'var(--primary)', opacity: 0.5 }} />
+            </div>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)', lineHeight: 1.05, color: '#fff', fontFamily: 'var(--font-pjs)', fontWeight: 800, marginBottom: '1.25rem' }}>
+              This isn&apos;t a mockup.<br /><span className="text-gradient-hero">It&apos;s the business, running.</span>
+            </h2>
+            <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-pjs)', maxWidth: '640px', margin: '0 auto', lineHeight: 1.6 }}>
+              Most contractors run the company from a notebook, a truck console, and memory. Here&apos;s the real, working back office we built instead — every screen below is live. Tap any shot to enlarge.
+            </p>
+          </div>
+
+          {/* Secured login lead-in */}
+          <div style={{
+            opacity: sSystem.visible ? 1 : 0,
+            transform: sSystem.visible ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s',
+            display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'clamp(1.5rem, 4vw, 3rem)',
+            padding: 'clamp(1.25rem, 3vw, 2rem)', marginBottom: 'clamp(3rem, 6vw, 5rem)',
+            background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px',
+          }}>
+            <button className="bt-shot" style={{ flex: '1 1 320px', maxWidth: '480px' }} onClick={() => setLightbox('/black-timber-admin/01-admin-login.png')} aria-label="Expand the admin login screen">
+              <span className="bt-shot__bar">
+                <span className="bt-shot__dot" /><span className="bt-shot__dot" /><span className="bt-shot__dot" />
+                <span className="bt-shot__url">admin · blacktimber.ca</span>
+                <Maximize2 size={13} className="bt-shot__expand" />
+              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/black-timber-admin/01-admin-login.png" alt="Black Timber admin login screen" loading="lazy" className="bt-shot__img" />
+            </button>
+            <div style={{ flex: '1 1 280px' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', color: 'var(--primary)', marginBottom: '0.85rem' }}>
+                <Lock size={17} />
+                <span style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.18em', fontFamily: 'var(--font-pjs)' }}>A real, secured app</span>
+              </div>
+              <h3 style={{ fontSize: 'clamp(1.3rem, 2.6vw, 1.8rem)', color: '#fff', fontFamily: 'var(--font-pjs)', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.75rem' }}>
+                Locked behind a signed session.
+              </h3>
+              <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-pjs)', lineHeight: 1.7, margin: 0 }}>
+                Not a spreadsheet anyone can open. The back office sits behind an HttpOnly, HMAC-SHA256-signed session that expires automatically — the same security posture you&apos;d expect from real business software.
+              </p>
+            </div>
+          </div>
+
+          {/* Alternating feature rows */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(3.5rem, 7vw, 6rem)' }}>
+            {SYSTEM.map((f, i) => {
+              const flip = i % 2 === 1;
+              return (
+                <div
+                  key={f.tag}
+                  className={`bt-sys-row${flip ? ' bt-sys-row--flip' : ''}`}
+                  style={{
+                    opacity: sSystem.visible ? 1 : 0,
+                    transform: sSystem.visible ? 'translateY(0)' : 'translateY(40px)',
+                    transition: `all 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${0.1 + i * 0.05}s`,
+                  }}
+                >
+                  <div className="bt-sys-media">
+                    <button className="bt-shot" onClick={() => setLightbox(f.img)} aria-label={`Expand: ${f.title}`}>
+                      <span className="bt-shot__bar">
+                        <span className="bt-shot__dot" /><span className="bt-shot__dot" /><span className="bt-shot__dot" />
+                        <span className="bt-shot__url">admin · blacktimber.ca</span>
+                        <Maximize2 size={13} className="bt-shot__expand" />
+                      </span>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={f.img} alt={f.title} loading="lazy" className="bt-shot__img" />
+                    </button>
+                  </div>
+
+                  <div className="bt-sys-text">
+                    <div style={{ fontSize: '0.66rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--primary)', fontFamily: 'var(--font-pjs)', marginBottom: '0.9rem' }}>{f.tag}</div>
+                    <h3 style={{ fontSize: 'clamp(1.4rem, 2.8vw, 2rem)', color: '#fff', fontFamily: 'var(--font-pjs)', fontWeight: 800, lineHeight: 1.18, marginBottom: '0.9rem' }}>{f.title}</h3>
+                    <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-pjs)', lineHeight: 1.7, marginBottom: '1.5rem' }}>{f.body}</p>
+
+                    {/* Old vs new */}
+                    <div className="bt-compare">
+                      <div className="bt-compare__row bt-compare__row--old">
+                        <span className="bt-compare__label">How they do it now</span>
+                        <span className="bt-compare__text">{f.oldWay}</span>
+                      </div>
+                      <div className="bt-compare__arrow" aria-hidden="true"><ArrowRightLeft size={14} /></div>
+                      <div className="bt-compare__row bt-compare__row--new">
+                        <span className="bt-compare__label">With this system</span>
+                        <span className="bt-compare__text">{f.newWay}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ═══════════════════════════════════════════════════════════
           VERIFIED + UNDER THE HOOD
           ═══════════════════════════════════════════════════════════ */}
       <section style={{ padding: 'clamp(6rem, 12vw, 11rem) 0', background: '#000', position: 'relative', overflow: 'hidden' }}>
@@ -657,6 +848,17 @@ export default function BlackTimberCaseStudy() {
           </p>
         </div>
       </footer>
+
+      {/* Lightbox */}
+      {lightbox && (
+        <div className="bt-lightbox" onClick={() => setLightbox(null)} role="dialog" aria-modal="true">
+          <button className="bt-lightbox__close" onClick={() => setLightbox(null)} aria-label="Close">
+            <X size={22} />
+          </button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={lightbox} alt="Black Timber admin — enlarged" className="bt-lightbox__img" onClick={(e) => e.stopPropagation()} />
+        </div>
+      )}
     </main>
   );
 }

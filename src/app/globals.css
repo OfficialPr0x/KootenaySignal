@@ -5289,3 +5289,205 @@ img[src*="clerk"],
   padding-top: 82px;
 }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   BLACK TIMBER — Inside the Machine (screenshots + compare)
+   ═══════════════════════════════════════════════════════════════ */
+
+.bt-sys-row {
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  gap: clamp(1.75rem, 4vw, 3.75rem);
+  align-items: center;
+}
+
+.bt-sys-row--flip .bt-sys-media { order: 2; }
+.bt-sys-row--flip .bt-sys-text { order: 1; }
+
+/* Browser-chrome framed screenshot */
+.bt-shot {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
+  cursor: zoom-in;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+}
+
+.bt-shot:hover {
+  transform: translateY(-4px);
+  border-color: rgba(230, 126, 34, 0.4);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.6), 0 0 60px rgba(230, 126, 34, 0.1);
+}
+
+.bt-shot__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 0.85rem;
+  background: #1a1a1a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bt-shot__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  flex-shrink: 0;
+}
+
+.bt-shot__dot:first-child { background: rgba(230, 126, 34, 0.55); }
+
+.bt-shot__url {
+  margin-left: 0.5rem;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.32);
+  font-family: var(--font-pjs);
+  text-transform: uppercase;
+}
+
+.bt-shot__expand {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.3);
+  transition: color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.bt-shot:hover .bt-shot__expand { color: var(--primary); }
+
+.bt-shot__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 440px;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Old vs new comparison */
+.bt-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.bt-compare__row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.95rem 1.15rem;
+}
+
+.bt-compare__row--old {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.bt-compare__row--new {
+  background: rgba(230, 126, 34, 0.07);
+}
+
+.bt-compare__label {
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-family: var(--font-pjs);
+}
+
+.bt-compare__row--old .bt-compare__label { color: rgba(255, 255, 255, 0.35); }
+.bt-compare__row--new .bt-compare__label { color: var(--primary); }
+
+.bt-compare__text {
+  font-size: 0.92rem;
+  font-family: var(--font-pjs);
+  line-height: 1.5;
+}
+
+.bt-compare__row--old .bt-compare__text { color: rgba(255, 255, 255, 0.42); }
+.bt-compare__row--new .bt-compare__text { color: rgba(255, 255, 255, 0.85); font-weight: 500; }
+
+.bt-compare__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0;
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Lightbox */
+.bt-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: zoom-out;
+  animation: btLightboxIn 0.25s ease forwards;
+}
+
+.bt-lightbox__img {
+  max-width: 100%;
+  max-height: 92vh;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8);
+  cursor: default;
+}
+
+.bt-lightbox__close {
+  position: fixed;
+  top: clamp(1rem, 3vw, 2rem);
+  right: clamp(1rem, 3vw, 2rem);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.bt-lightbox__close:hover {
+  background: rgba(230, 126, 34, 0.85);
+  transform: scale(1.06);
+}
+
+@keyframes btLightboxIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 860px) {
+  .bt-sys-row,
+  .bt-sys-row--flip {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .bt-sys-row--flip .bt-sys-media,
+  .bt-sys-row .bt-sys-media { order: 0; }
+  .bt-sys-row--flip .bt-sys-text,
+  .bt-sys-row .bt-sys-text { order: 1; }
+}
+
