@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import VideoHighlight from '@/components/VideoHighlight';
+import VideoHighlight, { KS_VIDEO } from '@/components/VideoHighlight';
 import {
   ArrowRight,
   ExternalLink,
@@ -196,13 +196,11 @@ export default function BlackTimberCaseStudy() {
   return (
     <main style={{ position: 'relative', overflow: 'hidden' }}>
 
-      <VideoHighlight />
-
       {/* ═══════════════════════════════════════════════════════════
-          HERO
+          HERO — video + headline unified
           ═══════════════════════════════════════════════════════════ */}
-      <section style={{
-        padding: 'clamp(3rem, 6vw, 5rem) 0 clamp(5rem, 9vw, 8rem)',
+      <section className="page-hero-with-video" style={{
+        paddingBottom: 'clamp(5rem, 9vw, 8rem)',
         background: '#000', position: 'relative', overflow: 'hidden',
       }}>
         <div style={{
@@ -212,7 +210,9 @@ export default function BlackTimberCaseStudy() {
         }} />
         <div style={{ position: 'absolute', top: '10%', left: '5%', width: '55vw', height: '55vw', background: 'radial-gradient(circle, rgba(230,126,34,0.08) 0%, transparent 65%)', pointerEvents: 'none', zIndex: 1, filter: 'blur(80px)' }} />
 
-        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '900px' }}>
+        <VideoHighlight src={KS_VIDEO} variant="cinematic" />
+
+        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '900px', marginTop: 'clamp(-2rem, -4vw, -3.5rem)', padding: '0 clamp(1.25rem, 4vw, 4rem)' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
             <div style={{ width: '40px', height: '1px', background: 'var(--primary)' }} />
             <span style={SECTION_LABEL}>Case Study · Built by Kootenay Signal</span>

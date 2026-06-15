@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import VideoHighlight from '@/components/VideoHighlight';
+import VideoHighlight, { KS_VIDEO } from '@/components/VideoHighlight';
 import {
   Search,
   Shield,
@@ -374,9 +374,8 @@ export default function SignalCheckPage() {
   // ─── LANDING PHASE (DEFAULT) ──────────────────────────────
   return (
     <main className="sc-page">
-      <VideoHighlight />
-      {/* Hero */}
-      <section className="sc-hero">
+      <section className="sc-hero sc-hero--with-video">
+        <VideoHighlight src={KS_VIDEO} variant="cinematic" align="center" />
         <div className="sc-hero-inner">
           <div className="sc-hero-content">
             <h1 className="sc-hero-headline">

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import VideoHighlight from '@/components/VideoHighlight';
+import VideoHighlight, { KS_VIDEO } from '@/components/VideoHighlight';
 import { 
   ArrowRight, 
   PhoneIncoming, 
@@ -229,6 +229,7 @@ export default function Home() {
   const s8 = useReveal();
   const s9 = useReveal();
   const s10 = useReveal();
+  const sVideo = useReveal();
 
   const [subscribing, setSubscribing] = useState<PlanSlug | null>(null);
 
@@ -255,8 +256,6 @@ export default function Home() {
 
   return (
     <main style={{ position: 'relative', overflow: 'hidden' }}>
-
-      <VideoHighlight />
 
       {/* ═══════════════════════════════════════════════════════════
           HERO — THE PROBLEM + THE RESULT
@@ -358,6 +357,26 @@ export default function Home() {
               </span>
             ))}
           </div>
+        </div>
+      </section>
+
+
+      {/* ═══════════════════════════════════════════════════════════
+          VIDEO HIGHLIGHT
+          ═══════════════════════════════════════════════════════════ */}
+      <section style={{ padding: 'clamp(5rem, 10vw, 8rem) 0', background: '#0a0a0a', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: 0, left: '10%', right: '10%', height: '1px', background: 'linear-gradient(90deg, transparent, rgba(230,126,34,0.3), transparent)' }} />
+        <div
+          ref={sVideo.ref}
+          className="container"
+          style={{
+            maxWidth: '1000px', position: 'relative', zIndex: 1,
+            opacity: sVideo.visible ? 1 : 0,
+            transform: sVideo.visible ? 'translateY(0)' : 'translateY(40px)',
+            transition: 'all 0.9s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+        >
+          <VideoHighlight src={KS_VIDEO} label="See It In Action" variant="framed" align="center" />
         </div>
       </section>
 
