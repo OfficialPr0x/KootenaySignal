@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
 
 const PAGE_URL = 'https://www.kootenaysignal.com/case-studies/black-timber-contracting';
-const OG_IMAGE = 'https://res.cloudinary.com/doajstql7/image/upload/q_auto/f_auto/v1777520127/ChatGPT_Image_Apr_29_2026_09_27_06_PM_jd81sf.png';
+const OG_IMAGE = 'https://res.cloudinary.com/dkc1pmbma/image/upload/q_auto/f_auto/v1781487645/ChatGPT_Image_Jun_14_2026_07_40_38_PM_z0yz24.png';
 const LOGO = 'https://res.cloudinary.com/doajstql7/image/upload/v1777003162/f3d21215-ada9-4ea3-b86d-510a6885c8f5-removebg-preview_uat1ay.png';
 const PUBLISHED = '2026-06-13T00:00:00-06:00';
-const MODIFIED = '2026-06-13T00:00:00-06:00';
+const MODIFIED = '2026-06-14T00:00:00-06:00';
 
-const TITLE = 'Black Timber Contracting Case Study | Kootenay Signal';
+const TITLE = 'Black Timber Contracting: An AI-Powered Contractor System | Kootenay Signal';
 const DESCRIPTION =
-  'See how Kootenay Signal turned Black Timber Contracting into a conversion-first website with 5 customer-facing AI tools, an 18-chapter field guide, and a full back-office system — a $15,000+ build, graded 9.4/10 against the source code.';
+  'Quotes, e-signatures, leads, AI bookkeeping, and an ops assistant — all under one roof. See the complete AI-powered system Kootenay Signal built for Black Timber Contracting: a $15,000+ build graded 9.4/10 against the source code.';
+
+const OG_ALT =
+  'Black Timber Contracting — an AI-powered contractor system by Kootenay Signal: quotes, e-signatures, leads, bookkeeping, and an ops assistant, all under one roof.';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -47,9 +50,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Black Timber Contracting — Built by Kootenay Signal',
+    title: 'Black Timber Contracting — Built With an AI-Powered Contractor System',
     description:
-      'Not a contractor website — a revenue machine that books the job, prices it, signs it, and files the paperwork. Five AI tools, a full back-office OS, and a 9.4/10 build scorecard.',
+      'Quotes. E-signatures. Leads. Bookkeeping. An ops assistant. All under one roof. See the full contractor system Kootenay Signal built — and how it stacks up against the way contractors operate today.',
     url: PAGE_URL,
     siteName: 'Kootenay Signal',
     type: 'article',
@@ -62,17 +65,17 @@ export const metadata: Metadata = {
     images: [
       {
         url: OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: 'Black Timber Contracting case study by Kootenay Signal — graded 9.4 out of 10',
+        width: 1536,
+        height: 864,
+        alt: OG_ALT,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Black Timber Contracting — Built by Kootenay Signal',
+    title: 'Black Timber Contracting — Built With an AI-Powered Contractor System',
     description:
-      'A conversion-first contractor site with 5 AI tools and a full back-office OS. A $15,000+ build, graded 9.4/10 against the source code.',
+      'Quotes, e-sign, leads, AI bookkeeping & an ops assistant — all under one roof. The contractor system Kootenay Signal built for Black Timber, graded 9.4/10 against the source code.',
     images: [OG_IMAGE],
   },
 };
