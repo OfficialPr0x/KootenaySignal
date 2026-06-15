@@ -24,6 +24,7 @@ import {
   Lock,
   ArrowRightLeft,
   Maximize2,
+  Play,
 } from 'lucide-react';
 
 /* ─── Intersection Observer hook for scroll reveals ─── */
@@ -143,7 +144,17 @@ const STACK = [
   'OpenAI Whisper', 'Cloudinary',
 ];
 
-const SYSTEM = [
+const ESIGN_DEMO = 'https://res.cloudinary.com/dkc1pmbma/video/upload/q_auto/f_auto/v1781486137/Recording_2026-06-14_191347_h4iuqs.mp4';
+
+const SYSTEM: {
+  img: string;
+  video?: string;
+  tag: string;
+  title: string;
+  body: string;
+  oldWay: string;
+  newWay: string;
+}[] = [
   {
     img: '/black-timber-admin/02-dashboard-overview.png',
     tag: '01 · The Command Center',
@@ -170,9 +181,10 @@ const SYSTEM = [
   },
   {
     img: '/black-timber-admin/06-e-sign-client-signing-portal.png',
+    video: ESIGN_DEMO,
     tag: '04 · E-Sign',
     title: 'Send it. Track it. Get it signed.',
-    body: 'Turn any quote into a signature envelope, email it, and watch the timeline — sent, viewed, signed — update in real time. No DocuSign subscription required.',
+    body: 'Watch it live: a quote becomes a signature envelope, goes out by email, and the timeline — sent, viewed, signed — updates in real time. No DocuSign subscription required.',
     oldWay: 'Print, scan, chase, and hope the signed copy ever comes back.',
     newWay: 'A tokenized signing link with a full sent → viewed → signed audit trail.',
   },
@@ -264,7 +276,7 @@ export default function BlackTimberCaseStudy() {
   const sClose = useReveal();
 
   const [openHood, setOpenHood] = useState<number | null>(0);
-  const [lightbox, setLightbox] = useState<string | null>(null);
+  const [lightbox, setLightbox] = useState<{ src: string; type: 'image' | 'video' } | null>(null);
 
   useEffect(() => {
     if (!lightbox) return;
@@ -647,7 +659,7 @@ export default function BlackTimberCaseStudy() {
             padding: 'clamp(1.25rem, 3vw, 2rem)', marginBottom: 'clamp(3rem, 6vw, 5rem)',
             background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px',
           }}>
-            <button className="bt-shot" style={{ flex: '1 1 320px', maxWidth: '480px' }} onClick={() => setLightbox('/black-timber-admin/01-admin-login.png')} aria-label="Expand the admin login screen">
+            <button className="bt-shot" style={{ flex: '1 1 320px', maxWidth: '480px' }} onClick={() => setLightbox({ src: '/black-timber-admin/01-admin-login.png', type: 'image' })} aria-label="Expand the admin login screen">
               <span className="bt-shot__bar">
                 <span className="bt-shot__dot" /><span className="bt-shot__dot" /><span className="bt-shot__dot" />
                 <span className="bt-shot__url">admin · blacktimber.ca</span>
@@ -685,14 +697,29 @@ export default function BlackTimberCaseStudy() {
                   }}
                 >
                   <div className="bt-sys-media">
-                    <button className="bt-shot" onClick={() => setLightbox(f.img)} aria-label={`Expand: ${f.title}`}>
+                    <button
+                      className="bt-shot"
+                      onClick={() => setLightbox(f.video ? { src: f.video, type: 'video' } : { src: f.img, type: 'image' })}
+                      aria-label={f.video ? `Play demo: ${f.title}` : `Expand: ${f.title}`}
+                    >
                       <span className="bt-shot__bar">
                         <span className="bt-shot__dot" /><span className="bt-shot__dot" /><span className="bt-shot__dot" />
-                        <span className="bt-shot__url">admin · blacktimber.ca</span>
-                        <Maximize2 size={13} className="bt-shot__expand" />
+                        <span className="bt-shot__url">{f.video ? 'e-sign · live demo' : 'admin · blacktimber.ca'}</span>
+                        {f.video
+                          ? <span className="bt-shot__live"><span className="bt-shot__live-dot" />Live demo</span>
+                          : <Maximize2 size={13} className="bt-shot__expand" />}
                       </span>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={f.img} alt={f.title} loading="lazy" className="bt-shot__img" />
+                      {f.video ? (
+                        <video className="bt-shot__img bt-shot__video" autoPlay muted loop playsInline preload="metadata">
+                          <source src={f.video} type="video/mp4" />
+                        </video>
+                      ) : (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img src={f.img} alt={f.title} loading="lazy" className="bt-shot__img" />
+                      )}
+                      {f.video && (
+                        <span className="bt-shot__play" aria-hidden="true"><Play size={20} fill="#000" color="#000" /></span>
+                      )}
                     </button>
                   </div>
 
@@ -864,8 +891,20 @@ export default function BlackTimberCaseStudy() {
           <button className="bt-lightbox__close" onClick={() => setLightbox(null)} aria-label="Close">
             <X size={22} />
           </button>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={lightbox} alt="Black Timber admin — enlarged" className="bt-lightbox__img" onClick={(e) => e.stopPropagation()} />
+          {lightbox.type === 'video' ? (
+            <video
+              className="bt-lightbox__img"
+              src={lightbox.src}
+              controls
+              autoPlay
+              loop
+              playsInline
+              onClick={(e) => e.stopPropagation()}
+            />
+          ) : (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img src={lightbox.src} alt="Black Timber admin — enlarged" className="bt-lightbox__img" onClick={(e) => e.stopPropagation()} />
+          )}
         </div>
       )}
     </main>
