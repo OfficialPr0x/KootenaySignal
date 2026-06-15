@@ -281,10 +281,21 @@ export default function BlackTimberCaseStudy() {
     <main style={{ position: 'relative', overflow: 'hidden' }}>
 
       {/* ═══════════════════════════════════════════════════════════
-          HERO — video + headline unified
+          VIDEO SHOWCASE
           ═══════════════════════════════════════════════════════════ */}
-      <section className="page-hero-with-video" style={{
-        paddingBottom: 'clamp(5rem, 9vw, 8rem)',
+      <VideoHighlight
+        src={KS_VIDEO}
+        variant="cinematic"
+        eyebrow="Kootenay Signal · The Build"
+        heading="Watch the machine in motion."
+        subheading="Sixty seconds inside the system we built for Black Timber Contracting — the site, the AI tools, and the back office that runs the business."
+      />
+
+      {/* ═══════════════════════════════════════════════════════════
+          HERO
+          ═══════════════════════════════════════════════════════════ */}
+      <section style={{
+        padding: 'clamp(3.5rem, 7vw, 6rem) 0 clamp(5rem, 9vw, 8rem)',
         background: '#000', position: 'relative', overflow: 'hidden',
       }}>
         <div style={{
@@ -294,9 +305,7 @@ export default function BlackTimberCaseStudy() {
         }} />
         <div style={{ position: 'absolute', top: '10%', left: '5%', width: '55vw', height: '55vw', background: 'radial-gradient(circle, rgba(230,126,34,0.08) 0%, transparent 65%)', pointerEvents: 'none', zIndex: 1, filter: 'blur(80px)' }} />
 
-        <VideoHighlight src={KS_VIDEO} variant="cinematic" />
-
-        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '900px', marginTop: 'clamp(-2rem, -4vw, -3.5rem)', padding: '0 clamp(1.25rem, 4vw, 4rem)' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '900px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
             <div style={{ width: '40px', height: '1px', background: 'var(--primary)' }} />
             <span style={SECTION_LABEL}>Case Study · Built by Kootenay Signal</span>

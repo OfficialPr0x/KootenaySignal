@@ -376,7 +376,12 @@ export default function Home() {
             transition: 'all 0.9s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         >
-          <VideoHighlight src={KS_VIDEO} label="See It In Action" variant="framed" align="center" />
+          <VideoHighlight
+            src={KS_VIDEO}
+            variant="framed"
+            eyebrow="See It In Action"
+            heading="This is what we do."
+          />
         </div>
       </section>
 

@@ -139,13 +139,21 @@ export default function Website150() {
     >
       {showCheckout && <CheckoutModal onClose={() => setShowCheckout(false)} />}
 
-      {/* ═══════════════════════ HERO ═══════════════════════ */}
-      <section className="w150-hero" style={{ minHeight: 'auto', display: 'block', position: 'relative', padding: '0 0 6rem', overflow: 'hidden' }}>
-        <VideoHighlight src={KS_VIDEO} variant="cinematic" align="center" />
+      {/* ═══════════════════════ VIDEO SHOWCASE ═══════════════════════ */}
+      <VideoHighlight
+        src={KS_VIDEO}
+        variant="cinematic"
+        offsetNav={false}
+        eyebrow="Kootenay Signal"
+        heading="See the work behind the offer."
+        subheading="The same craft that goes into every Kootenay Signal build — now available to 10 local businesses for $150."
+      />
 
+      {/* ═══════════════════════ HERO ═══════════════════════ */}
+      <section className="w150-hero" style={{ minHeight: 'auto', display: 'block', position: 'relative', padding: 'clamp(2.5rem, 5vw, 4rem) 0 6rem', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: '90vw', height: '90vw', maxWidth: '1000px', background: 'radial-gradient(circle, rgba(230,126,34,0.07) 0%, transparent 60%)', pointerEvents: 'none', filter: 'blur(60px)', zIndex: 0 }} />
 
-        <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center', maxWidth: '860px', marginTop: 'clamp(-2rem, -4vw, -3.5rem)' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center', maxWidth: '860px' }}>
 
           {/* Urgency pill */}
           <div className="hero-reveal hero-reveal-1" style={{ marginBottom: '2.5rem' }}>

@@ -374,8 +374,14 @@ export default function SignalCheckPage() {
   // ─── LANDING PHASE (DEFAULT) ──────────────────────────────
   return (
     <main className="sc-page">
-      <section className="sc-hero sc-hero--with-video">
-        <VideoHighlight src={KS_VIDEO} variant="cinematic" align="center" />
+      <VideoHighlight
+        src={KS_VIDEO}
+        variant="cinematic"
+        eyebrow="Kootenay Signal"
+        heading="See what we do, in 60 seconds."
+        subheading="How we turn local Kootenay businesses into the obvious choice online — more calls, more jobs, less guesswork."
+      />
+      <section className="sc-hero">
         <div className="sc-hero-inner">
           <div className="sc-hero-content">
             <h1 className="sc-hero-headline">

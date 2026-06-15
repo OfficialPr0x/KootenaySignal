@@ -9,19 +9,27 @@ export const KS_VIDEO =
 interface VideoHighlightProps {
   src?: string;
   poster?: string;
+  eyebrow?: string;
+  heading?: string;
+  subheading?: string;
+  /** small label for the framed variant (alias of eyebrow) */
   label?: string;
-  /** cinematic = full-bleed banner with bottom fade; framed = contained card */
+  /** cinematic = spotlit showcase section; framed = contained card */
   variant?: 'cinematic' | 'framed';
-  align?: 'left' | 'center';
+  /** add top padding to clear the fixed navbar (cinematic only) */
+  offsetNav?: boolean;
   className?: string;
 }
 
 export default function VideoHighlight({
   src = KS_VIDEO,
   poster,
+  eyebrow,
+  heading,
+  subheading,
   label,
   variant = 'cinematic',
-  align = 'left',
+  offsetNav = true,
   className = '',
 }: VideoHighlightProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -36,57 +44,82 @@ export default function VideoHighlight({
   };
 
   const isCinematic = variant === 'cinematic';
+  const eyebrowText = eyebrow ?? label;
 
-  return (
-    <div
-      className={[
-        'video-highlight',
-        isCinematic ? 'video-highlight--cinematic' : 'video-highlight--framed',
-        align === 'center' ? 'video-highlight--center' : '',
-        className,
-      ].filter(Boolean).join(' ')}
-    >
-      {label && (
-        <div className="video-highlight__label">
-          <span className="video-highlight__label-line" />
-          <span className="video-highlight__label-text">{label}</span>
-        </div>
-      )}
+  const header =
+    eyebrowText || heading || subheading ? (
+      <div className="video-showcase__header">
+        {eyebrowText && (
+          <div className="video-showcase__eyebrow">
+            <span className="video-showcase__eyebrow-line" />
+            <span className="video-showcase__eyebrow-text">{eyebrowText}</span>
+            <span className="video-showcase__eyebrow-line" />
+          </div>
+        )}
+        {heading && <h2 className="video-showcase__heading">{heading}</h2>}
+        {subheading && <p className="video-showcase__sub">{subheading}</p>}
+      </div>
+    ) : null;
 
-      <div className="video-highlight__stage">
-        {!isCinematic && <div className="video-highlight__halo" aria-hidden="true" />}
+  const screen = (
+    <div className="video-showcase__screen">
+      <video
+        ref={videoRef}
+        className="video-showcase__video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster={poster}
+        disablePictureInPicture
+        disableRemotePlayback
+        controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
+        onContextMenu={(e) => e.preventDefault()}
+      >
+        <source src={src} type="video/mp4" />
+      </video>
+      <div className="video-showcase__grain" aria-hidden="true" />
+      <div className="video-showcase__edge" aria-hidden="true" />
+      <button
+        type="button"
+        className="video-showcase__mute"
+        onClick={toggleSound}
+        aria-label={muted ? 'Unmute video' : 'Mute video'}
+      >
+        {muted ? <VolumeX size={16} strokeWidth={2.25} /> : <Volume2 size={16} strokeWidth={2.25} />}
+      </button>
+    </div>
+  );
 
-        <div className="video-highlight__screen">
-          <video
-            ref={videoRef}
-            className="video-highlight__video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            poster={poster}
-            disablePictureInPicture
-            disableRemotePlayback
-            controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
-            onContextMenu={(e) => e.preventDefault()}
-          >
-            <source src={src} type="video/mp4" />
-          </video>
-
-          <div className="video-highlight__shade" aria-hidden="true" />
-          <div className="video-highlight__grain" aria-hidden="true" />
-
-          <button
-            type="button"
-            className="video-highlight__mute"
-            onClick={toggleSound}
-            aria-label={muted ? 'Unmute video' : 'Mute video'}
-          >
-            {muted ? <VolumeX size={16} strokeWidth={2.25} /> : <Volume2 size={16} strokeWidth={2.25} />}
-          </button>
+  if (!isCinematic) {
+    return (
+      <div className={`video-showcase video-showcase--framed${className ? ` ${className}` : ''}`}>
+        {header}
+        <div className="video-showcase__stage">
+          <div className="video-showcase__halo" aria-hidden="true" />
+          {screen}
         </div>
       </div>
-    </div>
+    );
+  }
+
+  return (
+    <section
+      className={[
+        'video-showcase',
+        'video-showcase--cinematic',
+        offsetNav ? 'video-showcase--nav' : '',
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      aria-label="Kootenay Signal showcase video"
+    >
+      <div className="video-showcase__beam" aria-hidden="true" />
+      <div className="video-showcase__pool" aria-hidden="true" />
+      {header}
+      <div className="video-showcase__stage">{screen}</div>
+    </section>
   );
 }
